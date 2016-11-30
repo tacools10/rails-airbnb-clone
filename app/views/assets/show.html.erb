@@ -1,9 +1,16 @@
-<h1><%= @asset.title %></h1>
 
-<p><%= link_to "Add a new asset", new_user_asset_path %></p>
+<div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/800/800');">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-4">
+        <ul>
+          <h1><%= @asset.title %></h1>
+          <p>US$<%= @asset.price * 1000%></p>
+           <p><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
+           <p><%= @asset.region %></p>
 
-<p><%= link_to "All the assets", user_assets_path(user_id: params[:user_id]) %></p>
-
-<p><%= link_to "Edit this asset", edit_user_asset_path(user_id: params[:user_id], id: @asset.id)%></p>
-
-<p><%= link_to "Delete this asset", user_asset_path(id: @asset.id), method: :delete %></p>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

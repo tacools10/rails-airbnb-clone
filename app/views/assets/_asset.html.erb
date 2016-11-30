@@ -1,0 +1,12 @@
+<div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/400');">
+
+  <div class="card-body">
+    <h2><%= asset.title%></h2>
+    <p><%= asset.address %></p>
+    <p><%= asset.price %></p>
+    <p><%= asset.city %>-<%= asset.country %></p>
+   <p> <%= link_to "See", user_asset_path(asset.user_id, asset.id) %>
+  </p>
+  </div>
+
+</div>
