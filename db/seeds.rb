@@ -9,7 +9,8 @@ require 'faker'
 Offer.destroy_all
 Asset.destroy_all
 User.destroy_all
- 10. times do
+
+ 20. times do
 
    user = User.new({email: Faker::Internet.email,
                password:Faker::Internet.password,
@@ -44,6 +45,14 @@ User.destroy_all
 end
 
 
+  20. times do
+    offer = Offer.create({user_id: User.all.sample.id,
+              asset_id: Asset.all.sample.id,
+              offer_date: Faker::Date.between(2.days.ago, Date.today),
+              status: "pending",
+              offer_type: Faker::Number.decimal(3, 3)})
+    offer.save
+  end
 
 # Asset.create(title: "Lucas' house",
 #             description: "In the jungle",

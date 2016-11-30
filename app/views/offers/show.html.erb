@@ -1,0 +1,17 @@
+<div class = "text-center">Offer From
+<h3><%= @offer.user.name %> <%= @offer.user.last_name %></h3>
+<p><%= @offer.offer_date %></p>
+<p><%= @offer.offer_type %></p>
+<p><%= @offer.status %></p>
+
+<%= link_to 'Review Offer', edit_offer_path(@offer) %>
+</div>
+
+
+
+
+
+
+
+
+

@@ -1,5 +1,5 @@
 class OffersController < ApplicationController
-  before_action :set_offer, only: [:show, :edit, :destroy]
+  before_action :set_offer, only: [:show, :edit, :destroy, :update]
 
   def index
     @offers = Offer.all
@@ -13,7 +13,7 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = current_user.offers.create(offer_params)
+    @offer = Offer.new(offer_params)#current_user.offers.create(offer_params)
      if @offer.save
       redirect_to offers_path
      else
