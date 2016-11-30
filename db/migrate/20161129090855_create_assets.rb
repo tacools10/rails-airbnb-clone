@@ -13,7 +13,7 @@ class CreateAssets < ActiveRecord::Migration[5.0]
       t.integer :year_reno
       t.integer :bedrooms
       t.integer :bathrooms
-      t.string :garage
+      t.integer :garage
       t.integer :lots_size
       t.string :previous_owners
       t.string :status
