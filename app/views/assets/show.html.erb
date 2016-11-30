@@ -1,0 +1,9 @@
+<h1><%= @asset.title %></h1>
+
+<p><%= link_to "Add a new asset", new_user_asset_path %></p>
+
+<p><%= link_to "All the assets", user_assets_path(user_id: params[:user_id]) %></p>
+
+<p><%= link_to "Edit this asset", edit_user_asset_path(user_id: params[:user_id], id: @asset.id)%></p>
+
+<p><%= link_to "Delete this asset", user_asset_path(id: @asset.id), method: :delete %></p>
