@@ -3,7 +3,7 @@ class Offer < ApplicationRecord
   ## Data validations
   ## Do we want to make title unique as well?
   validates :offer_date, :status, :offer_type, presence: true
-  validates :offer_date, uniqueness: true
+
 
   ## Data Associations
   belongs_to :user
