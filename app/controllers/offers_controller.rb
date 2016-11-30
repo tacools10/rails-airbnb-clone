@@ -1,4 +1,6 @@
 class OffersController < ApplicationController
+  before_action :find_user
+  before_action :find_asset
   before_action :set_offer, only: [:show, :edit, :destroy, :update]
 
   def index
@@ -13,12 +15,9 @@ class OffersController < ApplicationController
   end
 
   def create
-    @offer = Offer.new(offer_params)#current_user.offers.create(offer_params)
-     if @offer.save
-      redirect_to offers_path
-     else
-      render :new
-    end
+    @offer = @asset.offers.build(offer_params)
+    @offer.save!
+    redirect_to user_asset_offers_path(@user)
   end
 
   def edit
@@ -45,4 +44,11 @@ class OffersController < ApplicationController
     @offer = Offer.find(params[:id])
   end
 
+  def find_user
+    @user = User.find(params[:user_id])
+  end
+
+  def find_asset
+    @asset = Asset.find(params[:asset_id])
+  end
 end
