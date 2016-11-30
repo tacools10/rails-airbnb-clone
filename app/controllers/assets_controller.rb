@@ -1,6 +1,6 @@
 class AssetsController < ApplicationController
   before_action :find_user
-  before_action :find_asset, only: [:edit, :destroy]
+  before_action :find_asset, only: [:edit, :destroy, :show]
 
   def index
     @assets = Asset.all
