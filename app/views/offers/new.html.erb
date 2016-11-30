@@ -1,14 +1,3 @@
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6">
-      <%= simple_form_for [@asset, @offer] do |f| %>
-        <%= f.input :offer_date %>
-        <%= f.input :status %>
-        <%= f.input :offer_type %>
-        <%= f.input :asset_id %>
-        <%= f.input :user_id %>
-        <%= f.submit "Make Offer" %>
-     <% end %>
-    </div>
-  </div>
-</div>
+<h1>New Offer</h1>
+
+<%= render "form" %>

@@ -1,5 +1,7 @@
 <h1><%= @asset.title %></h1>
 
+<p><%= link_to "Make an offer for this", new_user_asset_offer_path(asset_id: @asset.id) %></p>
+
 <p><%= link_to "Add a new asset", new_user_asset_path %></p>
 
 <p><%= link_to "All the assets", user_assets_path(user_id: params[:user_id]) %></p>
