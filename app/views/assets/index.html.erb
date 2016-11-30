@@ -1,14 +1,16 @@
 <h1>All the Assets</h1>
 
-<p><%= link_to "Add a new asset", new_user_asset_path %></p>
+<h1 class="text-center"> Assets</h1>
+<div class="container">
+  <div class="row">
+    <% @assets.each do |ass| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= render "asset", asset: ass %>
+      </div>
 
-<ul>
-  <% @assets.each do |ass| %>
-    <li>
-    <h2><%= link_to ass.title, user_asset_path(user_id: params[:user_id], id: ass.id)%></h2><br>
-    <h3><%= ass.description %></h3>
-    </li>
-    <p><%= link_to "Edit this asset", edit_user_asset_path(user_id: params[:user_id], id: ass.id)%></p>
-    <p><%= link_to "Delete this asset", user_asset_path(id: ass.id), method: :delete %></p>
-  <% end %>
-</ul>
+    <% end %>
+
+  </div>
+</div>
+
+

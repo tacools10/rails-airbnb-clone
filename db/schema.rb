@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20161129150814) do
     t.integer  "year_reno"
     t.integer  "bedrooms"
     t.integer  "bathrooms"
-    t.string   "garage"
+    t.binary   "garage"
     t.integer  "lots_size"
     t.string   "previous_owners"
     t.string   "status"
