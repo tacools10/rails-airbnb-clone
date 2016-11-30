@@ -20,12 +20,19 @@
 }
 
 /* Navbar logo */
-.navbar-wagon-brand img {
+.findaroof-wagon-brand {
   width: 50px;
 }
 
+.navbar-findaroof-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
 /* Navbar right section (with form, links, button) */
-.navbar-wagon-right {
+.navbar-findaroof-right {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,13 +45,27 @@
   padding: 0 20px;
 }
 
+/* Navbar wagon link */
+
+.navbar-findaroof-brand-link {
+  color: #616263;
+  font-size: 14px;
+  font-weight: bold;
+  &:hover {
+    color: #4297DD;
+    text-decoration: none;
+  }
+}
+
+
+
 /* Navbar standard link */
-.navbar-wagon-link {
-  color: #616668;
+.navbar-findaroof-link {
+  color: #616263;
   font-size: 14px;
 }
-.navbar-wagon-link:hover {
-  color: #da552f;
+.navbar-findaroof-link:hover {
+  color: #4297DD;
   text-decoration: none;
 }
 
