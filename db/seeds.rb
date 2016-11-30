@@ -13,11 +13,10 @@ User.destroy_all
  20. times do
 
    user = User.new({email: Faker::Internet.email,
-               password:Faker::Internet.password,
-               name:Faker::Name.first_name,
-
-                              last_name: Faker::Name.last_name,
-              birthdate: Date.new(2001,2,3)})
+            password:Faker::Internet.password,
+            first_name:Faker::Name.first_name,
+            last_name: Faker::Name.last_name,
+            birthdate: Date.new(2001,2,3)})
    user.save
  end
 
@@ -41,14 +40,14 @@ User.destroy_all
             previous_owners: Faker::Name.name_with_middle,
             status: Faker::SlackEmoji.custom,
             user_id: User.all.sample.id})
-  asset.save!
+  asset.save
 end
 
 
   20. times do
     offer = Offer.create({user_id: User.all.sample.id,
               asset_id: Asset.all.sample.id,
-              offer_date: Faker::Date.between(2.days.ago, Date.today),
+              offer_date: Faker::Date.between(30.days.ago, Date.today),
               status: "pending",
               offer_type: Faker::Number.decimal(3, 3)})
     offer.save
