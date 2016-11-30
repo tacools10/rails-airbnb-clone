@@ -2,13 +2,13 @@
   <h1 class = "text-center"> All Offers</h1>
     <div class="card-body">
       <div class="container">
-        <div class="row">
           <% @offers.each do |offer| %>
+            <div class="row">
             <div class="col-xs-12 col-sm-4">
-              <h4><%= offer.user.name %> <%= offer.user.last_name %></h4>
+              <h4><%= offer.user.first_name %> <%= offer.user.last_name %></h4>
               <h4><%= offer.offer_date %></h4>
               <p><%= offer.status %></p>
-              <p><%= link_to "See Offer", offer_path(offer) %></p>
+              <p><%= link_to "See Offer", user_asset_offers_path %></p>
               <% end %>
             </div>
           </div>
