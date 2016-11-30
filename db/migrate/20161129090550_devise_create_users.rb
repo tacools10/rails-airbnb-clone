@@ -31,8 +31,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       # t.datetime :locked_at
 
       ## Our user attributes
-      t.string :name
-      t.string :last_name
+      # t.string :name
+      # t.string :last_name
       t.date :birthdate
       t.string :company
 
