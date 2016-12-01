@@ -1,18 +1,20 @@
-<!-- <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/200');"> -->
+
+<div class="container">
   <h1 class = "text-center"> All Offers</h1>
-    <div class="card-body">
+  <div class="smallercard">
+    <!-- <div class="card-body"> -->
       <div class="container">
-          <% @offers.each do |offer| %>
-            <div class="row">
-            <div class="col-xs-12 col-sm-4">
-              <h4><%= offer.user.first_name %> <%= offer.user.last_name %></h4>
-              <h4><%= offer.offer_date %></h4>
-              <p><%= offer.status %></p>
-              <p><%= link_to "See Offer", user_asset_offers_path %></p>
-              <% end %>
-            </div>
+        <div class="row">
+         <% @offers.each do |offer| %>
+          <div class="col-xs-12 col-sm-4 smallercard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/400/sports');">
+            <h4><%= offer.user.first_name %> <%= offer.user.last_name %></h4>
+            <h4><%= offer.offer_date %></h4>
+            <p><%= offer.status %></p>
+            <p><%= link_to "See Offer", user_asset_offers_path, {class: "btn btn-primary"} %></p>
           </div>
+        <% end %>
         </div>
-    </div>
- <!--  </div>
- -->
+      </div>
+    <!-- </div> -->
+  </div>
+</div>
