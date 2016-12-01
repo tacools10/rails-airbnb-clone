@@ -1,14 +1,26 @@
-<h1 class="text-center"> All Assets</h1>
-
- <p class = "text-center"><%= link_to "Add a new asset", new_user_asset_path, {class: "btn btn-primary"} %></p>
-<div class="container">
-  <div class="row">
-    <% @assets.each do |ass| %>
-      <div class="col-xs-12 col-sm-4">
+<% if current_user %>
+  <h1 class="text-center"> All Assets</h1>
+   <p class = "text-center"><%= link_to "Add a new asset", new_user_asset_path, {class: "btn btn-primary"} %></p>
+  <div class="container">
+    <div class="row">
+      <% @assets.each do |ass| %>
+        <div class="col-xs-12 col-sm-4">
         <%= render "asset", asset: ass %>
-      </div>
-
-    <% end %>
-
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
+<% else %>
+  <h1>All Assets for Sale</h1>
+  <div class="container">
+    <div class="row">
+      <% @assets.each do |ass| %>
+        <div class="col-xs-12 col-sm-4">
+        <%= render "asset", asset: ass %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+

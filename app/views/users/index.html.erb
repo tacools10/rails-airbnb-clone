@@ -1,0 +1,11 @@
+<h1>All my Offers</h1>
+
+<div class="container">
+  <div class="row">
+    <% @offers.each do |off| %>
+      <div class="col-xs-12 col-sm-4">
+        <%= render "offers/offer", offer: off %>
+      </div>
+    <% end %>
+  </div>
+</div>

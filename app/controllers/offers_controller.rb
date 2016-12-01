@@ -1,10 +1,10 @@
 class OffersController < ApplicationController
   before_action :find_user
-  before_action :find_asset
+  before_action :find_asset, except: [:index]
   before_action :set_offer, only: [:show, :edit, :destroy, :update]
 
   def index
-    @offers = Offer.all
+    @offers = @user.offers
   end
 
   def show
