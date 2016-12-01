@@ -3,7 +3,7 @@ class AssetsController < ApplicationController
   before_action :find_asset, only: [:edit, :destroy, :show]
 
   def index
-    @assets = Asset.all
+    @assets = @user.assets
   end
 
   def show

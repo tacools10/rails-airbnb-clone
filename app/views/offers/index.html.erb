@@ -1,5 +1,5 @@
 <!-- <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/200');"> -->
-  <h1 class = "text-center"> All Offers</h1>
+  <h1 class = "text-center"> All My Offers</h1>
     <div class="card-body">
       <div class="container">
           <% @offers.each do |offer| %>
@@ -8,11 +8,9 @@
               <h4><%= offer.user.first_name %> <%= offer.user.last_name %></h4>
               <h4><%= offer.offer_date %></h4>
               <p><%= offer.status %></p>
-              <p><%= link_to "See Offer", user_asset_offers_path %></p>
+              <p><%= link_to "See Offer", user_asset_offers_path(user_id: @user.id, asset_id: offer.asset.id) %></p>
               <% end %>
             </div>
           </div>
         </div>
     </div>
- <!--  </div>
- -->
