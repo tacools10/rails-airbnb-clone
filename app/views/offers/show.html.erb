@@ -1,12 +1,20 @@
-<div class = "text-center">Offer From
-<h3><%= @offer.user.name %> <%= @offer.user.last_name %></h3>
-<p><%= @offer.offer_date %></p>
-<p><%= @offer.offer_type %></p>
-<p><%= @offer.status %></p>
-
-<%= link_to 'Review Offer', edit_offer_path(@offer) %>
+<div class="container">
+  <div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/800/600');">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 card" >
+          <ul>
+            <h3><%= @offer.user.name %> <%= @offer.user.last_name %></h3>
+            <p><%= @offer.offer_date %></p>
+            <p>US$<%= @offer.offer_type * 1000%></p>
+            <p><%= @offer.status %></p>
+          </ul>
+        </div>
+        <%= link_to 'Review Offer', edit_offer_path(@offer) %>
+      </div>
+    </div>
+  </div>
 </div>
-
 
 
 

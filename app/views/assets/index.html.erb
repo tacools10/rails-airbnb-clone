@@ -1,6 +1,6 @@
-<h1>All the Assets</h1>
+<h1 class="text-center"> All Assets</h1>
 
-<h1 class="text-center"> Assets</h1>
+ <p class = "text-center"><%= link_to "Add a new asset", new_user_asset_path, {class: "btn btn-primary"} %></p>
 <div class="container">
   <div class="row">
     <% @assets.each do |ass| %>
@@ -12,5 +12,3 @@
 
   </div>
 </div>
-
-

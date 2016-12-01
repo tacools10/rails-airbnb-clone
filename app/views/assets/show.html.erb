@@ -1,16 +1,19 @@
 
-<div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/800/800');">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-sm-4">
-        <ul>
-          <h1><%= @asset.title %></h1>
-          <p>US$<%= @asset.price * 1000%></p>
-           <p><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
-           <p><%= @asset.region %></p>
-           <p><%= link_to "Make an offer for this", new_user_asset_offer_path(asset_id: @asset.id) %></p>
-           <p><%= link_to "Add a new asset", new_user_asset_path %></p>
-        </ul>
+<div class="container">
+  <div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/600/600/city');">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 showcard">
+          <ul>
+            <h1><%= @asset.title %></h1>
+            <p>US$<%= @asset.price * 1000%></p>
+             <p><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
+             <p><%= @asset.region %></p>
+             <p><%= @asset.bedrooms %>Bedrooms</p>
+             <p><%= @asset.bathrooms %>Bathrooms</p>
+             <p class = "text-center"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
