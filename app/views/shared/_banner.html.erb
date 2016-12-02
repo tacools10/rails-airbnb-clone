@@ -3,12 +3,11 @@
     <h1>FindARoof</h1>
     <p>Welcome Home</p>
     <div class="banner-content links">
-      <form class="form-inline">
-      <div class="findaroof-form-group">
-        <input type="search" class="findaroof-search-form" placeholder="Where do you want to live?">
-        <input type="submit" value="Buy" class="findaroof-button findaroof-button">
-      </div>
-    </form>
+      <%= form_tag "/admin/assets", method: :get do  %>
+      <%= text_field_tag(:query)%>
+      <%= submit_tag("Search") %>
+      <% end %>
+
     </div>
 
   </div>
