@@ -4,7 +4,6 @@
     <h3 class = "text-center"><%= asset.description %></h3>
     <p class="card-description">US$<%= asset.price * 1000.to_i %></p>
     <p class = "text-right"><%= asset.city %>-<%= asset.country %></p>
-
   </div>
     <p class="text-center"><%= link_to "See", user_asset_path(asset.user_id, asset.id), {class: "btn btn-primary"} %></p>
   </div>

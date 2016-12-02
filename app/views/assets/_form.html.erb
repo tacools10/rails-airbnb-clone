@@ -1,20 +1,22 @@
-<%= simple_form_for [@user, @asset], :url => user_assets_path, :method => :post do |f| %>
-  <%= f.input :title %>
-  <%= f.input :description %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :country %>
-  <%= f.input :city %>
-  <%= f.input :condition %>
-  <%= f.input :year_built %>
-  <%= f.input :year_reno %>
-  <%= f.input :bedrooms %>
-  <%= f.input :bathrooms %>
-  <%= f.input :garage %>
-  <%= f.input :lots_size %>
-  <%= f.input :previous_owners %>
-  <%= f.input :status %>
-  <%= f.input :region %>
-  <%= f.submit "Add an asset", class: "btn btn-primary" %>
+<div class="container">
+    <%= simple_form_for [@user, @asset], :url => user_assets_path, :method => :post do |f| %>
+    <%= f.input :title %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :address %>
+    <%= f.input :country %>
+    <%= f.input :city %>
+    <%= f.input :condition %>
+    <%= f.input :year_built %>
+    <%= f.input :year_reno %>
+    <%= f.input :bedrooms %>
+    <%= f.input :bathrooms %>
+    <%= f.input :garage %>
+    <%= f.input :lots_size %>
+    <%= f.input :previous_owners %>
+    <%= f.input :status %>
+    <%= f.input :region %>
+    <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary" %></a>
 
-<% end %>
+  <% end %>
+</div>
