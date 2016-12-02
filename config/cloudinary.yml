@@ -1,0 +1,20 @@
+development:
+  cloud_name: djlrrh291
+  api_key: '259916287921914'
+  api_secret: "u3oaiWjJsd20zLCwfI7o9fxuW-g"
+  enhance_image_tag: "true"
+  static_image_support: "false"
+production:
+  cloud_name: djlrrh291
+  api_key: '259916287921914'
+  api_secret: "u3oaiWjJsd20zLCwfI7o9fxuW-g"
+  enhance_image_tag: "true"
+  static_image_support: "true"
+test:
+  cloud_name: djlrrh291
+  api_key: '259916287921914'
+  api_secret: "u3oaiWjJsd20zLCwfI7o9fxuW-g"
+  enhance_image_tag: "true"
+  static_image_support: "false"
+
+CLOUDINARY_URL: "cloudinary://259916287921914:u3oaiWjJsd20zLCwfI7o9fxuW-g@djlrrh291"
