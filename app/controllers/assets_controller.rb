@@ -9,9 +9,11 @@ class AssetsController < ApplicationController
 
   def show
     @asset_coordinates = { lat: @asset.latitude, lng: @asset.longitude }
-    @hash = Gmaps4rails.build_markers(@asset) do |asset, marker|
-      marker.lat asset.latitude
-      marker.lng asset.longitude
+    unless @asset.latitude.nil?
+      @hash = Gmaps4rails.build_markers(@asset) do |asset, marker|
+        marker.lat asset.latitude
+        marker.lng asset.longitude
+      end
     end
   end
 
