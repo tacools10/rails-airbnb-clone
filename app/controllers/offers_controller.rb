@@ -16,9 +16,10 @@ class OffersController < ApplicationController
 
   def create
     @offer = @asset.offers.build(offer_params)
+    @offer.user = current_user
     if current_user
-      @offer.save
-      redirect_to user_asset_offers_path(@user)
+      @offer.save!
+      redirect_to user_asset_offers_path(current_user)
     else
       redirect_to new_user_registration_path
     end
