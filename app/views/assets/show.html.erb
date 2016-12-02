@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(http://lorempixel.com/400/400/city);">
     <div class="container">
@@ -9,14 +10,6 @@
               <h3>from <%= link_to @asset.user.first_name, user_path(user_id: @user.id) %></h3>
               <p>US$<%= @asset.price * 1000%></p>
               <p><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
-              <% content_for(:after_js) do %>
-                <%= javascript_tag do %>
-                  $(document).ready(function() {
-                  var coord = <%= raw @asset_coordinates.to_json %>;
-                  alert('Apartments coordinates are ' + coord.lat + ', ' + coord.lng);
-                  });
-                <% end %>
-              <% end %>
               <p><%= @asset.region %></p>
               <% if current_user.id == @asset.user.id %>
                 <p><%= link_to "Edit this asset", edit_user_asset_path(user_id: @user.id) %></p>
@@ -29,14 +22,6 @@
               <h3>from <%= @asset.user.first_name %></h3>
               <p>US$<%= @asset.price * 1000%></p>
               <p><%= @asset.address %> - <%= @asset.region %> - <%= @asset.city %></p>
-              <% content_for(:after_js) do %>
-                <%= javascript_tag do %>
-                  $(document).ready(function() {
-                  var coord = <%= raw @asset_coordinates.to_json %>;
-                  alert('Apartment coordinates are ' + coord.lat + ', ' + coord.lng);
-                  });
-                <% end %>
-              <% end %>
               <p><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
             <% end %>
           </ul>
@@ -45,3 +30,22 @@
     </div>
   </div>
 </div>
+
+ <div id="map" style="width: 50%; height: 200px; margin-top: 20px; margin-right: auto; margin-left: auto;"></div>
+              <% content_for(:after_js) do %>
+                <%= javascript_tag do %>
+                  $(document).ready(function() {
+                    var handler = Gmaps.build('Google');
+                    handler.buildMap({ internal: { id: 'map' } }, function() {
+                      markers = handler.addMarkers(<%= raw @hash.to_json %>);
+                      handler.bounds.extendWith(markers);
+                      handler.fitMapToBounds();
+                      if (markers.length == 0) {
+                        handler.getMap().setZoom(2);
+                      } else if (markers.length == 1) {
+                        handler.getMap().setZoom(14);
+                      }
+                    });
+                  });
+                <% end %>
+              <% end %>

@@ -3,17 +3,16 @@ class AssetsController < ApplicationController
   before_action :find_asset, only: [:edit, :destroy, :show]
 
   def index
-    @assets = @user.assets.where.not(latitude: nil, longitude: nil)
-
-    @hash = Gmaps4rails.build_markers(@flats) do |asset, marker|
-      marker.lat asset.latitude
-      marker.lng asset.longitude
+    @assets = @user.assets
       # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
-    end
   end
 
   def show
     @asset_coordinates = { lat: @asset.latitude, lng: @asset.longitude }
+    @hash = Gmaps4rails.build_markers(@asset) do |asset, marker|
+      marker.lat asset.latitude
+      marker.lng asset.longitude
+    end
   end
 
   def new
