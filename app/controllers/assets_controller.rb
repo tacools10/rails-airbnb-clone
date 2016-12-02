@@ -4,9 +4,15 @@ class AssetsController < ApplicationController
 
   def index
     @assets = @user.assets
+      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
   end
 
   def show
+    @asset_coordinates = { lat: @asset.latitude, lng: @asset.longitude }
+    @hash = Gmaps4rails.build_markers(@asset) do |asset, marker|
+      marker.lat asset.latitude
+      marker.lng asset.longitude
+    end
   end
 
   def new

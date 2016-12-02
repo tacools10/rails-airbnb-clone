@@ -18,6 +18,13 @@ gem 'autoprefixer-rails'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'geocoder'
+gem "coffee-rails"
+gem "gmaps4rails"
+
+source 'https://rails-assets.org' do
+  gem "rails-assets-underscore"
+end
 
 
 
@@ -25,7 +32,6 @@ gem 'omniauth-facebook'
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'spring'

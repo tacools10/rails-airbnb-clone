@@ -1,0 +1,5 @@
+<h1> <%= @user.first_name %>'s Dashboard </h1>
+
+<h2><%= link_to 'My Assets', user_assets_path(user_id: @user) %></h2>
+
+<h2><%= link_to('My Offers', user_offers_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link")%></h2>
