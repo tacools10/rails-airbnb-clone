@@ -1,31 +1,30 @@
-<div class="container">
-  <div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url(http://lorempixel.com/400/400/city);">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 showcard">
-          <ul>
-            <% if current_user %>
-              <h1><%= @asset.title %></h1>
-              <h3>from <%= link_to @asset.user.first_name, user_path(user_id: @user.id) %></h3>
-              <p>US$<%= @asset.price * 1000%></p>
-              <p><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
-              <p><%= @asset.region %></p>
+<div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url();" >
+  <h1 class="showcard-title"><%= @asset.title %></h1>
+    <!-- <div class="container"> -->
+    <div class="row showcard">
+      <div class="col-xs-12 col-sm-4 showcard-body">
+              <% if current_user %>
+              <h1 class="showcard-title"><%@asset.title %></h1>
+              <h3 class="showcard-user">from <%= link_to @asset.user.first_name, user_path(user_id: @user.id) %></h3>
+              <p class="showcard-description">US$<%= @asset.price * 1000%></p>
+              <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
+              <p class="showcard-region"><%= @asset.region %></p>
               <% if current_user.id == @asset.user.id %>
-                <p><%= link_to "Edit this asset", edit_user_asset_path(user_id: @user.id) %></p>
-                <p><%= link_to "Delete this asset", user_asset_path(user_id: @user.id, method: :destroy) %></p>
+                <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
+                <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id, method: :destroy), {class: "btn btn-primary"} %></p>
               <% else %>
-                <p><%= link_to "Make an offer for this", new_user_asset_offer_path(asset_id: @asset.id) %></p>
+                <p class="showcard-category"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
               <% end %>
             <% else %>
-              <h1><%= @asset.title %></h1>
-              <h3>from <%= @asset.user.first_name %></h3>
-              <p>US$<%= @asset.price * 1000%></p>
-              <p><%= @asset.address %> - <%= @asset.region %> - <%= @asset.city %></p>
-              <p><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
+              <h1><% @asset.title %></h1>
+              <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
+              <p class="showcard-description">US$<%= @asset.price * 1000%></p>
+              <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
+              <p class="showcard-category"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
             <% end %>
-          </ul>
         </div>
-      </div>
     </div>
-  </div>
 </div>
+ <!--  </div> -->
+<!-- </div>
+ -->
