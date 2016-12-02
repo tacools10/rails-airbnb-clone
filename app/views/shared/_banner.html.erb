@@ -3,11 +3,10 @@
     <h1>FindARoof</h1>
     <p>Welcome Home</p>
     <div class="banner-content links">
-      <%= form_tag "/admin/assets", method: :get do  %>
-      <%= text_field_tag(:query)%>
-      <%= submit_tag("Search") %>
+      <%= form_tag "/admin/assets", method: :get, class: 'findaroof-form-group' do  %>
+      <%= text_field_tag(:query, nil, placeholder: "Where do you want to live?", class: 'findaroof-search-form')%>
+      <%= submit_tag("Search", class: 'findaroof-button')%>
       <% end %>
-
     </div>
 
   </div>

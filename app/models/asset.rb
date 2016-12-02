@@ -12,6 +12,17 @@ class Asset < ApplicationRecord
     # validates_associated :user
     has_many :offers
     # validates_associated :offer
+
+
+    def address_combined
+      [address,city,country].compact.join(', ')
+    end
+
+    # def address_combined_changed?
+    #   @asset.address_changed?
+    # end
+    geocoded_by :address_combined
+    after_validation :geocode
 end
 
 
