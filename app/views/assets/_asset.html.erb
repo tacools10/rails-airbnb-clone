@@ -5,7 +5,7 @@
     <p class = "text-right" ><%= asset.address %></p>
     <p class="card-description">US$<%= asset.price * 1000.to_i %></p>
     <p class = "text-right"><%= asset.city %>-<%= asset.country %></p>
-    <p><%= asset.description %></p>
+<!--     <p><%= asset.description %></p> -->
 
   </div>
     <p class="text-center"><%= link_to "See", user_asset_path(asset.user_id, asset.id), {class: "btn btn-primary"} %></p>
