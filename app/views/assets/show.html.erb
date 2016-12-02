@@ -13,7 +13,6 @@
               <p class="showcard-description">US$<%= @asset.price * 1000%></p>
               <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
               <p class="showcard-region"><%= @asset.region %></p>
->>>>>>> master
               <% if current_user.id == @asset.user.id %>
                 <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
                 <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id, method: :destroy), {class: "btn btn-primary"} %></p>

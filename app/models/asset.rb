@@ -22,7 +22,7 @@ class Asset < ApplicationRecord
     #   @asset.address_changed?
     # end
     geocoded_by :address_combined
-    after_validation :geocode
+    after_validation :geocode, if: :address_changed?
 end
 
 
