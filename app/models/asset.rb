@@ -3,7 +3,7 @@ class Asset < ApplicationRecord
     ## Data validations
     ## Presence should be true for all attributes except region. Only unique requirement is addresss.
     ## Do we want to make title unique as well?
-    validates :title, :description, :price, :address, :country, :city, :condition, :year_built,
+    validates :title, :description, :price, :address, :country, :city, :post_code, :condition, :year_built,
     :year_reno, :bedrooms, :bathrooms, :garage, :lots_size, :previous_owners, :status, :region, presence: true
     validates :address, uniqueness: { case_sensitive: false }
 
@@ -15,7 +15,7 @@ class Asset < ApplicationRecord
 
 
     def address_combined
-      [address,city,country].compact.join(', ')
+      [address,city,post_code,country].compact.join(', ')
     end
 
     # def address_combined_changed?
