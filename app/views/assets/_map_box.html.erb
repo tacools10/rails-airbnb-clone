@@ -1,0 +1,5 @@
+<div class="map_box" style="padding: 10px;">
+  <h3><%= asset.title %></h3>
+  <p><%= asset.address_combined %></p>
+  <%= link_to "See", user_asset_path(asset.user_id, asset.id), {class: "btn btn-primary"} %></p>
+</div>

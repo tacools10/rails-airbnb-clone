@@ -6,9 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+require 'nokogiri'
+require 'open-uri'
+
 Offer.destroy_all
 Asset.destroy_all
 User.destroy_all
+
 
 40. times do
 
@@ -54,8 +58,17 @@ end
     offer.save
   end
 
+# address_list = []
 
-
+# for i in 1..2
+#   url = "http://www.shelterr.com/en/properties-for-sale/m103/antwerp#page-#{i}"
+#   doc = Nokogiri::HTML(open(url), nil, 'utf-8')
+#   tag_elements = doc.xpath("//*[@id='bodymedias']/li/article/div/main/address/strong")
+#   tag_elements.each do |tag_element|
+#     puts tag_element.text.strip
+#     address_list << tag_element.text.strip
+#   end
+# end
 
 
 

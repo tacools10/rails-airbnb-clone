@@ -15,6 +15,7 @@ class Admin::AssetsController < ApplicationController
     @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
+        marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
     end
   end
 end
