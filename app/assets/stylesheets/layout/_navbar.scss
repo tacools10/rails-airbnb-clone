@@ -40,7 +40,7 @@
 
 /* Navbar item */
 .navbar-wagon-item {
-  flex: 0 1 auto;
+  flex: 1 1 100%;
   cursor: pointer;
   padding: 0 20px;
 }
@@ -90,7 +90,7 @@
 .navbar-wagon-search {
   flex: 0 1 300px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 10px;
   position: relative;
 }

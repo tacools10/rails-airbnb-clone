@@ -5,7 +5,6 @@ class Admin::AssetsController < ApplicationController
     if params[:query]
       @assets_search = Asset.search do
         without :latitude, nil
-        without :longitude, nil
         keywords(params[:query])
         paginate(:page => (params[:page] or 1), :per_page => 30)
       end

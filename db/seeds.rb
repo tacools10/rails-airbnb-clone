@@ -10,7 +10,7 @@ Offer.destroy_all
 Asset.destroy_all
 User.destroy_all
 
- 20. times do
+40. times do
 
    user = User.new({email: Faker::Internet.email,
             password:Faker::Internet.password,
@@ -21,7 +21,7 @@ User.destroy_all
  end
 
 
-20. times do
+40. times do
 
   asset = Asset.new({title: Faker::Address.secondary_address,
             description: Faker::Lorem.paragraph(2),
@@ -45,7 +45,7 @@ User.destroy_all
 end
 
 
-  20. times do
+  40. times do
     offer = Offer.create({user_id: User.all.sample.id,
               asset_id: Asset.all.sample.id,
               offer_date: Faker::Date.between(30.days.ago, Date.today),
