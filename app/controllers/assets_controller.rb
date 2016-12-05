@@ -43,7 +43,7 @@ class AssetsController < ApplicationController
   private
 
   def asset_params
-    params.require(:asset).permit(:title, :description, :price, :address, :country, :city, :condition, :year_built,
+    params.require(:asset).permit(:title, :description, :price, :address, :country, :city, :post_code, :condition, :year_built,
     :year_reno, :bedrooms, :bathrooms, :garage, :lots_size, :previous_owners, :status, :region, :address)
   end
 

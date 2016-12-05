@@ -28,6 +28,7 @@ User.destroy_all
             price: Faker::Number.decimal(3, 3),
             address: Faker::Address.street_address,
             country: Faker::Address.country,
+            post_code: Faker::Address.postcode,
             city: Faker::Address.city,
             region: Faker::Space.planet,
             condition:Faker::SlackEmoji.custom,
