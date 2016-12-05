@@ -1,14 +1,14 @@
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/400/city');">
 
   <div class="card-body">
-    <h3 class = "text-center"><%= asset.title %></h3>
-    <p class="card-description">US$<%= asset.price * 1000.to_i %></p>
-    <p class = "text-right"><%= asset.city %>-<%= asset.country %></p>
+    <h3 class = "card-description-title"><%= asset.title %></h3>
+    <h2 class="card-description-price">US$<%= asset.price * 1000.to_i %></h2>
+    <p class = "card-description-city-country"><%= asset.city %>-<%= asset.country %></p>
     <div class="container">
       <div><i class="fa fa-bed" aria-hidden="true"> - <%= asset.bedrooms %></i></div>
       <div><i class="fa fa-bath" aria-hidden="true"> - <%=asset.bathrooms%></i></div>
       <div><i class="fa fa-car" aria-hidden="true"> - <%=asset.garage%></i></div>
     </div>
+      <p class="text-center"><%= link_to "See", user_asset_path(asset.user_id, asset.id), {class: "btn btn-primary"} %></p>
   </div>
-    <p class="text-center"><%= link_to "See", user_asset_path(asset.user_id, asset.id), {class: "btn btn-primary"} %></p>
 </div>

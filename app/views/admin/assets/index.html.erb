@@ -1,10 +1,29 @@
-<h1>All the Assets</h1>
+<h1 class="text-center">Assets For Sale</h1>
+
+<div id="map" style="width: 80%; height: 300px; margin-top: 20px; margin-bottom: 20px; margin-right: auto; margin-left: auto;"></div>
+              <% content_for(:after_js) do %>
+                <%= javascript_tag do %>
+                  $(document).ready(function() {
+                    var handler = Gmaps.build('Google');
+                    handler.buildMap({ internal: { id: 'map' } }, function() {
+                      markers = handler.addMarkers(<%= raw @all_assets_hash.to_json %>);
+                      handler.bounds.extendWith(markers);
+                      handler.fitMapToBounds();
+                      if (markers.length == 0) {
+                        handler.getMap().setZoom(2);
+                      } else if (markers.length == 1) {
+                        handler.getMap().setZoom(14);
+                      }
+                    });
+                  });
+                <% end %>
+              <% end %>
 
 <div class="container">
   <div class="row">
-    <% @assets.each do |ass| %>
-      <div class="col-xs-12 col-sm-4">
-        <%= render "assets/asset", asset: ass %>
+    <% @assets.each do |asset| %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <%= render "assets/asset", asset: asset %>
       </div>
     <% end %>
   </div>

@@ -4,7 +4,6 @@ class AssetsController < ApplicationController
 
   def index
     @assets = @user.assets
-      # marker.infowindow render_to_string(partial: "/flats/map_box", locals: { flat: flat })
   end
 
   def show

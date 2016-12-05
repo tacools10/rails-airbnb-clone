@@ -66,9 +66,15 @@
       <div class="dropdown">
         <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">Some mobile link</a></li>
-          <li><a href="#">Other one</a></li>
-          <li><a href="#">Other one</a></li>
+          <% if current_user %>
+            <li><%= link_to('Buy', admin_assets_path, class: "navbar-wagon-item navbar-findaroof-link")%></li>
+            <li><%= link_to('Sell', new_user_asset_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link")%></li>
+            <li><%= link_to('My Assets', user_assets_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link") %></li>
+        <!-- <a href="" class="navbar-wagon-item navbar-findaroof-link">Offers</a> -->
+          <% else %>
+              <li><%= link_to('Buy', admin_assets_path, class: "navbar-wagon-item navbar-findaroof-link")%></li>
+              <li><%= link_to('Sell', new_user_registration_path, class: "navbar-wagon-item navbar-findaroof-link")%></li>
+          <% end %>
         </ul>
       </div>
     </div>
