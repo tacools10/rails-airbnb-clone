@@ -23,6 +23,11 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem 'cloudinary', '1.1.0'
 
+# sunspot search gem
+
+gem 'sunspot_rails'
+gem 'sunspot_solr'
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
