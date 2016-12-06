@@ -1,29 +1,53 @@
-<div class="container" style="color: black;" >
-  <div class="row">
-    <div class="col-sm-6">
-    <div class="dashboard">
+<div class="container">
+  <div class="panel">
+  <div>
+    <%= image_tag("", class: "img-circle img-thumbnail")%>
+  </div>
+    <h3> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h3>
+    <i><%= @user.email %></i>
+      <table class="table table-user-information">
+      <div >
+        <tbody class="container" style = "height: 200px; width: 100px;"">
+                      <tr>
+                        <td></td>
+                        <td><%=@user.id %></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td><%=%></td>
+                      </tr>
+                      <tr>
+                        <td></td>
+                        <td></td>
+                      </tr>
+
+                       <tr>
+                        <td></td>
+                        <td><%=  %></td>
+                      </tr>
+
+                      <tr>
+                        <td></td>
+                        <td><%=  %></td>
+                      </tr>
+
+                        <tr>
+                          <td></td>
+                          <td><%=%></td>
+                        </tr>
+                        <tr>
+                          <td></td>
+                          <td><%=  %></td>
+                        </tr>
+        </div>
+
+
+          </tbody>
+        </table>
+
       <div>
-        <img src="images/trump.jpg" alt="user" class="avatars">
+        <a><%= link_to 'My Assets', user_assets_path(user_id: @user), {class: "btn btn-primary"} %></a> <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), {class: "btn btn-primary"}) %></a>
       </div>
-        <i> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></i>
-        <i><%= @user.email %></i>
+  </div>
 
-
-    </div>
-
-    <div class="col-sm-6">
-      <div class="dashdata-card">
-        <p><%= link_to 'My Assets', user_assets_path(user_id: @user) %></p>
-      </div>
-    </div>
-
-    <div class="col-sm-6">
-      <div class="dashdata-card">
-
-        <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link")%></a>
-      </div>
-
-    </div>
-   </div>
 </div>
-
