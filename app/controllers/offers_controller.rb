@@ -5,6 +5,9 @@ class OffersController < ApplicationController
 
   def index
     @offers = @user.offers
+    @assets_offers = @user.assets.map do  |singleasset|
+      singleasset.offers
+    end
   end
 
   def show
@@ -30,13 +33,12 @@ class OffersController < ApplicationController
 
   def update
     @offer.update(offer_params)
-    redirect_to offer_path(@offer)
+    redirect_to user_offers_path(current_user, @offers)
   end
 
   def destroy
     @offer.destroy
     redirect_to offers_path(@offers)
-
   end
 
   private

@@ -13,13 +13,18 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-      resources :offers, only: [:index]
+    resources :offers, only: [:index]
+  end
+
+  resources :users do
+    resources :appointments
   end
 
   resource :user, only: [] do
     member do
       get 'profile'
       get 'dashboard'
+      get 'offers'
     end
   end
 

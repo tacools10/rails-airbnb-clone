@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161205094845) do
+ActiveRecord::Schema.define(version: 20161205104824) do
+>>>>>>> f61da7532dfd0fb5e09695f82b0b8e66aa17d0e3
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.date     "date"
+    t.string   "status"
+    t.integer  "user_id"
+    t.integer  "asset_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_appointments_on_asset_id", using: :btree
+    t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
+  end
 
   create_table "assets", force: :cascade do |t|
     t.string   "title"
@@ -41,6 +53,25 @@ ActiveRecord::Schema.define(version: 20161205094845) do
     t.index ["user_id"], name: "index_assets_on_user_id", using: :btree
   end
 
+  create_table "groups", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "investments", force: :cascade do |t|
+    t.integer  "sum"
+    t.float    "return"
+    t.integer  "user_id"
+    t.integer  "asset_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_investments_on_asset_id", using: :btree
+    t.index ["group_id"], name: "index_investments_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_investments_on_user_id", using: :btree
+  end
+
   create_table "offers", force: :cascade do |t|
     t.date     "offer_date"
     t.string   "status"
@@ -51,6 +82,15 @@ ActiveRecord::Schema.define(version: 20161205094845) do
     t.datetime "updated_at", null: false
     t.index ["asset_id"], name: "index_offers_on_asset_id", using: :btree
     t.index ["user_id"], name: "index_offers_on_user_id", using: :btree
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_user_groups_on_group_id", using: :btree
+    t.index ["user_id"], name: "index_user_groups_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -82,7 +122,14 @@ ActiveRecord::Schema.define(version: 20161205094845) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "appointments", "assets"
+  add_foreign_key "appointments", "users"
   add_foreign_key "assets", "users"
+  add_foreign_key "investments", "assets"
+  add_foreign_key "investments", "groups"
+  add_foreign_key "investments", "users"
   add_foreign_key "offers", "assets"
   add_foreign_key "offers", "users"
+  add_foreign_key "user_groups", "groups"
+  add_foreign_key "user_groups", "users"
 end
