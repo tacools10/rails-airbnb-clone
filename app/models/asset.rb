@@ -13,16 +13,7 @@ class Asset < ApplicationRecord
     has_many :offers
     # validates_associated :offer
 
-    searchable do
-      text :address
-      text :country
-      text :city
-      text :post_code
-      text :title
-      integer :price
-      float :latitude
-      float :longitude
-    end
+    searchkick
 
     def address_combined
       [address,city,post_code,country].compact.join(', ')

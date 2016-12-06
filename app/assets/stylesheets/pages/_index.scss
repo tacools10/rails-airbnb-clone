@@ -1,2 +1,29 @@
 @import "home";
 
+.left-half-map {
+  float: left;
+  width: 50%;
+  height: 100%;
+}
+
+
+.right-half-listings {
+  float: right;
+  width: 50%;
+  height: 100%;
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.box {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  width: 100%;
+}

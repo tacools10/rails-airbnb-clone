@@ -26,10 +26,9 @@ gem 'cloudinary', '1.1.0'
 gem 'nokogiri'
 
 
-# sunspot search gem
+# Elastic search gem
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'searchkick'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

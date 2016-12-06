@@ -3,11 +3,7 @@ class Admin::AssetsController < ApplicationController
   def index
     #@assets = Asset.all
     if params[:query]
-      @assets_search = Asset.search do
-        without :latitude, nil
-        keywords(params[:query])
-        paginate(:page => (params[:page] or 1), :per_page => 30)
-      end
+      @assets_search = Asset.search params[:query], fields: [:title, :city], where: {latitude: {not: nil}}
       @assets = @assets_search.results
     else
       @assets = Asset.all
