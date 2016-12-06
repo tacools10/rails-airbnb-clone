@@ -15,8 +15,23 @@
 @import "vendor/index";
 
 
-.wrapper {
-  height: 100vh;
-  width: 100vw;
-  position: relative;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
+
+*,
+*:before
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding-bottom: 6rem;
+  min-height: 100%;
+}
+
+

@@ -13,6 +13,7 @@ gem 'jquery-rails'
 gem 'uglifier'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'
+gem "font-awesome-rails"
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'devise'
@@ -22,11 +23,12 @@ gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
 gem 'cloudinary', '1.1.0'
+gem 'nokogiri'
 
-# sunspot search gem
 
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+# Elastic search gem
+
+gem 'searchkick'
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
