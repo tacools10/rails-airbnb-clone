@@ -1,20 +1,42 @@
-
 <div class="container">
-  <h1 class = "text-center"> All Offers</h1>
+  <h1 class = "text-center">All Offers</h1>
   <div class="smallercard">
     <!-- <div class="card-body"> -->
+    <h2>Offers Submitted</h2>
+    <% @offers.each do |offer| %>
       <div class="container">
-         <% @offers.each do |offer| %>
           <div class="row">
           <div class="col-xs-12 col-sm-4 smallercard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/400/sports');">
             <h4><%= offer.asset.title %></h4>
             <h4><%= offer.offer_date %></h4>
-            <p><%= offer.status %></p>
-        <% end %>
+            <% if offer.status == "pending" %>
+              <p><%= offer.status %></p>
+            <% elsif offer.status == "Accept" %>
+              <p>Your offer was accepted!</p>
+            <% else %>
+              <p>Your offer was declined. :(</p>
+            <% end %>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
+
+  <h2>Offers Received</h2>
+    <% @assets_offers.each do |offers| %>
+      <% offers.each do |offer| %>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12 col-sm-4 smallercard wells" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/500/500/sports');">
+              <h3>Offer from <%= offer.user.first_name %> for <%= offer.asset.title %></h3>
+              <p>Date Submitted: <%= offer.offer_date %></p>
+              <p>Price: <%= offer.offer_type %></p>
+              <h5><%= link_to 'Check this offer in detail', user_asset_offer_path( offer.user, offer.asset, offer) %></h5>
+            </div>
+          </div>
+        </div>
+    <% end %>
+  <% end %>
   </div>
+</div>
 
 
