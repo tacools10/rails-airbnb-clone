@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Dashing::Engine, at: Dashing.config.engine_path
   devise_for :users,
     controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   resources :users do

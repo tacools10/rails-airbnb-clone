@@ -1,5 +1,29 @@
-<h1> <%= @user.first_name %>'s Dashboard </h1>
+<div class="container" style="color: black;" >
+  <div class="row">
+    <div class="col-sm-6">
+    <div class="dashboard">
+      <div>
+        <img src="images/trump.jpg" alt="user" class="avatars">
+      </div>
+        <i> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></i>
+        <i><%= @user.email %></i>
 
-<h2><%= link_to 'My Assets', user_assets_path(user_id: @user) %></h2>
 
-<h2><%= link_to('My Offers', user_offers_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link")%></h2>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="dashdata-card">
+        <p><%= link_to 'My Assets', user_assets_path(user_id: @user) %></p>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <div class="dashdata-card">
+
+        <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link")%></a>
+      </div>
+
+    </div>
+   </div>
+</div>
+
