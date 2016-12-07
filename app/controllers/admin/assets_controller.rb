@@ -17,6 +17,7 @@ class Admin::AssetsController < ApplicationController
                            end) if params[:query_price_min].present? || params[:query_price_max].present?
       conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
       conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
+      # conditions[:location] = Geocoder.coordinates(params[:asset[address]])
       @assets_search = Asset.search query, fields: fields, where: conditions
       @assets = @assets_search.results
   end
@@ -36,6 +37,8 @@ class Admin::AssetsController < ApplicationController
         format.html {render 'assets/assets'}
         format.js
       end
+
+      # Need to figure out how to keep dropdown form available / refresh
     elsif params[:query]
       @assets = search(params)
       @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
