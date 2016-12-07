@@ -13,10 +13,14 @@ class Asset < ApplicationRecord
     has_many :offers
     # validates_associated :offer
 
-    searchkick
+    searchkick locations: ["location"]
 
     def address_combined
       [address,city,post_code,country].compact.join(', ')
+    end
+
+    def search_data
+      attributes.merge location: {lat: latitude, lon: longitude}
     end
 
     # def address_combined_changed?

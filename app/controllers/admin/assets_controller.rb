@@ -4,29 +4,58 @@ class Admin::AssetsController < ApplicationController
     @price_ranges = [{to: 200000}, {from: 200000, to: 500000}, {from: 500000}]
   end
 
+  def search(params)
+    query = params[:query].presence || '*'
+      fields = [:address, :city, :post_code]
+      conditions = {}
+      conditions[:price] = (if params[:query_price_min].present? && params[:query_price_max].blank?
+                              {gte: params[:query_price_min]}
+                           elsif params[:query_price_max].present? && params[:query_price_min].blank?
+                              {lte: params[:query_price_max]}
+                           else params[:query_price_min].present? && params[:query_price_max].present?
+                              {gte: params[:query_price_min], lte: params[:query_price_max]}
+                           end) if params[:query_price_min].present? || params[:query_price_max].present?
+      conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
+      conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
+      # conditions[:location] = Geocoder.coordinates(params[:asset[address]])
+      @assets_search = Asset.search query, fields: fields, where: conditions
+      @assets = @assets_search.results
+  end
+
 
   def index
-    #@assets = Asset.all
-    price_ranges = self.ranges
     @disable_footer = true
-    if params[:query]
-      @assets_search = Asset.search params[:query], fields: [:title, :city], where: {latitude: {not: nil}}
-      @assets = @assets_search.results
 
-    # Add min / max plus add in filters for latitude / longitude. Should be able to repeat this process for other features like
-    # size, etc. in order to create variety of filters. Can even create dropdown form now that I understand
-    # the process.
-    elsif params[:query_price_min] || params[:query_price_max]
-      @assets_search = Asset.search '*', where: {price: {gte: params[:query_price_min], lte: params[:query_price_max]}}
-      @assets = @assets_search.results
+    if params[:query_price_min] || params[:query_price_max] || params[:city]
+      @assets = search(params)
+      respond_to do |format|
+        @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+          marker.lat asset.latitude
+          marker.lng asset.longitude
+          marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+          end
+        format.html {render 'assets/assets'}
+        format.js
+      end
+
+      # Need to figure out how to keep dropdown form available / refresh
+    elsif params[:query]
+      @assets = search(params)
+      @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+          marker.lat asset.latitude
+          marker.lng asset.longitude
+          marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+      end
     else
       @assets = Asset.all
-    end
-    @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+      @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
         marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+     end
     end
+
   end
+
 end
 
