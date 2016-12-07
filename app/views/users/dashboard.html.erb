@@ -1,53 +1,161 @@
-<div class="container">
-  <div class="panel">
-  <div>
-    <%= image_tag("", class: "img-circle img-thumbnail")%>
-  </div>
-    <h3> <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h3>
-    <i><%= @user.email %></i>
-      <table class="table table-user-information">
-      <div >
-        <tbody class="container" style = "height: 200px; width: 100px;"">
-                      <tr>
-                        <td></td>
-                        <td><%=@user.id %></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td><%=%></td>
-                      </tr>
-                      <tr>
-                        <td></td>
-                        <td></td>
-                      </tr>
+<div id="wrapper">
+  <div class="container">
 
-                       <tr>
-                        <td></td>
-                        <td><%=  %></td>
-                      </tr>
+    <div class="row">
 
-                      <tr>
-                        <td></td>
-                        <td><%=  %></td>
-                      </tr>
-
-                        <tr>
-                          <td></td>
-                          <td><%=%></td>
-                        </tr>
-                        <tr>
-                          <td></td>
-                          <td><%=  %></td>
-                        </tr>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i><%= image_tag("trump.jpg", class: "img-circle img-responsive")%></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></div>
+                <div><%= @user.email %></div>
+              </div>
+            </div>
+          </div>
+          <a href="#">
+            <div class="panel-footer">
+              <span class="pull-left"><%= link_to "View Details", profile_user_path %></span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+              <div class="clearfix"></div>
+            </div>
+          </a>
         </div>
-
-
-          </tbody>
-        </table>
-
-      <div>
-        <a><%= link_to 'My Assets', user_assets_path(user_id: @user), {class: "btn btn-primary"} %></a> <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), {class: "btn btn-primary"}) %></a>
       </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-green">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-calendar fa-3x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge"><%= %></div>
+                <div>Appointments!</div>
+              </div>
+            </div>
+          </div>
+          <a href="#">
+            <div class="panel-footer">
+              <span class="pull-left">View Details</span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+              <div class="clearfix"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-yellow">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-envelope-o fa-3x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge"><%=%></div>
+                <div>Messages!</div>
+              </div>
+            </div>
+          </div>
+          <a href="#">
+            <div class="panel-footer">
+              <span class="pull-left">View Details</span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+              <div class="clearfix"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="panel panel-red">
+          <div class="panel-heading">
+            <div class="row">
+              <div class="col-xs-3">
+                <i class="fa fa-home fa-3x"></i>
+              </div>
+              <div class="col-xs-9 text-right">
+                <div class="huge"><%= @user.assets.count %></div>
+                <div>Assets!</div>
+              </div>
+            </div>
+          </div>
+          <a href="#">
+            <div class="panel-footer">
+              <span class="pull-left"><%= link_to "View Details", user_assets_path(user_id: @user)%></span>
+              <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+              <div class="clearfix"></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <i class="fa fa-bar-chart-o fa-fw"></i> Offers Controller
+        <div class="pull-right">
+          <div class="btn-group">
+            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+              Actions
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu pull-right" role="menu">
+              <li><a href="#"><%= link_to 'My Assets', user_assets_path(user_id: @user)%></a>
+              </li>
+              <li><a href="#"><%= link_to "Offers Recived"%></a>
+              </li>
+              <li><a href="#">Something else here</a>
+              </li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-6">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover table-striped">
+                <thead>
+                  <tr>
+                    <th>Offer</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Status</th>
+                    <th>See Asset</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% @user.offers.each do |offer| %>
+                  <tr>
+                    <td><%= offer.id  %></td>
+                    <td><%=  offer.offer_date %></td>
+                    <td><%=  offer.offer_type %></td>
+                    <td><%= offer.status %></td>
+                    <td><%= link_to offer.asset.id, user_asset_path(offer.asset.user.id, offer.asset.id) %></td>
+
+                  </tr>
+                  <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
   </div>
+    <div class="container">
+    <a><%= link_to 'Add Asset', new_user_asset_path(user_id: current_user.id), {class: "btn btn-success"} %></a>
+    <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), {class: "btn btn-primary"}) %></a>
 
 </div>
