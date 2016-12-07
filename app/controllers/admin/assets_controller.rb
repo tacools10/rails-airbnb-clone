@@ -27,17 +27,24 @@ class Admin::AssetsController < ApplicationController
     if params[:query_price_min] || params[:query_price_max] || params[:city]
       @assets = search(params)
       respond_to do |format|
-        format.html {redirect_to admin_assets_path}
+        @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+          marker.lat asset.latitude
+          marker.lng asset.longitude
+          marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+          end
+        format.html {render 'assets/assets'}
         format.js
       end
     else
       @assets = Asset.all
-    end
-    @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+      @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
         marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+     end
     end
+
   end
+
 end
 
