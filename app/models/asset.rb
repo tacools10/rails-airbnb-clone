@@ -5,7 +5,7 @@ class Asset < ApplicationRecord
     ## Do we want to make title unique as well?
     validates :title, :description, :price, :address, :country, :city, :post_code, :condition, :year_built,
     :year_reno, :bedrooms, :bathrooms, :garage, :lots_size, :previous_owners, :status, :region, presence: true
-    validates :address, uniqueness: { case_sensitive: false }
+    validates :address, uniqueness: true, on: :create
 
     ## Data Associations
     belongs_to :user

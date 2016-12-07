@@ -1,9 +1,24 @@
 
-<div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url();" >
+<!-- <div class="container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))" > -->
   <h1 class="showcard-title"><%= @asset.title %></h1>
     <!-- <div class="container"> -->
+
     <div class="row showcard">
-      <div class="col-xs-12 col-sm-4 showcard-body">
+      <div class="col-xs-12 col-sm-3 showcard-body">
+      <div class="container">
+      <div class="popup-gallery">
+        <a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="The Cleaner"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
+        <a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Winter Dance"><img src="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_s.jpg" width="75" height="75"></a>
+        <a href="http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_b.jpg" title="The Uninvited Guest"><img src="http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_s.jpg" width="75" height="75"></a>
+        <a href="http://farm9.staticflickr.com/8383/8563475581_df05e9906d_b.jpg" title="Oh no, not again!"><img src="http://farm9.staticflickr.com/8383/8563475581_df05e9906d_s.jpg" width="75" height="75"></a>
+        <a href="http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_b.jpg" title="Swan Lake"><img src="http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_s.jpg" width="75" height="75"></a>
+        <a href="http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_b.jpg" title="The Shake"><img src="http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_s.jpg" width="75" height="75"></a>
+        <a href="http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_b.jpg" title="Who's that, mommy?"><img src="http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_s.jpg" width="75" height="75"></a>
+      </div>
+
+        <p><%= @asset.description %></p>
+
+    </div>
               <% if current_user %>
               <h1 class="showcard-title"><%@asset.title %></h1>
               <% if current_user.id == @asset.user.id %>
@@ -17,18 +32,18 @@
                 <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
                 <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id, method: :destroy), {class: "btn btn-primary"} %></p>
               <% else %>
-                <p class="showcard-category"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
+                <p class="showcard-action"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
               <% end %>
             <% else %>
               <h1><% @asset.title %></h1>
               <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
               <p class="showcard-description">US$<%= @asset.price * 1000%></p>
               <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
-              <p class="showcard-category"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
+              <p class="showcard-action"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
             <% end %>
         </div>
     </div>
-</div>
+<!-- </div> -->
 
 
  <div id="map" style="width: 50%; height: 200px; margin-top: 20px; margin-right: auto; margin-left: auto;"></div>

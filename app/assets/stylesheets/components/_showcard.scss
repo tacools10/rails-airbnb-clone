@@ -2,13 +2,13 @@
 
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
-  color: white;
+  color: black;
   position: relative;
-  padding-top: 10px;
-  margin-top: 20px;
-  margin-left: 20px;
+
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 20px;
-  margin-right: 20px;
+  border: 1px solid black;
 
 }
 
@@ -18,7 +18,11 @@
 .showcard-body {
   position: relative;
   height: 450px;
-  width: 1350px;
+  width: 100%;
+
+}
+.popup-gallery {
+  padding-top: 5px;
 }
 
 .showcard-location {
@@ -80,5 +84,16 @@
 }
 .showcard-link:hover{
   opacity: 0.1;
+}
+
+.descriptionbox {
+  height: 35%;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 20px;
+
+
 }
 

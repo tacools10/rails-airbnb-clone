@@ -24,7 +24,7 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem 'cloudinary', '1.1.0'
 gem 'nokogiri'
-
+gem 'magnific-popup-rails', '~> 1.1.0'
 
 # Elastic search gem
 
