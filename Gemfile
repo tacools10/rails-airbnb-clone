@@ -29,6 +29,7 @@ gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary', '1.1.0'
 
 
+gem 'magnific-popup-rails', '~> 1.1.0'
 
 # Elastic search gem
 
