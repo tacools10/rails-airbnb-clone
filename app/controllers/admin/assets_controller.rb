@@ -6,6 +6,7 @@ class Admin::AssetsController < ApplicationController
 
   def search(params)
     query = params[:query].presence || '*'
+      fields = [:address, :city, :post_code]
       conditions = {}
       conditions[:price] = (if params[:query_price_min].present? && params[:query_price_max].blank?
                               {gte: params[:query_price_min]}
@@ -16,9 +17,9 @@ class Admin::AssetsController < ApplicationController
                            end) if params[:query_price_min].present? || params[:query_price_max].present?
       conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
       conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
-      @assets_search = Asset.search query, where: conditions
+      @assets_search = Asset.search query, fields: fields, where: conditions
       @assets = @assets_search.results
-    end
+  end
 
 
   def index
@@ -34,6 +35,13 @@ class Admin::AssetsController < ApplicationController
           end
         format.html {render 'assets/assets'}
         format.js
+      end
+    elsif params[:query]
+      @assets = search(params)
+      @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+          marker.lat asset.latitude
+          marker.lng asset.longitude
+          marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
       end
     else
       @assets = Asset.all
