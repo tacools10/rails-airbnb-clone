@@ -9,17 +9,12 @@
             <p>US$ <%= @offer.offer_type %></p>
             <h4>Accept or Decline</h4>
           </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6">
-          <%= simple_form_for [@user, @asset, @offer] do |f| %>
-          <%= f.input :status, collection: ["Accept", "Deny"]%>
-          <%= f.submit "submit" %>
-          <% end %>
+          <ul>
+            <%= simple_form_for [@user, @asset, @offer] do |f| %>
+            <%= f.input :status, collection: ["Accept", "Deny"]%>
+            <%= f.submit "submit" %>
+            <% end %>
+          </ul>
         </div>
       </div>
     </div>
