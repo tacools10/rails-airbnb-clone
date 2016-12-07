@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6">
-      <%= simple_form_for [@user, @asset, @offer], :url => user_assets_path, :method => :post do |f| %>
-        <%= f.input :status, collection: ["Accept", "Deny"]%>
-        <%= f.submit "submit" %>
-      <% end %>
+        <%= simple_form_for [current_user, @asset, @offer] do |f| %>
+          <%= f.input :offer_type %>
+          <%= f.submit "Submit new offer" %>
+        <% end %>
     </div>
   </div>
 </div>
