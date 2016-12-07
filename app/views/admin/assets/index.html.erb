@@ -1,5 +1,16 @@
 <h1 class="text-center">Assets For Sale</h1>
 
+ <%= form_tag "/admin/assets", method: :get, class: 'findaroof-form-group' do  %>
+      <%= label_tag('Price') %>
+      <%= number_field_tag(:query_price_min, nil, placeholder: "min", class: 'findaroof-filter-form')%>
+      <%= number_field_tag(:query_price_max, nil, placeholder: "max", class: 'findaroof-filter-form')%>
+      <%= label_tag('City') %>
+      <%= select_tag('asset_id', options_for_select(@assets.collect{ |a| [a.city, a.id] }))%>
+      <%= submit_tag("Search", class: 'findaroof-button')%>
+  <% end %>
+
+
+
 <div class="box">
   <div class="left-half-map">
     <div id="map" style="width: 100%; height: 100vh;"></div>
@@ -32,3 +43,4 @@
       </div>
     </div>
   </div>
+</div>
