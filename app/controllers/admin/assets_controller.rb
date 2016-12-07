@@ -17,7 +17,7 @@ class Admin::AssetsController < ApplicationController
                            end) if params[:query_price_min].present? || params[:query_price_max].present?
       conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
       conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
-      # conditions[:location] = Geocoder.coordinates(params[:asset[address]])
+      conditions[:location] = Geocoder.coordinates(params[:asset[address]])
       @assets_search = Asset.search query, fields: fields, where: conditions
       @assets = @assets_search.results
   end
