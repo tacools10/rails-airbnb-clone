@@ -13,6 +13,8 @@ class Asset < ApplicationRecord
     has_many :offers
     # validates_associated :offer
 
+    mount_uploaders :photos, PhotoUploader
+
     searchkick
 
     def address_combined

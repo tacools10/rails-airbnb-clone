@@ -49,12 +49,11 @@
 
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <img src= <%= if current_user
-                          current_user.facebook_picture_url
-                        else
-                          "http://placehold.it/50x50"
-                        end %>
-          class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+          <class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" img src=<% if current_user %>
+                        "<%= current_user.facebook_picture_url %>
+                        <% else %>
+                        "<%= cl_image_tag(current_user.photo, :crop => :fill, :width => 50, :height => 50) %>"
+                       <% end %>>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><%= link_to('Profile', profile_user_path)%></li>
             <li><%= link_to('Dashboard', dashboard_user_path)%></li>
