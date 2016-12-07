@@ -19,6 +19,8 @@
       <%= f.input :previous_owners %>
       <%= f.input :status %>
       <%= f.input :region %>
+      <%= f.input_field :photos, as: :file, multiple: true %>
+
       <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary" %></a>
 
     <% end %>

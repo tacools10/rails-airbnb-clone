@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/carrierwaveuploader/carrierwave.git
+  revision: 237328dbcbd5a18f5c737fb1c7e9197e8c118c31
+  specs:
+    carrierwave (1.0.0.rc)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -263,6 +272,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootstrap-sass
+  carrierwave!
   cloudinary (= 1.1.0)
   coffee-rails
   country_select
