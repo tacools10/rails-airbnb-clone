@@ -1,46 +1,25 @@
 <h1 class="text-center">Assets For Sale</h1>
 
- <%= form_tag "/admin/assets", method: :get, class: 'findaroof-form-group' do  %>
+ <%= form_tag "/admin/assets", method: :get, remote: true, class: 'findaroof-form-group' do  %>
       <%= label_tag('Price') %>
       <%= number_field_tag(:query_price_min, nil, placeholder: "min", class: 'findaroof-filter-form')%>
       <%= number_field_tag(:query_price_max, nil, placeholder: "max", class: 'findaroof-filter-form')%>
+      <%= label_tag('Address') %>
+      <%= text_field(:asset, :address, placeholder: "Enter the address", class: 'findaroof-filter-form')%>
+      <%= label_tag('Radius') %>
+      <%= text_field_tag(:query_radius, nil, placeholder: "Enter the search radius - format '10mi' or '10km'", class: 'findaroof-filter-form')%>
       <%= label_tag('City') %>
-      <%= select_tag('asset_id', options_for_select(@assets.collect{ |a| [a.city, a.id] }))%>
+      <%= select_tag('city', options_for_select(@assets.collect{ |a| [a.city, a.id] }), :prompt => "Please select city", class: 'findaroof-filter-dropdown')%>
+      <%= label_tag('Country') %>
+      <%= select_tag('country', options_for_select(@assets.collect{ |a| [a.country, a.id] }), :prompt => "Please select country",  class: 'findaroof-filter-dropdown')%>
       <%= submit_tag("Search", class: 'findaroof-button')%>
   <% end %>
 
 
 
-<div class="box">
-  <div class="left-half-map">
-    <div id="map" style="width: 100%; height: 100vh;"></div>
-                  <% content_for(:after_js) do %>
-                    <%= javascript_tag do %>
-                      $(document).ready(function() {
-                        var handler = Gmaps.build('Google');
-                        handler.buildMap({ internal: { id: 'map' } }, function() {
-                          markers = handler.addMarkers(<%= raw @all_assets_hash.to_json %>);
-                          handler.bounds.extendWith(markers);
-                          handler.fitMapToBounds();
-                          if (markers.length == 0) {
-                            handler.getMap().setZoom(2);
-                          } else if (markers.length == 1) {
-                            handler.getMap().setZoom(14);
-                          }
-                        });
-                      });
-                    <% end %>
-                  <% end %>
-  </div>
-  <div class="right-half-listings">
-    <div class="container">
-      <div class="row">
-        <% @assets.each do |asset| %>
-          <div class="col-xs-12 col-sm-12 col-md-6">
-            <%= render "assets/asset", asset: asset %>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>
+ <div id="results"><%= render 'assets' %></div>
+
+
+<%= content_for(:after_js) do %>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDa1_F9P03aqg6R_dvBjy1q_DYfotr93UY"></script>
+<% end %>
