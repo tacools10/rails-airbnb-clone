@@ -1,12 +1,5 @@
 class Admin::AssetsController < ApplicationController
 
-  def ranges
-    @price_ranges = [{to: 200000}, {from: 200000, to: 500000}, {from: 500000}]
-  end
-
-
-
-
   def search(params)
     permitted = params.require(:asset).permit([:address, :city, :post_code, :country])
     query = params[:query].presence || '*'
