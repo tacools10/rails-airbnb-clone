@@ -13,7 +13,7 @@ class Asset < ApplicationRecord
     has_many :offers
     # validates_associated :offer
 
-    searchkick locations: ["location"]
+    searchkick merge_mappings: true, mappings: {asset: {properties: {locations: {type:"geo_point"}}}}, locations: ["location"]
 
     def address_combined
       [address,city,post_code,country].compact.join(', ')

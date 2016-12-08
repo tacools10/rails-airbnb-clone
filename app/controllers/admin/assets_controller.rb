@@ -8,9 +8,10 @@ class Admin::AssetsController < ApplicationController
 
 
   def search(params)
-    get_coordinates(params)
+    permitted = params.require(:asset).permit([:address, :city, :post_code, :country])
     query = params[:query].presence || '*'
       fields = [:address, :city, :post_code]
+
       conditions = {}
       conditions[:price] = (if params[:query_price_min].present? && params[:query_price_max].blank?
                               {gte: params[:query_price_min]}
@@ -19,29 +20,33 @@ class Admin::AssetsController < ApplicationController
                            else params[:query_price_min].present? && params[:query_price_max].present?
                               {gte: params[:query_price_min], lte: params[:query_price_max]}
                            end) if params[:query_price_min].present? || params[:query_price_max].present?
+
       conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
       conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
+      conditions[:location] = {near: get_coordinates(params), within: params[:radius]} if permitted[:address].present? && params[:radius].present?
 
-      # conditions[:location] = {location: {near: get_coordinates(params), within: params[:radius]}} if params[:asset["address"]].present?
       @assets_search = Asset.search query, fields: fields, where: conditions
       @assets = @assets_search.results
   end
 
   def get_coordinates(params)
     permitted = params.require(:asset).permit([:address, :city, :post_code, :country])
-    geocoder_address = [permitted[:address],permitted[:city],permitted[:post_code],permitted[:country]].compact.join(', ')
-    coordinate_array = Geocoder.coordinates(geocoder_address)
-    p coordinate_array
-    coordinate_hash = {}
-    coordinate_hash[:lat] = coordinate_array[0]
-    coordinate_hash[:lon] = coordinate_array[1]
-    return coordinate_hash
+    if permitted[:address].present?
+      geocoder_address = [permitted[:address],permitted[:city],permitted[:post_code],permitted[:country]].compact.join(', ')
+      coordinate_array = Geocoder.coordinates(geocoder_address)
+      coordinate_hash = {}
+      coordinate_hash[:lat] = coordinate_array[0]
+      coordinate_hash[:lon] = coordinate_array[1]
+      return coordinate_hash
+    else
+      return nil
+    end
   end
 
   def index
     @disable_footer = true
 
-    if params[:query_price_min] || params[:query_price_max] || params[:city]
+    if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = search(params)
       respond_to do |format|
         format.html {render 'assets/assets'}
