@@ -7,7 +7,7 @@
       <%= label_tag('Address') %>
       <%= text_field(:asset, :address, placeholder: "Enter the address", class: 'findaroof-filter-form')%>
       <%= label_tag('Radius') %>
-      <%= text_field_tag(:query_radius, nil, placeholder: "Enter the search radius - format '10mi' or '10km'", class: 'findaroof-filter-form')%>
+      <!-- # text_field_tag(:query_radius, nil, placeholder: "Enter the search radius - format '10mi' or '10km'", class: 'findaroof-filter-form') -->
       <%= label_tag('City') %>
       <%= select_tag('city', options_for_select(@assets.collect{ |a| [a.city, a.id] }), :prompt => "Please select city", class: 'findaroof-filter-dropdown')%>
       <%= label_tag('Country') %>
@@ -20,6 +20,3 @@
  <div id="results"><%= render 'assets' %></div>
 
 
-<%= content_for(:after_js) do %>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDa1_F9P03aqg6R_dvBjy1q_DYfotr93UY"></script>
-<% end %>
