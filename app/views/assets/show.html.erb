@@ -3,6 +3,9 @@
   <h1 class="showcard-title"><%= @asset.title %></h1>
     <!-- <div class="container"> -->
     <div class="row showcard">
+      <% @asset.asset_photos.each do |photo|%>
+        <%= cl_image_tag photo.photo.url %>
+      <% end %>
       <div class="col-xs-12 col-sm-4 showcard-body">
               <% if current_user %>
               <h1 class="showcard-title"><%@asset.title %></h1>

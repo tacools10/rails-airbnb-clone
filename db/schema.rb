@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161207145704) do
+ActiveRecord::Schema.define(version: 20161208152206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 20161207145704) do
     t.datetime "updated_at", null: false
     t.index ["asset_id"], name: "index_appointments_on_asset_id", using: :btree
     t.index ["user_id"], name: "index_appointments_on_user_id", using: :btree
+  end
+
+  create_table "asset_photos", force: :cascade do |t|
+    t.integer  "asset_id"
+    t.string   "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asset_id"], name: "index_asset_photos_on_asset_id", using: :btree
   end
 
   create_table "assets", force: :cascade do |t|
@@ -49,8 +57,7 @@ ActiveRecord::Schema.define(version: 20161207145704) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "post_code"
-    t.json     "avatars"
-    t.json     "photos"
+    t.text     "photos"
     t.index ["user_id"], name: "index_assets_on_user_id", using: :btree
   end
 
@@ -126,6 +133,7 @@ ActiveRecord::Schema.define(version: 20161207145704) do
 
   add_foreign_key "appointments", "assets"
   add_foreign_key "appointments", "users"
+  add_foreign_key "asset_photos", "assets"
   add_foreign_key "assets", "users"
   add_foreign_key "investments", "assets"
   add_foreign_key "investments", "groups"

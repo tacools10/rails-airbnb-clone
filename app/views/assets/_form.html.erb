@@ -19,7 +19,12 @@
       <%= f.input :previous_owners %>
       <%= f.input :status %>
       <%= f.input :region %>
-      <%= f.input_field :photos, as: :file, multiple: true %>
+
+      <%= f.simple_fields_for :asset_photo do |p| %>
+        <div class="field">
+          <%= p.file_field :photo, :multiple => true, name: "asset_photos[photo][]" %>
+          </div>
+      <% end %>
 
       <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary" %></a>
 

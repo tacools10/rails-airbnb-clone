@@ -12,8 +12,11 @@ class Asset < ApplicationRecord
     # validates_associated :user
     has_many :offers
     # validates_associated :offer
+    has_many :asset_photos, dependent: :destroy
+    accepts_nested_attributes_for :asset_photos
 
-    mount_uploaders :photos, PhotoUploader
+    # serialize :photos, Array
+
 
     searchkick
 

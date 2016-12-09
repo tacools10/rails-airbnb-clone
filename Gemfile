@@ -29,7 +29,6 @@ gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary', '1.1.0'
 
 
-
 # Elastic search gem
 
 gem 'searchkick'
@@ -37,9 +36,6 @@ gem 'searchkick'
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
-
-
-
 
 group :development, :test do
   gem 'binding_of_caller'

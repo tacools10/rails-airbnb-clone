@@ -8,7 +8,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i><%= image_tag("trump.jpg", class: "img-circle img-responsive")%></i>
+                <i><%= cl_image_tag current_user.photo, class: "img-circle img-responsive"%></i>
               </div>
               <div class="col-xs-9 text-right">
                 <div class="huge"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></div>
