@@ -20,10 +20,23 @@ class AssetsController < ApplicationController
     @asset = Asset.new
   end
 
+  # def create
+  #   asset = Asset.new(asset_params)
+  #   asset.photos = params[:asset][:photos]
+  #   raise
+  #   if asset
+  #     redirect_to user_assets_path(@user)
+  #   end
+  #   # @asset = @user.assets.build(asset_params)
+  #   # @asset.save!
+  # end
+
   def create
-    @asset = @user.assets.build(asset_params)
-    @asset.save!
-    redirect_to user_assets_path(@user)
+    @asset = current_user.assets.create(asset_params)
+    params[:asset_photos]['photo'].each do |photo|
+      @asset_photos = @asset.asset_photos.create(:photo => photo)
+    end
+    redirect_to root_path
   end
 
   def edit
@@ -44,7 +57,7 @@ class AssetsController < ApplicationController
 
   def asset_params
     params.require(:asset).permit(:title, :description, :price, :address, :country, :city, :post_code, :condition, :year_built,
-    :year_reno, :bedrooms, :bathrooms, :garage, :lots_size, :previous_owners, :status, :region, :address, {photos: []})
+    :year_reno, :bedrooms, :bathrooms, :garage, :lots_size, :previous_owners, :status, :region, :address, asset_photos_attributes: [:id, :asset_id, :photo])
   end
 
   def find_user

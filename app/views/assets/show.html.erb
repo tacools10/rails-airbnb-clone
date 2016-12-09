@@ -5,18 +5,17 @@
     <!-- <div class="container"> -->
   <div class="container">
     <div class="row showcard">
-      <div class="col-xs-12 col-sm-3 showcard-body">
+
+
+      <div class="col-xs-12 col-sm-4 showcard-body">
       <div class="container" style="padding-top: 10px;">
         <div class="popup-gallery" style="background-image: ">
-            <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="350" height="350"></a>
-            <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
-            <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
-           <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
-            <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
-            <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
-            <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+            <% @asset.asset_photos.each do |photo|%>
+            <%= cl_image_tag photo.photo.url %>
+            <% end %>
         </div>
-    </div>
+
+
               <% if current_user %>
               <h1 class="showcard-title"><%@asset.title %></h1>
               <% if current_user.id == @asset.user.id %>
@@ -42,6 +41,8 @@
         </div>
 
     </div>
+  </div>
+  </div>
 <!-- </div> -->
 
       <div class="describox">

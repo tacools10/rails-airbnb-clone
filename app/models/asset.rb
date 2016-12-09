@@ -12,6 +12,10 @@ class Asset < ApplicationRecord
     # validates_associated :user
     has_many :offers
     # validates_associated :offer
+    has_many :asset_photos, dependent: :destroy
+    accepts_nested_attributes_for :asset_photos
+
+    # serialize :photos, Array
 
     searchkick merge_mappings: true, mappings: {asset: {properties: {locations: {type:"geo_point"}}}}, locations: ["location"]
 
