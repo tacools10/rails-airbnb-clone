@@ -1,9 +1,9 @@
 class AssetsController < ApplicationController
   before_action :find_user
-  before_action :find_asset, only: [:edit, :destroy, :show]
+  before_action :find_asset, only: [:edit, :update, :destroy, :show]
 
   def index
-    @assets = @user.assets
+    @assets = @user.assets.order(:id)
   end
 
   def show
@@ -40,16 +40,16 @@ class AssetsController < ApplicationController
   end
 
   def edit
+
   end
 
   def update
-    @asset.update(asset_params)
-    @asset.save
+    @asset.update!(asset_params)
     redirect_to user_assets_path
   end
 
   def destroy
-    @asset.destroy
+    @asset.destroy!
     redirect_to user_assets_path
   end
 

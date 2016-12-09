@@ -2,13 +2,13 @@
 
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
-  color: white;
+  color: black;
   position: relative;
-  padding-top: 10px;
-  margin-top: 20px;
-  margin-left: 20px;
+
+  margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 20px;
-  margin-right: 20px;
+  border: 1px solid black;
 
 }
 
@@ -18,7 +18,28 @@
 .showcard-body {
   position: relative;
   height: 450px;
-  width: 1350px;
+  width: 100%;
+
+}
+
+.button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+}
+
+.crop {
+  width: 400px;
+  height: 200px;
+  outline-width: 350px;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+  // overflow: hidden;
+}​
+.popup-gallery {
+  padding-top: 5px;
+  background-size: 100%;
+  overflow: hidden;
 }
 
 .showcard-location {
@@ -27,10 +48,22 @@
   bottom: 115px;
 }
 
+.describox {
+  height: 50%;
+  width: 50%;
+  line-width: 50%;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #666;
+
+}
+
 .showcard-user {
   position: absolute;
-  left: 10px;
-  bottom: 20px;
+  right: 10px;
+  top: 20px;
+  margin-top-top: 0px;
 }
 .showcard-region {
   position: absolute;
@@ -80,5 +113,16 @@
 }
 .showcard-link:hover{
   opacity: 0.1;
+}
+
+.descriptionbox {
+  height: 35%;
+  width: 50%;
+  border: 1px solid black;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 20px;
+
+
 }
 
