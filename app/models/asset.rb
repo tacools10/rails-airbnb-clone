@@ -13,12 +13,9 @@ class Asset < ApplicationRecord
     has_many :offers
     # validates_associated :offer
 
+    searchkick merge_mappings: true, mappings: {asset: {properties: {locations: {type:"geo_point"}}}}, locations: ["location"]
 
     mount_uploaders :photos, PhotoUploader
-
-
-    searchkick locations: ["location"]
-
 
     def address_combined
       [address,city,post_code,country].compact.join(', ')
