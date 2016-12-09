@@ -1,18 +1,36 @@
 .card {
-  height: 200px;
-  width: 220px;
+  height: 218px;
+  width: 330px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
   position: relative;
   margin-bottom: 25px;
+
 }
 
 .card-body {
   height: 200px;
-  width: 200px;
+  width: 330px;
   position: relative;
+  background-image: url("http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg");
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
 
+}
+
+.crop {
+  width:500px;
+  height: 800px;
+  white-space: nowrap; /* Don't forget this one */
+  text-overflow: ellipsis;
+  // overflow: hidden;
+}​
+.asset-link {
+  &:hover {
+    text-decoration: none;
+  }
 }
 .card-user {
   position: absolute;
@@ -49,6 +67,19 @@
   font-size: 16px;
   font-weight: 200;
   text-align: center;
+}
+
+.panel-container {
+  border: 0,5px solid black;
+
+}
+.panelbody {
+  color: black;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 0px;
+  background-color: white;
 }
 
 .card-description p {

@@ -4,20 +4,22 @@
     <!-- <div class="container"> -->
 
     <div class="row showcard">
+  <!-- do it like this for stored images -->
+   <!--  <%= link_to asset_path("bannerbackground.jpeg") do %>
+      <%= image_tag "bannerbackground.jpeg", width: '75px', height: '75px' %>
+    <% end %> -->
+
       <div class="col-xs-12 col-sm-3 showcard-body">
       <div class="container">
       <div class="popup-gallery">
-        <a href="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" title="The Cleaner"><img src="http://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_s.jpg" width="75" height="75"></a>
-        <a href="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_b.jpg" title="Winter Dance"><img src="http://farm9.staticflickr.com/8382/8558295631_0f56c1284f_s.jpg" width="75" height="75"></a>
-        <a href="http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_b.jpg" title="The Uninvited Guest"><img src="http://farm9.staticflickr.com/8225/8558295635_b1c5ce2794_s.jpg" width="75" height="75"></a>
-        <a href="http://farm9.staticflickr.com/8383/8563475581_df05e9906d_b.jpg" title="Oh no, not again!"><img src="http://farm9.staticflickr.com/8383/8563475581_df05e9906d_s.jpg" width="75" height="75"></a>
-        <a href="http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_b.jpg" title="Swan Lake"><img src="http://farm9.staticflickr.com/8235/8559402846_8b7f82e05d_s.jpg" width="75" height="75"></a>
-        <a href="http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_b.jpg" title="The Shake"><img src="http://farm9.staticflickr.com/8235/8558295467_e89e95e05a_s.jpg" width="75" height="75"></a>
-        <a href="http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_b.jpg" title="Who's that, mommy?"><img src="http://farm9.staticflickr.com/8378/8559402848_9fcd90d20b_s.jpg" width="75" height="75"></a>
+        <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+        <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+        <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+       <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+        <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+        <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
+        <a href="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" title="The Cleaner"><img src="http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg" width="75" height="75"></a>
       </div>
-
-        <p><%= @asset.description %></p>
-
     </div>
               <% if current_user %>
               <h1 class="showcard-title"><%@asset.title %></h1>
@@ -30,7 +32,7 @@
               <p class="showcard-region"><%= @asset.region %></p>
               <% if current_user.id == @asset.user.id %>
                 <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
-                <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id, method: :destroy), {class: "btn btn-primary"} %></p>
+                <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-primary", method: :delete %></p>
               <% else %>
                 <p class="showcard-action"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
               <% end %>
@@ -44,6 +46,11 @@
         </div>
     </div>
 <!-- </div> -->
+<div class="container">
+  <div class="crop">
+    <%= @asset.description %>
+  </div>
+</div>
 
 
  <div id="map" style="width: 50%; height: 200px; margin-top: 20px; margin-right: auto; margin-left: auto;"></div>
