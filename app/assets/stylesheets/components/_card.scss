@@ -19,14 +19,6 @@
   border-right: 1px solid black;
 
 }
-
-.crop {
-  width:500px;
-  height: 800px;
-  white-space: nowrap; /* Don't forget this one */
-  text-overflow: ellipsis;
-  // overflow: hidden;
-}​
 .asset-link {
   &:hover {
     text-decoration: none;
