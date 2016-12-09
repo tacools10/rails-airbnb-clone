@@ -22,8 +22,13 @@ gem 'omniauth-facebook'
 gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
-gem 'cloudinary', '1.1.0'
 gem 'nokogiri'
+
+#photos
+gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
+gem 'cloudinary', '1.1.0'
+
+
 gem 'magnific-popup-rails', '~> 1.1.0'
 
 # Elastic search gem
@@ -54,4 +59,5 @@ gem "bootstrap-sass"
 gem "font-awesome-sass"
 gem "simple_form"
 gem "autoprefixer-rails"
+
 

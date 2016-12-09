@@ -1,26 +1,28 @@
 <div class="container padded-top", style="margin-bottom: 15px;">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= simple_form_for [@user, @asset] do |f| %>
-        <%= f.input :title %>
-        <%= f.input :description %>
-        <%= f.input :price %>
-        <%= f.input :address %>
-        <%= f.input :city %>
-        <%= f.input :post_code %>
-        <%= f.input :country %>
-        <%= f.input :condition %>
-        <%= f.input :year_built %>
-        <%= f.input :year_reno %>
-        <%= f.input :bedrooms %>
-        <%= f.input :bathrooms %>
-        <%= f.input :garage %>
-        <%= f.input :lots_size %>
-        <%= f.input :previous_owners %>
-        <%= f.input :status %>
-        <%= f.input :region %>
-        <a class="text-center" "><%= f.submit "Save", class: "btn btn-primary" %></a>
 
+      <%= simple_form_for [@user, @asset], :url => user_assets_path, :method => :post do |f| %>
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :price %>
+      <%= f.input :address %>
+      <%= f.input :city %>
+      <%= f.input :post_code %>
+      <%= f.input :country %>
+      <%= f.input :condition %>
+      <%= f.input :year_built %>
+      <%= f.input :year_reno %>
+      <%= f.input :bedrooms %>
+      <%= f.input :bathrooms %>
+      <%= f.input :garage %>
+      <%= f.input :lots_size %>
+      <%= f.input :previous_owners %>
+      <%= f.input :status %>
+      <%= f.input :region %>
+      <%= f.input_field :photos, as: :file, multiple: true %>
+
+      <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary" %></a>
     <% end %>
     <%# raise %>
     </div>
