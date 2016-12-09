@@ -1,10 +1,8 @@
 class Admin::AssetsController < ApplicationController
 
-  def search(params)
+  def filter_search(params)
     permitted = params.require(:asset).permit([:address, :city, :post_code, :country])
-    query = params[:query].presence || '*'
-      fields = [:address, :city, :post_code]
-
+    query = '*'
       conditions = {}
       conditions[:price] = (if params[:query_price_min].present? && params[:query_price_max].blank?
                               {gte: params[:query_price_min]}
@@ -18,7 +16,14 @@ class Admin::AssetsController < ApplicationController
       conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
       conditions[:location] = {near: get_coordinates(params), within: params[:radius]} if permitted[:address].present? && params[:radius].present?
 
-      @assets_search = Asset.search query, fields: fields, where: conditions
+      @assets_search = Asset.search query, where: conditions
+      @assets = @assets_search.results
+  end
+
+  def text_search(params)
+    query = params[:query].presence || '*'
+      fields = [:address, :city, :post_code]
+      @assets_search = Asset.search query, fields: fields
       @assets = @assets_search.results
   end
 
@@ -40,7 +45,7 @@ class Admin::AssetsController < ApplicationController
     @disable_footer = true
 
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
-      @assets = search(params)
+      @assets = filter_search(params)
       respond_to do |format|
         format.html {render 'assets/assets'}
         format.js
@@ -48,7 +53,7 @@ class Admin::AssetsController < ApplicationController
 
       # Need to figure out how to keep dropdown form available / refresh
     elsif params[:query]
-      @assets = search(params)
+      @assets = text_search(params)
     else
       @assets = Asset.all
     end
