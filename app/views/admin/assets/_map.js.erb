@@ -1,0 +1,49 @@
+
+
+
+// // # Attemtping to use google API functionality and not gmaps4rails
+// $("#findaroof-ajax-button").click(function() {
+//   var markers = <%= raw @marker_array.to_json %>
+
+//   initMap(markers);
+
+// });
+
+$(document).ready(function() {
+ console.log("it's just loading the document")
+ var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function() {
+    markers = handler.addMarkers(<%= raw @all_assets_hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  });
+});
+
+
+
+
+$("#findaroof-ajax-button").click(function() {
+
+  var handler = Gmaps.build('Google');
+  handler.buildMap({ internal: { id: 'map' } }, function() {
+    markers = handler.addMarkers(<%= raw @all_assets_hash.to_json %>);
+    console.log("is it sitll working")
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    if (markers.length == 0) {
+      handler.getMap().setZoom(2);
+    } else if (markers.length == 1) {
+      handler.getMap().setZoom(14);
+    }
+  });
+});
+
+
+
+
+

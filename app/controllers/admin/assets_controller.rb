@@ -12,10 +12,9 @@ class Admin::AssetsController < ApplicationController
                               {gte: params[:query_price_min], lte: params[:query_price_max]}
                            end) if params[:query_price_min].present? || params[:query_price_max].present?
 
-      conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
-      conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
+      conditions[:city] = params[:city] if params[:city].present?
+      conditions[:country] = params[:country] if params[:country].present?
       conditions[:location] = {near: get_coordinates(params), within: params[:radius]} if permitted[:address].present? && params[:radius].present?
-
       @assets_search = Asset.search query, where: conditions
       @assets = @assets_search.results
   end
@@ -46,22 +45,38 @@ class Admin::AssetsController < ApplicationController
 
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
+      @all_assets_hash = build_map(@assets)
+
       respond_to do |format|
-        format.html {render 'assets/assets'}
+        format.html {render(:partial => 'assets', locals: {assets: @assets})}
         format.js
+        # format.js {render(:partial => "map")}
       end
 
       # Need to figure out how to keep dropdown form available / refresh
     elsif params[:query]
       @assets = text_search(params)
+      @all_assets_hash = build_map(@assets)
     else
       @assets = Asset.all
+      @all_assets_hash = build_map(@assets)
     end
-      @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+
+    p @assets.length
+  end
+
+   private
+
+   def build_map(assets)
+    assets_with_coordinates = assets.select {|asset| !asset[:latitude].nil?}
+     Gmaps4rails.build_markers(assets_with_coordinates) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
         marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
       end
-    end
+   end
+
+
+
 end
 
