@@ -43,6 +43,8 @@ class Admin::AssetsController < ApplicationController
   def index
     @disable_footer = true
 
+    p params[:ex1Slider]
+
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
       @all_assets_hash = build_map(@assets)
