@@ -1,6 +1,6 @@
 <h1 class="text-center">Assets For Sale</h1>
 
- <%= form_tag "/admin/assets", method: :get, remote: true, class: 'findaroof-form-group' do  %>
+ <%= form_tag "/admin/assets", method: :get, remote: true, class: 'findaroof-form-group'  do  %>
       <%= label_tag('Price') %>
       <%= number_field_tag(:query_price_min, nil, placeholder: "min", class: 'findaroof-filter-form')%>
       <%= number_field_tag(:query_price_max, nil, placeholder: "max", class: 'findaroof-filter-form')%>

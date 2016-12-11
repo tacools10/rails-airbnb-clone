@@ -1,5 +1,5 @@
-<div class="box">
-  <div class="left-half-map">
+<div class="map">
+  <div class="left-half-map" >
     <div id="map" style="width: 100%; height: 100vh;"></div>
                   <% content_for(:after_js) do %>
                     <%= javascript_tag do %>
@@ -19,11 +19,12 @@
                     <% end %>
                   <% end %>
   </div>
+ </div>
   <div class="right-half-listings">
     <div class="container">
       <div class="row">
         <% @assets.each do |asset| %>
-          <div class="col-xs-12 col-sm-12 col-md-6">
+          <div class="col-xs-12 col-sm-12 col-md-6" >
             <%= render "assets/asset", asset: asset %>
           </div>
         <% end %>
