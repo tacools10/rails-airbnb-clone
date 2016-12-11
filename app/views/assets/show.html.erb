@@ -4,71 +4,67 @@
   <h1 class="showcard-title"><%= @asset.title %></h1>
     <!-- <div class="container"> -->
   <div class="container">
-    <div class="row showcard">
 
-
-      <div class="col-xs-12 col-sm-4 showcard-body">
+    <div class="col-xs-12 col-sm-4 showcard-body">
       <div class="container" style="padding-top: 10px;">
-        <div class="popup-gallery" style="background-image: ">
-            <% @asset.asset_photos.each do |photo|%>
-            <%= cl_image_tag photo.photo.url %>
-            <% end %>
-        </div>
-
-
-              <% if current_user %>
-              <h1 class="showcard-title"><%@asset.title %></h1>
-              <% if current_user.id == @asset.user.id %>
-              <% else %>
-              <h3 class="showcard-user">from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></h3>
-              <% end %>
-              <p class="showcard-description">US$<%= @asset.price * 1000%></p>
-              <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
-              <p class="showcard-region"><%= @asset.region %></p>
-              <% if current_user.id == @asset.user.id %>
-                <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
-                <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-primary", method: :delete %></p>
-              <% else %>
-                <p class="showcard-action"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
-              <% end %>
+        <% if current_user %>
+          <h1 class="showcard-title"><%@asset.title %></h1>
+          <% if current_user.id == @asset.user.id %>
             <% else %>
-              <h1><% @asset.title %></h1>
-              <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
-              <p class="showcard-description">US$<%= @asset.price * 1000%></p>
-              <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
-              <p class="showcard-action"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
+              <h3 class="showcard-user">from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></h3>
+          <% end %>
+          <p class="showcard-description">US$<%= @asset.price * 1000%></p>
+          <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
+          <p class="showcard-region"><%= @asset.region %></p>
+          <% if current_user.id == @asset.user.id %>
+            <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
+            <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-primary", method: :delete %></p>
+          <% else %>
+            <p class="showcard-action"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
+            <p class="showcard-action2"><%= link_to "Book an appointment", new_user_asset_appointment_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
+          <% end %>
+        <% else %>
+          <h1><% @asset.title %></h1>
+          <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
+          <p class="showcard-description">US$<%= @asset.price * 1000%></p>
+          <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
+          <p class="showcard-action"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
             <% end %>
-        </div>
-
+      </div>
     </div>
   </div>
   </div>
-<!-- </div> -->
 
-      <div class="describox">
-      <p>Description</p>
-        <%= @asset.description %>
-      </div>
+  <div class="popup-gallery">
+    <% @asset.asset_photos.each do |photo|%>
+      <%= link_to asset_path(photo.photo.url) do %>
+        <% cl_image_tag photo.photo, width: '300px', height: '250px' %>
+      <% end %>
+    <% end %>
+  </div>
 
-</div>
+  <div class="describox">
+    <p>Description</p>
+      <%= @asset.description %>
+  </div>
 
- <div id="map" style="width: 50%; height: 200px; margin-top: 20px; margin-right: auto; margin-left: auto;"></div>
-              <% content_for(:after_js) do %>
-                <%= javascript_tag do %>
-                  $(document).ready(function() {
-                    var handler = Gmaps.build('Google');
-                    handler.buildMap({ internal: { id: 'map' } }, function() {
-                      markers = handler.addMarkers(<%= raw @hash.to_json %>);
-                      handler.bounds.extendWith(markers);
-                      handler.fitMapToBounds();
-                      if (markers.length == 0) {
-                        handler.getMap().setZoom(2);
-                      } else if (markers.length == 1) {
-                        handler.getMap().setZoom(14);
-                      }
-                    });
-                  });
-                <% end %>
-              <% end %>
+
+ <div id="map" style="width: 0%; height: 200px; margin-top: 20px; margin-right: auto; margin-left: auto;"></div>
+    <% content_for(:after_js) do %>
+      <%= javascript_tag do %>
+        $(document).ready(function() {
+          var handler = Gmaps.build('Google');
+          handler.buildMap({ internal: { id: 'map' } }, function() {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          if (markers.length == 0) {
+            handler.getMap().setZoom(2);
+          } else if (markers.length == 1) {
+            handler.getMap().setZoom(14);}
+          });
+        });
+      <% end %>
+    <% end %>
 
 
