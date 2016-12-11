@@ -69,12 +69,19 @@ class Admin::AssetsController < ApplicationController
 
    private
 
+
    def build_map(assets)
     assets_with_coordinates = assets.select {|asset| !asset[:latitude].nil?}
      Gmaps4rails.build_markers(assets_with_coordinates) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
+        marker.picture({
+          "url" => "http://res.cloudinary.com/djlrrh291/image/upload/v1481212242/ooyviohrkqdsuqruzot2.jpg",
+          "width" => '25',
+          "height" => '25'
+        })
         marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+
       end
    end
 
