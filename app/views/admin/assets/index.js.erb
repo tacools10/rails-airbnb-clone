@@ -1,4 +1,7 @@
-$('#results').html("<%= j render 'assets'%>");
+$('#results').html("<%= j render(:partial => 'assets', :locals => {:assets => @assets})%>");
+
+console.log("hello mom")
+
 
 
 
