@@ -12,5 +12,10 @@
         </div>
       </div>
     <% end %>
+    <% @appointments.each do |appointment| %>
+      <%= week_calendar(attribute: :appointment_date) do |date| %>
+        <%= date %>
+      <% end %>
+    <% end %>
   </div>
 </div>

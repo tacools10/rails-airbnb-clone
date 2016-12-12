@@ -33,6 +33,7 @@ class AssetsController < ApplicationController
 
   def create
     @asset = current_user.assets.create(asset_params)
+    # Need to update the below to work for Heroku in case someone does not add photo
     params[:asset_photos]['photo'].each do |photo|
       @asset_photos = @asset.asset_photos.create(:photo => photo)
     end

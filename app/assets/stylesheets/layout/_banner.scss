@@ -7,7 +7,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(image-path('bannerbackground.jpeg'));
 }
 
 .banner-content {
@@ -22,7 +21,6 @@
   margin-right: auto;
   color: black;
 }
-
 
 .banner h1 {
   font-size: 50px;
@@ -45,7 +43,7 @@
   color: #ffffff;
   border-width: 1px;
   border-style: solid;
-  border-color: #ffffff;
+  border-color: #4297DD;
   &:hover {
     font-weight: 400;
     color: #ffffff;
@@ -83,4 +81,14 @@ form {
   transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
+.video {
+ position: fixed;
+ top: 50%; left: 50%;
+ z-index: 1;
+ min-width: 100%;
+ min-height: 100%;
+ width: auto;
+ height: auto;
+ transform: translate(-50%, -50%);
+}
 

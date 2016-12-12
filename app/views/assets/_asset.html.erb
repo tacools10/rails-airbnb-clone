@@ -1,20 +1,25 @@
+
 <%= link_to user_asset_path(asset.user_id, asset.id), class: "asset-link" do %>
+<div id="box">
 <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));">
 
-  <div class="card-body">
+  <div class="card-body" >
 
     <h3 class = "card-description-title"><%= asset.title %></h3>
-    <h2 class="card-description-price">US$<%= asset.price * 1000.to_i %></h2>
-    <p class = "card-description-city-country"><%= asset.city %>-<%= asset.country %></p>
+
   </div>
-    <div class="panel-container">
-      <ul class="panelbody" style="pull-left">
-        <li class="fa fa-bed" aria-hidden="true"> - <%= asset.bedrooms %></li>
-        <li class="fa fa-bath" aria-hidden="true"> - <%=asset.bathrooms%></li>
-        <li class="fa fa-car" aria-hidden="true"> - <%=asset.garage%></li>
-        <li class="fa fa-area-chart" aria-hidden="true"> - <%=asset.lots_size%> m2 </li>
+  <div class="descridiv">
+  <p class = "card-description-city-country"><%= asset.city %>-<%= asset.country %></p>
+  <div><h2 class="card-description-price">€<%= asset.price.to_i %></h2></div>
+  </div>
+  <ul class="panelbody">
+        <li id="icon" class="fa fa-bed 2x" aria-hidden="true" > - <%= asset.bedrooms %></li>
+        <li id="icon" class="fa fa-bath 2x" aria-hidden="true"> - <%=asset.bathrooms%></li>
+        <li class="fa fa-car 2x" aria-hidden="true"> - <%=asset.garage%></li>
+        <li id="icon" class="fa fa-area-chart 2x" aria-hidden="true"> - <%=asset.lots_size%> m2 </li>
       </ul>
-      </ul>
-    </div>
+  <% end %>
+  </div>
 </div>
-<% end %>
+
+

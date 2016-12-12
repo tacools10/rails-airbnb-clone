@@ -1,13 +1,11 @@
-<div class="banner">
+<div class="banner" style="background-image: url(https://static.pexels.com/photos/234881/pexels-photo-234881.jpeg)">
   <div class="banner-content">
-    <h1>Findaroof</h1>
-    <p>Welcome Home</p>
+    <h1>Welcome home.</h1>
     <div class="banner-content links">
       <%= form_tag "/admin/assets", method: :get, class: 'findaroof-form-group' do  %>
       <%= text_field_tag(:query, nil, placeholder: "Where do you want to live? Search by address, city, or post code.", class: 'findaroof-search-form')%>
       <%= submit_tag("Search", class: 'findaroof-button')%>
       <% end %>
     </div>
-
   </div>
 </div>

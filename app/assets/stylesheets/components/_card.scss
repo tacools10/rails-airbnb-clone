@@ -1,6 +1,6 @@
 .card {
-  height: 218px;
-  width: 330px;
+  height: 380px;
+  width: 320px;
   text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   color: white;
@@ -10,9 +10,10 @@
 }
 
 .card-body {
-  height: 200px;
-  width: 330px;
+  height: 380px;
+  width: 320px;
   position: relative;
+  color: black;
   background-image: url("http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg");
   border-top: 1px solid black;
   border-left: 1px solid black;
@@ -39,10 +40,11 @@
 }
 .card-description-price {
   position: relative;
-  margin-top: 10px;
+  margin-top: 0px;
   font-size: 18px;
   font-weight: 300;
   text-align: center;
+  font-weight: bold;
 }
 
 .card-description-title {
@@ -55,23 +57,34 @@
 
 .card-description-city-country {
   position: relative;
-  margin: 0 auto;
+  margin: 0 0 auto;
   font-size: 16px;
   font-weight: 200;
   text-align: center;
+  left: 10px;
+  width: 120;
 }
 
-.panel-container {
-  border: 0,5px solid black;
+.descridiv {
+  color: black;
+  height: 50px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
 
 }
 .panelbody {
-  color: black;
-  border: 1px solid black;
   display: flex;
   justify-content: space-around;
+  align-items: center;
   padding-left: 0px;
+  color: black;
+  border: 1px solid black;
   background-color: white;
+  height: 80px;
+  width: 320px;
 }
 
 .card-description p {
@@ -90,4 +103,38 @@
 }
 .card-link:hover{
   opacity: 0.1;
+}
+#box {
+  position: relative;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+  transition: all 0.3s ease-in-out;
+  margin-top: 50px;
+}
+
+/* Create the hidden pseudo-element */
+/* include the shadow for the end state */
+#box::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 0%;
+  height: 0%;
+  opacity: 0;
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: opacity 0.3s ease-in-out;
+}
+
+#box:hover {
+  transform: scale(0.9, 0.9);
+}
+
+/* Fade in the pseudo-element with the bigger shadow */
+#box:hover::after {
+  opacity: 1;
 }

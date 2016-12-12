@@ -24,13 +24,16 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem 'nokogiri'
 
-# Google Calendar
-gem 'google-api-client', '~> 0.9', require: 'google/apis/calendar_v3'
+gem 'gibbon'
+
+# Calendar
+
+gem "simple_calendar", "~> 2.0"
 
 #photos
 gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary', '1.1.0'
-
+gem "letter_opener", group: :development
 
 gem 'magnific-popup-rails', '~> 1.1.0'
 
@@ -38,6 +41,12 @@ gem 'magnific-popup-rails', '~> 1.1.0'
 # Elastic search gem
 
 gem 'searchkick'
+
+# bootstrap-sliders
+
+gem 'bootstrap-slider-rails'
+
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
