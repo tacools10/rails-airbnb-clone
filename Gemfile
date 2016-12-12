@@ -24,6 +24,9 @@ gem "coffee-rails"
 gem "gmaps4rails"
 gem 'nokogiri'
 
+# Google Calendar
+gem 'google-api-client', '~> 0.9', require: 'google/apis/calendar_v3'
+
 #photos
 gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary', '1.1.0'
