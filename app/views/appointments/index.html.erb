@@ -1,0 +1,10 @@
+<h1 class="text-center"> All My Appointments</h1>
+  <div class="container">
+    <div class="row">
+      <% current_user.appointments.each do |app| %>
+        <div class="col-xs-12 col-sm-4">
+        <%= app.date %>
+        </div>
+      <% end %>
+    </div>
+  </div>

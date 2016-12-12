@@ -18,7 +18,13 @@ Rails.application.routes.draw do
   end
 
   resources :users do
-    resources :appointments
+    resources :appointments, only: [:index]
+  end
+
+  resources :users do
+    resources :assets do
+      resources :appointments
+    end
   end
 
   resource :user, only: [] do

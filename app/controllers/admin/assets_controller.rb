@@ -12,10 +12,9 @@ class Admin::AssetsController < ApplicationController
                               {gte: params[:query_price_min], lte: params[:query_price_max]}
                            end) if params[:query_price_min].present? || params[:query_price_max].present?
 
-      conditions[:city] = Asset.find(params[:city]).city if params[:city].present?
-      conditions[:country] = Asset.find(params[:country]).country if params[:country].present?
+      conditions[:city] = params[:city] if params[:city].present?
+      conditions[:country] = params[:country] if params[:country].present?
       conditions[:location] = {near: get_coordinates(params), within: params[:radius]} if permitted[:address].present? && params[:radius].present?
-
       @assets_search = Asset.search query, where: conditions
       @assets = @assets_search.results
   end
@@ -44,24 +43,53 @@ class Admin::AssetsController < ApplicationController
   def index
     @disable_footer = true
 
+    p params[:ex1Slider]
+
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
+      @ajax_assets_hash = build_map(@assets)
+      p @ajax_assets_hash
+
       respond_to do |format|
-        format.html {render 'assets/assets'}
+        format.html {render(:partial => 'assets', locals: {assets: @assets})}
         format.js
+        # format.js {render(:partial => "map")}
       end
 
       # Need to figure out how to keep dropdown form available / refresh
     elsif params[:query]
       @assets = text_search(params)
+      @all_assets_hash = build_map(@assets)
+
     else
       @assets = Asset.all
+      @all_assets_hash = build_map(@assets)
+      p @all_assets_hash
     end
-      @all_assets_hash = Gmaps4rails.build_markers(@assets.class.name == "ActiveRecord::Relation" ? @assets.where.not(latitude: nil) : @assets) do |asset, marker|
+
+    p @assets.length
+  end
+
+   private
+
+
+   def build_map(assets)
+    assets_with_coordinates = assets.select {|asset| !asset[:latitude].nil?}
+     Gmaps4rails.build_markers(assets_with_coordinates) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
+        # marker.picture({
+        #   # url: "http://res.cloudinary.com/djlrrh291/image/upload/v1481212242/ooyviohrkqdsuqruzot2.jpg",
+        #   # width: 25,
+        #   # height: 25
+        #   rich_marker: "<div class='my-marker'>It works!<img height='30' width='30' src='http://farm4.static.flickr.com/3212/3012579547_097e27ced9_m.jpg'/></div>"
+        # })
         marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+
       end
-    end
+   end
+
+
+
 end
 

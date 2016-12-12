@@ -11,6 +11,7 @@ class Asset < ApplicationRecord
     belongs_to :user
     # validates_associated :user
     has_many :offers
+    has_many :appointments
     # validates_associated :offer
     has_many :asset_photos, dependent: :destroy
     accepts_nested_attributes_for :asset_photos
@@ -20,6 +21,8 @@ class Asset < ApplicationRecord
     searchkick merge_mappings: true, mappings: {asset: {properties: {locations: {type:"geo_point"}}}}, locations: ["location"]
 
     mount_uploaders :photos, PhotoUploader
+
+
 
     def address_combined
       [address,city,post_code,country].compact.join(', ')

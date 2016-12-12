@@ -36,6 +36,12 @@ gem 'magnific-popup-rails', '~> 1.1.0'
 
 gem 'searchkick'
 
+# bootstrap-sliders
+
+gem 'bootstrap-slider-rails'
+
+
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
