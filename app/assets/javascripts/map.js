@@ -40,10 +40,7 @@
           position: new google.maps.LatLng(markers[i]["lat"], markers[i]["lng"]),
           map: map
         });
-          console.log(marker);
       };
-
-
 };
 
 
