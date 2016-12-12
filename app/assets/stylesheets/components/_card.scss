@@ -1,12 +1,12 @@
 .card {
   height: 380px;
   width: 320px;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
   color: white;
   position: relative;
   margin-bottom: 25px;
-
 }
 
 .card-body {
@@ -15,12 +15,12 @@
   position: relative;
   color: black;
   background-image: url("http://www.kevinandamanda.com/whatsnew/wp-content/uploads/2012/10/new-house-1.jpg");
-  border-top: 1px solid black;
-  border-left: 1px solid black;
-  border-right: 1px solid black;
-
+  border: 1px solid #DFDFDF;
 }
+
+
 .asset-link {
+  margin-bottom: 20px;
   &:hover {
     text-decoration: none;
   }
@@ -41,10 +41,10 @@
 .card-description-price {
   position: relative;
   margin-top: 0px;
-  font-size: 18px;
-  font-weight: 300;
+  font-size: 16px;
+  font-weight: 200;
   text-align: center;
-  font-weight: bold;
+  color:  #666768;
 }
 
 .card-description-title {
@@ -53,6 +53,7 @@
   font-size: 20px;
   font-weight: 400;
   text-align: center;
+  color:  #666768;
 }
 
 .card-description-city-country {
@@ -62,34 +63,65 @@
   font-weight: 200;
   text-align: center;
   left: 10px;
-  width: 120;
+  width: auto;
+  color:  #666768;
 }
 
 .descridiv {
-  color: black;
-  height: 50px;
+  color: white;
+  background-color: white;
   padding-bottom: 0px;
   padding-left: 0px;
   padding-right: 0px;
-  border-right: 1px solid black;
-  border-left: 1px solid black;
-
+  border-left: 1px solid #DFDFDF;
+  border-right: 1px solid #DFDFDF;
+  color: #666768;
+  overflow: auto;
 }
+
+
+.descridiv-right-description {
+  width: 50%;
+  height: auto;
+  float: left;
+  position: relative;
+  // padding-top: 2px;
+  // padding-bottom: 2px;
+  color: #666768;
+  padding-top: 5px;
+  padding-bottom: 5px
+}
+
+.descridiv-left-price {
+  width: 50%;
+  height: auto;
+  float: right;
+  position: relative;
+  // padding-top: 2px;
+  // padding-bottom: 2px;
+  color: #666768;
+  padding-top: 5px;
+  padding-bottom: 5px
+}
+
+.descridiv-title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 .panelbody {
   display: flex;
   justify-content: space-around;
   align-items: center;
   padding-left: 0px;
-  color: black;
-  border: 1px solid black;
+  color: #666768;
+  border: 1px solid #DFDFDF;
   background-color: white;
-  height: 80px;
+  height: 40px;
   width: 320px;
+  margin-bottom: 20px;
 }
 
-.card-description p {
-  font-size: 13px;
-}
 
 .card-link {
   position: absolute;
@@ -104,16 +136,16 @@
 .card-link:hover{
   opacity: 0.1;
 }
+
 #box {
   position: relative;
-  display: inline-block;
-  width: 100px;
-  height: 100px;
+  display: table;
+  width: 0%;
+  height: 0%;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
   transition: all 0.3s ease-in-out;
-  margin-top: 50px;
+  margin: 0 auto;
 }
 
 /* Create the hidden pseudo-element */
