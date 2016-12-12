@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :assets
   # validates_associated :assets
   has_many :offers
+  has_many :appointments
   # validates_associated :offers
 
   mount_uploader :photo, PhotoUploader

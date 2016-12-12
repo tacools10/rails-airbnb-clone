@@ -1,0 +1,12 @@
+<div class="container padded-top", style="margin-bottom: 15px;">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+
+      <%= simple_form_for [current_user, @asset, @appointment], :url => user_asset_appointments_path do |f| %>
+      <%= f.input :date %>
+      <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
+    <% end %>
+    <%# raise %>
+    </div>
+  </div>
+</div>

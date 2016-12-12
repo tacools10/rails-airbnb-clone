@@ -11,6 +11,7 @@ class Asset < ApplicationRecord
     belongs_to :user
     # validates_associated :user
     has_many :offers
+    has_many :appointments
     # validates_associated :offer
     has_many :asset_photos, dependent: :destroy
     accepts_nested_attributes_for :asset_photos

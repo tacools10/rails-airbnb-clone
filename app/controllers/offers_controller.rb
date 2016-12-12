@@ -5,7 +5,7 @@ class OffersController < ApplicationController
 
   def index
     @offers = @user.offers
-    @assets_offers = @user.assets.map do  |singleasset|
+    @assets_offers = @user.assets.map do |singleasset|
       singleasset.offers
     end
   end

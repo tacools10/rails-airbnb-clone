@@ -37,7 +37,7 @@ class AssetsController < ApplicationController
     params[:asset_photos]['photo'].each do |photo|
       @asset_photos = @asset.asset_photos.create(:photo => photo)
     end
-    redirect_to root_path
+    redirect_to user_assets_path(current_user)
   end
 
   def edit
