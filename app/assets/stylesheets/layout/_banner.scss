@@ -38,12 +38,12 @@
   font-size: 14px;
   font-weight: lighter;
   border-radius: 4px;
-  background-color: #4297DD;
+  background-color: $brand-color;
   padding: 10px 25px;
   color: #ffffff;
   border-width: 1px;
   border-style: solid;
-  border-color: #4297DD;
+  border-color: $brand-color;
   &:hover {
     font-weight: 400;
     color: #ffffff;
