@@ -23,11 +23,11 @@ gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
 gem 'nokogiri'
-
+gem 'gibbon'
 #photos
 gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary', '1.1.0'
-
+gem "letter_opener", group: :development
 
 gem 'magnific-popup-rails', '~> 1.1.0'
 
@@ -35,6 +35,12 @@ gem 'magnific-popup-rails', '~> 1.1.0'
 # Elastic search gem
 
 gem 'searchkick'
+
+# bootstrap-sliders
+
+gem 'bootstrap-slider-rails'
+
+
 
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"

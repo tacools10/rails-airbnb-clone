@@ -1,37 +1,47 @@
 <div class="container padded-top", style="margin-bottom: 15px;">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-
       <%= simple_form_for [@user, @asset], :url => user_assets_path, :method => :post do |f| %>
-      <%= f.input :title %>
-      <%= f.input :description %>
-      <%= f.input :price %>
-      <%= f.input :address %>
-      <%= f.input :city %>
-      <%= f.input :post_code %>
-      <%= f.input :country %>
-      <%= f.input :condition %>
-      <%= f.input :year_built %>
-      <%= f.input :year_reno %>
-      <%= f.input :bedrooms %>
-      <%= f.input :bathrooms %>
-      <%= f.input :garage %>
-      <%= f.input :lots_size %>
+      <div class="row">
+        <div class="col-lg-10">
+          <div class="findaroof-asset-form-group">
+            <%= f.input :title, placeholder: 'Enter the name of your listing', input_html: {class: 'findaroof-filter-form-autowidth'} %>
+            <%= f.input :description, placeholder: 'Provide a description', input_html: {class: 'findaroof-filter-form-autowidth'} %>
+          </div>
+        </div>
+      <div class="findaroof-asset-form-group">
+        <%= f.input :price %>
+        <%= f.input :address %>
+        <%= f.input :city %>
+        <%= f.input :post_code %>
+        <%= f.input :country %>
+      </div>
+      <div class="findaroof-asset-form-group">
+        <%= f.input :condition %>
+        <%= f.input :year_built %>
+        <%= f.input :year_reno %>
+      </div>
+      <div class="findaroof-asset-form-group">
+        <%= f.input :bedrooms %>
+        <%= f.input :bathrooms %>
+        <%= f.input :garage %>
+        <%= f.input :lots_size %>
+      </div>
+      <div class="findaroof-asset-form-group">
       <%= f.input :previous_owners %>
       <%= f.input :status %>
       <%= f.input :region %>
-
+      </div>
+      <div class="findaroof-asset-form-group">
       <%= f.simple_fields_for :asset_photo do |p| %>
         <div class="field">
           <%= p.file_field :photo, :multiple => true, name: "asset_photos[photo][]" %>
           </div>
       <% end %>
-
+      </div>
       <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary" %></a>
     <% end %>
     <%# raise %>
     </div>
-  </div>
+
 </div>
 
 
