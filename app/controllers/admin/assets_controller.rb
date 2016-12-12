@@ -47,7 +47,8 @@ class Admin::AssetsController < ApplicationController
 
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
-      @all_assets_hash = build_map(@assets)
+      @ajax_assets_hash = build_map(@assets)
+      p @ajax_assets_hash
 
       respond_to do |format|
         format.html {render(:partial => 'assets', locals: {assets: @assets})}
@@ -59,9 +60,11 @@ class Admin::AssetsController < ApplicationController
     elsif params[:query]
       @assets = text_search(params)
       @all_assets_hash = build_map(@assets)
+
     else
       @assets = Asset.all
       @all_assets_hash = build_map(@assets)
+      p @all_assets_hash
     end
 
     p @assets.length
@@ -75,11 +78,12 @@ class Admin::AssetsController < ApplicationController
      Gmaps4rails.build_markers(assets_with_coordinates) do |asset, marker|
         marker.lat asset.latitude
         marker.lng asset.longitude
-        marker.picture({
-          "url" => "http://res.cloudinary.com/djlrrh291/image/upload/v1481212242/ooyviohrkqdsuqruzot2.jpg",
-          "width" => '25',
-          "height" => '25'
-        })
+        # marker.picture({
+        #   # url: "http://res.cloudinary.com/djlrrh291/image/upload/v1481212242/ooyviohrkqdsuqruzot2.jpg",
+        #   # width: 25,
+        #   # height: 25
+        #   rich_marker: "<div class='my-marker'>It works!<img height='30' width='30' src='http://farm4.static.flickr.com/3212/3012579547_097e27ced9_m.jpg'/></div>"
+        # })
         marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
 
       end

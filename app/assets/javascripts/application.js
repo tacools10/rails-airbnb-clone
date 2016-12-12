@@ -14,3 +14,10 @@ $('#ex1').slider({
     return 'Current value: ' + value;
   }
 });
+
+
+
+// function newMarkers(newMarkers, markers) {
+//   handler.removeMarkers(markers);
+//   markers = handler.addMarkers(newMarkers);
+// };
