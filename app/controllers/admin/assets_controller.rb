@@ -47,8 +47,8 @@ class Admin::AssetsController < ApplicationController
 
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
-      @ajax_assets_hash = build_map(@assets)
-      p @ajax_assets_hash
+      @all_assets_hash = build_map(@assets)
+      p @all_assets_hash;
 
       respond_to do |format|
         format.html {render(:partial => 'assets', locals: {assets: @assets})}
@@ -84,7 +84,7 @@ class Admin::AssetsController < ApplicationController
         #   # height: 25
         #   rich_marker: "<div class='my-marker'>It works!<img height='30' width='30' src='http://farm4.static.flickr.com/3212/3012579547_097e27ced9_m.jpg'/></div>"
         # })
-        marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
+        # marker.infowindow render_to_string(partial: "/assets/map_box", locals: { asset: asset })
 
       end
    end
