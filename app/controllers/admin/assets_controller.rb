@@ -52,8 +52,7 @@ class Admin::AssetsController < ApplicationController
 
       respond_to do |format|
         format.html {render(:partial => 'assets', locals: {assets: @assets})}
-        format.js
-        # format.js {render(:partial => "map")}
+        format.js {render 'index', locals: {assets: @assets}}
       end
 
       # Need to figure out how to keep dropdown form available / refresh

@@ -8,9 +8,9 @@
     </div>
   </div>
     <div class="container user-assets-show-assets">
-      <div class="row">
+      <div class="row user-assets">
         <% @assets.each do |ass| %>
-          <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="col-lg-4 col-md-6 col-xs-12 user-assets-col">
           <%= render "asset", asset: ass %>
           </div>
         <% end %>
@@ -21,7 +21,7 @@
     <div class="container user-assets-show-assets">
       <div class="row">
         <% @assets.each do |ass| %>
-          <div class="col-lg-4 col-md-6 col-xs-12">
+          <div class="col-lg-4 col-md-6 col-xs-12 user-assets-col">
           <%= render "asset", asset: ass %>
           </div>
           </div>

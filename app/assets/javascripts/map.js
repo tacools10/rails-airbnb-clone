@@ -1,5 +1,8 @@
- function initMap(markers) {
-        var map = new google.maps.Map(document.getElementById('map'), {
+
+
+
+function initMap(markers) {
+          var map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 0, lng: 0},
           zoom: 6
         });
@@ -41,9 +44,22 @@
           map: map
         });
       };
+
+
 };
 
 
+function replaceMarkers(map,markers) {
+      var marker, i;
+
+      for (i = 0; i < markers.length; i++) {
+        marker = new google.maps.Marker({
+          position: new google.maps.LatLng(markers[i]["lat"], markers[i]["lng"]),
+          setMap: map
+        });
+      };
+
+};
 
 
 
