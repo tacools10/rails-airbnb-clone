@@ -1,4 +1,31 @@
-/* -------------------------------------
- * CSS code specific to home page
- * (margin/padding adjustments)
- * ------------------------------------- */
+.homepage-content {
+  position: relative;
+  min-height: 500px;
+  overflow: auto;
+  text-align: center;
+}
+
+.homepage-search {
+  position: absolute;
+  top: 180px;
+  z-index: 200;
+  width: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.homepage-search-input {
+  width: 400px !important;
+}
+
+
+.homepage-video {
+  position: absolute;
+
+  top: 50%; left: 50%;
+  z-index: 100;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+}
