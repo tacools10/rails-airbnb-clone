@@ -7,9 +7,6 @@
       <%= cl_image_tag("findarooflogo_usanwr.png", class: "findaroof-wagon-brand") %>
     </a>
 
-
-
-
     <!-- Text link -->
     <!-- We need a link for all assets when user is not logged in -->
     <% if current_user %>
@@ -37,8 +34,6 @@
 
       <!-- Text link -->
     <% if current_user %>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "navbar-wagon-item navbar-findaroof-link") %>
-
       <!-- Notification link-->
       <a href="" class="navbar-wagon-item navbar-findaroof-link">
         <div class="badge-container">
@@ -51,10 +46,16 @@
 
       <div class="navbar-wagon-item">
         <div class="dropdown">
-        <img class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" href= <%= cl_image_tag current_user.photo, :crop => :fill, :width => 50, :height => 50 %>
+        <img class="navbar-avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" href=
+        <% if current_user.facebook_picture_url.nil? %>
+          <%= cl_image_tag current_user.photo, :crop => :fill, :width => 50, :height => 50 %>
+        <% else %>
+          <%= current_user.facebook_picture_url %>
+        <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><%= link_to('Profile', profile_user_path)%></li>
             <li><%= link_to('Dashboard', dashboard_user_path)%></li>
+            <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: "navbar-wagon-item navbar-findaroof-link") %></li>
           </ul>
         </div>
       </div>

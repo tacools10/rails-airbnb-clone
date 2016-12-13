@@ -9,7 +9,13 @@
   align-items: center;
   justify-content: space-between;
   position: collapse;
+
+  .navbar-avatar {
+    background-size: cover;
+    border-radius: 100%;
+  }
 }
+
 
 /* Optional class to fix the navbar on top */
 .navbar-wagon-fixed {
@@ -41,7 +47,7 @@
 
 /* Navbar item */
 .navbar-wagon-item {
-  flex: 1 1 100%;
+
   cursor: pointer;
   padding: 0 20px;
 }
@@ -53,7 +59,7 @@
   font-size: 14px;
   font-weight: bold;
   &:hover {
-    color: #4297DD;
+    color: $brand-color;
     text-decoration: none;
   }
 }
@@ -66,7 +72,7 @@
   font-size: 14px;
 }
 .navbar-findaroof-link:hover {
-  color: #4297DD;
+  color: $brand-color;
   text-decoration: none;
 }
 

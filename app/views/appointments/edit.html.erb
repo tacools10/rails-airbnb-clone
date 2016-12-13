@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+        <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
+          <%= f.input :status %>
+          <%= f.submit "Make changes" %>
+        <% end %>
+    </div>
+  </div>
+</div>
