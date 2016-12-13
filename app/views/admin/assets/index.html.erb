@@ -63,15 +63,17 @@
                     $(document).ready(function() {
                       initMap(markers);
                     });
-                    var markers = <%= raw @all_assets_hash.to_json %>;
-                    console.log(markers);
+                    // console.log(markers);
                     $('#findaroof-ajax-button').click(function(){
-                      console.log(markers);
+                      // console.log(markers);
                       removeMarkers();
+                      markers = getMarkers();
+                      console.log(markers);
                       addMarkers(markers);
                     });
 
                     // });
+
                     </script>
                   <% end %>
 
