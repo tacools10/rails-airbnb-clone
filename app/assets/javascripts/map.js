@@ -65,7 +65,7 @@ function addMarkers(railsMarkers) {
       for (var i = 0; i < railsMarkers.length; i++) {
         var marker = new google.maps.Marker({
           position: new google.maps.LatLng(railsMarkers[i]["lat"], railsMarkers[i]["lng"]),
-          setMap: map
+          map: map
         });
       };
        markersArray.push(marker);

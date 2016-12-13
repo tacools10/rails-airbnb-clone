@@ -55,7 +55,7 @@
 <% end %>
 
 <div id="results">
-<div class="left-half-map" >
+<div class="left-half-map">
     <div id="map" style="width: 100%; height: 100vh;"></div>
                   <% content_for(:after_js) do %>
                    <script> var markers = <%= raw @all_assets_hash.to_json %>;
@@ -68,7 +68,7 @@
                     $('#findaroof-ajax-button').click(function(){
                       console.log(markers);
                       removeMarkers();
-                      initMap(markers);
+                      addMarkers(markers);
                     });
 
                     // });
