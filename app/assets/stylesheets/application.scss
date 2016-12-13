@@ -16,17 +16,7 @@
 @import "vendor/index";
 @import "magnific-popup";
 
-html {
-  height: 100%;
-  box-sizing: border-box;
-}
-
-
-*,
-*:before
-*:after {
-  box-sizing: inherit;
-}
+@import "simple_calendar";
 
 body {
   position: relative;
@@ -41,5 +31,3 @@ body {
   width: 100%;
   height: 100%;
 }
-
-

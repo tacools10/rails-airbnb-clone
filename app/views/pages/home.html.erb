@@ -1,2 +1,14 @@
-<%= render "shared/banner" %>
-
+<div class="homepage-content">
+  <div class="homepage-search">
+    <h1>Welcome home.</h1>
+    <div class="form-inline">
+      <%= form_tag "/admin/assets", method: :get do  %>
+      <div class="form-group">
+        <%= text_field_tag(:query, nil, placeholder: "Where do you want to live? Search by address, city, or post code.", class: 'form-control homepage-search-input')%>
+      </div>
+      <%= submit_tag("Search", class: 'btn btn-default')%>
+      <% end %>
+    </div>
+  </div>
+  <%= video_tag "water.mp4", autoplay: :autoplay, loop: :loop, mute: :mute, class: "homepage-video" %>
+</div>

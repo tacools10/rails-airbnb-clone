@@ -23,7 +23,13 @@ gem 'geocoder'
 gem "coffee-rails"
 gem "gmaps4rails"
 gem 'nokogiri'
+
 gem 'gibbon'
+
+# Calendar
+
+gem "simple_calendar", "~> 2.0"
+
 #photos
 gem "carrierwave", github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary', '1.1.0'

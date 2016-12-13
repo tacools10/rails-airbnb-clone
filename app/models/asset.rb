@@ -22,8 +22,6 @@ class Asset < ApplicationRecord
 
     mount_uploaders :photos, PhotoUploader
 
-
-
     def address_combined
       [address,city,post_code,country].compact.join(', ')
     end
