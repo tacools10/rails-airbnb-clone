@@ -61,13 +61,9 @@
                    <script> var markers = <%= raw @all_assets_hash.to_json %>;
                    // console.log(markers);
                     $(document).ready(function() {
-                      initMap(markers);
+                      initMap(getMarkers());
                     });
                     // console.log(markers);
-                    $('#findaroof-ajax-button').click(function(){
-                      // console.log(markers);
-
-                    });
 
                     // });
 

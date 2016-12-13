@@ -46,6 +46,9 @@ gem 'searchkick'
 
 gem 'bootstrap-slider-rails'
 
+# gon
+
+gem 'gon', '~> 6.0', '>= 6.0.1'
 
 
 source 'https://rails-assets.org' do

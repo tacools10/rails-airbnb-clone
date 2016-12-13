@@ -37,7 +37,10 @@ function initMap(railsMarkers) {
       // };
 
 
-
+      // var assets = gon.assets;
+      // for (var i = 0; i < assets.length; i++) {
+      //   console.log(assets[i]["title"]);
+      // }
 
       for (var i = 0; i < railsMarkers.length; i++) {
         var marker = new google.maps.Marker({
@@ -47,15 +50,13 @@ function initMap(railsMarkers) {
         markersArray.push(marker);
         bounds.extend(marker.position);
 
-        // var content = 'div class="map_box" style="padding: 10px;">' +
-        // '<h3><%= asset.title %></h3>' +
-        // '<p><%= asset.address_combined %></p>'+
-        // '<%= link_to "See", user_asset_path(asset.user_id, asset.id), {class: "btn btn-primary"} %></p>'+
-        // '</div>';
+
+        // var content ='<div class="map_box" style="padding: 10px;">'+'<h3>'assets[i].title'</h3>'+
+        // '<p>'assets[i].address_combined'</p>'+'</div>';
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
         return function() {
-            infoWindow.setContent();
+            infoWindow.setContent(content);
             infoWindow.open(map, marker);
           }
         })(marker, i));
@@ -63,6 +64,7 @@ function initMap(railsMarkers) {
       };
 
       map.fitBounds(bounds);
+      console.log(gon.assets);
 
 };
 
@@ -72,7 +74,8 @@ function removeMarkers() {
     markersArray[i].setMap(null);
   }
   markersArray.length = 0;
-  // console.log(markersArray);
+  console.log('Should be empty');
+  console.log(markersArray);
 };
 
 
@@ -83,8 +86,9 @@ function addMarkers(railsMarkers) {
           position: new google.maps.LatLng(railsMarkers[i]["lat"], railsMarkers[i]["lng"]),
           map: map
         });
+        markersArray.push(marker);
       };
-       markersArray.push(marker);
+
 };
 
 function getMarkers() {
