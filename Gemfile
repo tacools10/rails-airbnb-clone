@@ -48,6 +48,7 @@ gem 'bootstrap-slider-rails'
 
 
 
+
 source 'https://rails-assets.org' do
   gem "rails-assets-underscore"
 end
