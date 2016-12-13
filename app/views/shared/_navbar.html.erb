@@ -27,11 +27,13 @@
   <!-- Right Navigation -->
   <div class="navbar-findaroof-right hidden-xs hidden-sm">
 
+    <% unless @show_search %>
       <!--Search-->
       <%= form_tag "/admin/assets", method: :get, class: 'navbar-wagon-search' do  %>
       <%= text_field_tag(:query, nil, class: 'navbar-wagon-search-input')%>
       <%= button_tag(fa_icon("search"), class: 'navbar-wagon-search-btn')%>
       <% end %>
+    <% end %>
 
       <!-- Text link -->
     <% if current_user %>
