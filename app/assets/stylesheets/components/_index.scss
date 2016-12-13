@@ -7,6 +7,9 @@
 @import "dashboard";
 @import "new_asset";
 @import "user_show";
+@import "form";
+@import "user_myassets";
+
 
 .left-half-map {
   float: left;
@@ -18,7 +21,7 @@
 }
 
 
-.right-half-listings {
+#right-half-listings {
   float: right;
   width: 50%;
   overflow: auto;
@@ -31,8 +34,9 @@
   height: 100vh;
 }
 
-.container {
+.search-container {
   width: 100%;
+  position: relative;
 }
 
 #results {
@@ -137,6 +141,11 @@
 .border-bot-first {
   border-top: 1px solid #DFDFDF;
   border-bottom: 1px solid #DFDFDF;
+}
+
+.search-col {
+  height: 500px;
+  margin-bottom: 10px;
 }
 
 

@@ -1,7 +1,15 @@
-$('#results').html("<%= j render(:partial => 'assets', :locals => {:assets => @assets})%>");
 
-console.log("hello mom")
+// var markers = <%= raw @all_assets_hash.to_json %>
+// console.log(markers);
+// console.log(markers[0][0]);
+
+// var map = initMap(markers);
+// $('#findaroof-ajax-button').click(function(e){
+//     e.preventDefault();
+//     removeMarkers();
+//     addMarkers(markers);
+// });
 
 
-
+$('#right-half-listings').html("<%= j render(:partial => 'assets', :locals => {:assets => @assets})%>");
 

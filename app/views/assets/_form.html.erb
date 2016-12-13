@@ -1,12 +1,9 @@
-<div class="container padded-top", style="margin-bottom: 15px;">
+<div class="container-fluid", style="margin-bottom: 15px;">
       <%= simple_form_for [@user, @asset], :url => user_assets_path, :method => :post do |f| %>
-      <div class="row">
-        <div class="col-lg-10">
-          <div class="findaroof-asset-form-group">
-            <%= f.input :title, placeholder: 'Enter the name of your listing', input_html: {class: 'findaroof-filter-form-autowidth'} %>
-            <%= f.input :description, placeholder: 'Provide a description', input_html: {class: 'findaroof-filter-form-autowidth'} %>
-          </div>
-        </div>
+      <div class="findaroof-asset-form-group">
+        <%= f.input :title, placeholder: 'Enter the name of your listing' %>
+        <%= f.input :description, placeholder: 'Provide a description' %>
+      </div>
       <div class="findaroof-asset-form-group">
         <%= f.input :price %>
         <%= f.input :address %>
@@ -37,7 +34,8 @@
           </div>
       <% end %>
       </div>
-      <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary" %></a>
+      <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary new-asset-submit-btn" %></a>
+
     <% end %>
     <%# raise %>
     </div>
