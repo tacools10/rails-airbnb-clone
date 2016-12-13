@@ -13,3 +13,9 @@
 
 $('#right-half-listings').html("<%= j render(:partial => 'assets', :locals => {:assets => @assets})%>");
 
+removeMarkers();
+markers = getMarkers();
+console.log('Markers:');
+console.log(markers);
+console.log(markers.length);
+addMarkers(markers);

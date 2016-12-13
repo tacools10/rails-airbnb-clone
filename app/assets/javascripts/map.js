@@ -89,15 +89,17 @@ function addMarkers(railsMarkers) {
 
 function getMarkers() {
     var dynamicMarkers = [];
-    var coordinate_pair = {};
+
 
     $('*[data-id]').each(function(index) {
+        var coordinate_pair = {};
         coordinate_pair["lat"]=($(this).data('latitude'));
         coordinate_pair["lng"]=($(this).data('longitude'));
         console.log(coordinate_pair);
+        dynamicMarkers.push(coordinate_pair);
         });
 
-        dynamicMarkers.push(coordinate_pair);
+
         console.log(dynamicMarkers);
         return dynamicMarkers;
     };
