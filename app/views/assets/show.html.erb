@@ -21,6 +21,8 @@
           <% else %>
             <p class="showcard-action"><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
             <p class="showcard-action2"><%= link_to "Book an appointment", new_user_asset_appointment_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
+            <p class="showcard-action3"><%= link_to "Favorite this asset", favorite_asset_path(type: "favorite", id: @asset.id), method: :post %>
+            <p class="showcard-action4"><%= link_to "Unfavorite this asset", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post %>
           <% end %>
         <% else %>
           <h1><% @asset.title %></h1>

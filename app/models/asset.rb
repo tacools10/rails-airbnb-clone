@@ -16,6 +16,10 @@ class Asset < ApplicationRecord
     has_many :asset_photos, dependent: :destroy
     accepts_nested_attributes_for :asset_photos
 
+    # Favorite List
+    has_many :favorite_assets
+    has_many :favorited_by, through: :favorite_assets, source: :user
+
     # serialize :photos, Array
 
     searchkick merge_mappings: true, mappings: {asset: {properties: {locations: {type:"geo_point"}}}}, locations: ["location"]
