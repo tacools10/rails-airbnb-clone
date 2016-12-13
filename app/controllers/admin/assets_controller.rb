@@ -47,6 +47,7 @@ class Admin::AssetsController < ApplicationController
 
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
+      gon.assets = @assets
       @all_assets_hash = build_map(@assets)
       p @all_assets_hash;
 
@@ -58,10 +59,12 @@ class Admin::AssetsController < ApplicationController
       # Need to figure out how to keep dropdown form available / refresh
     elsif params[:query]
       @assets = text_search(params)
+      gon.assets = @assets
       @all_assets_hash = build_map(@assets)
 
     else
       @assets = Asset.all
+      gon.assets = @assets
       @all_assets_hash = build_map(@assets)
       p @all_assets_hash
     end
