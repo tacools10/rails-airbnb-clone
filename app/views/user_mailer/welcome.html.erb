@@ -1,5 +1,9 @@
-<h1>User#welcome</h1>
+<h1>Welcome, <%= @user.first_name %> <%= @user.last_name %></h1>
+    <p>
+      You have successfully signed up to findaroof.com.<br>
+    </p>
+    <p>
+      To login to the site, just follow this link: <%= @url %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
 
-<p>
-  <%= @greeting %>, find me in app/views/user_mailer/welcome.html.erb
-</p>
