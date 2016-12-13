@@ -1,8 +1,9 @@
+var map;
+var markersArray = [];
 
 
-
-function initMap(markers) {
-          var map = new google.maps.Map(document.getElementById('map'), {
+function initMap(railsMarkers) {
+          map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: 0, lng: 0},
           zoom: 6
         });
@@ -36,29 +37,38 @@ function initMap(markers) {
       };
 
 
-      var marker, i;
 
-      for (i = 0; i < markers.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(markers[i]["lat"], markers[i]["lng"]),
+
+      for (var i = 0; i < railsMarkers.length; i++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(railsMarkers[i]["lat"], railsMarkers[i]["lng"]),
           map: map
         });
+        markersArray.push(marker);
       };
 
+      // console.log(markersArray);
+};
 
+function removeMarkers() {
+  // console.log(markersArray);
+  for (var i = 0; i < markersArray.length; i++) {
+    markersArray[i].setMap(null);
+  }
+  markersArray.length = 0;
+  // console.log(markersArray);
 };
 
 
-function replaceMarkers(map,markers) {
-      var marker, i;
 
-      for (i = 0; i < markers.length; i++) {
-        marker = new google.maps.Marker({
-          position: new google.maps.LatLng(markers[i]["lat"], markers[i]["lng"]),
+function addMarkers(railsMarkers) {
+      for (var i = 0; i < railsMarkers.length; i++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(railsMarkers[i]["lat"], railsMarkers[i]["lng"]),
           setMap: map
         });
       };
-
+       markersArray.push(marker);
 };
 
 

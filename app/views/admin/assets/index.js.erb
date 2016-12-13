@@ -1,16 +1,16 @@
 
-var markers = <%= raw @all_assets_hash.to_json %>
-console.log(markers);
+// var markers = <%= raw @all_assets_hash.to_json %>
+// console.log(markers);
 // console.log(markers[0][0]);
 
-var map = initMap(markers);
-$('#findaroof-ajax-button').click(function(e){
-    e.preventDefault();
-    replaceMarkers(map, markers);
-});
+// var map = initMap(markers);
+// $('#findaroof-ajax-button').click(function(e){
+//     e.preventDefault();
+//     removeMarkers();
+//     addMarkers(markers);
+// });
 
-;
 
-$('#results').html("<%= j render(:partial => 'assets', :locals => {:assets => @assets})%>");
 
+$('#right-half-listings').html("<%= j render(:partial => 'assets', :locals => {:assets => @assets})%>");
 

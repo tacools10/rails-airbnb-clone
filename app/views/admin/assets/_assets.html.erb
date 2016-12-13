@@ -1,17 +1,4 @@
 
-  <div class="left-half-map" >
-    <div id="map" style="width: 100%; height: 100vh;"></div>
-                  <% content_for(:after_js) do %>
-                   <script> var markers = <%= raw @all_assets_hash.to_json %>;
-                    $(document).ready(initMap(markers));
-                    $('#findaroof-ajax-button').click(function(e){
-                        // e.preventDefault();
-                        replaceMarkers(map, markers);
-                    });
-                    </script>
-                  <% end %>
-
-  </div>
 
 
   <div class="right-half-listings">
