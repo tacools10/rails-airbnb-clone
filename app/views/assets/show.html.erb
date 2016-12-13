@@ -13,7 +13,7 @@
             <% else %>
               <h3 class="showcard-user">from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></h3>
           <% end %>
-          <p class="showcard-description">US$<%= @asset.price * 1000%></p>
+          <p class="showcard-description">US$<%= @asset.price%></p>
           <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
           <p class="showcard-region"><%= @asset.region %></p>
           <% if current_user.id == @asset.user.id %>
@@ -26,7 +26,7 @@
         <% else %>
           <h1><% @asset.title %></h1>
           <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
-          <p class="showcard-description">US$<%= @asset.price * 1000%></p>
+          <p class="showcard-description">US$<%= @asset.price %></p>
           <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
           <p class="showcard-action"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
          <% end %>
@@ -52,14 +52,14 @@
             <%= @asset.description %>
         </div>
 
-      <div class="contabox" style="background-color: #FAFAFA">
-        <div class="col-md-5">
+      <div class="" style="background-color: #FAFAFA">
+        <div id = "contabox" class="col-md-3" style="position: absolute; right: 30px; top: 540px;">
           <div class="form-area">
               <form role="form">
               <br style="clear:both">
-                          <h3 style="margin-bottom: 25px; text-align: center;">Contact Form</h3>
-                  <div class="form-group">
-                    <h5 class="form-control"><%= @asset.user.first_name %> <%= @asset.user.last_name %></h5>
+                <h3 style="margin-bottom: 25px; text-align: center;">Contact Owner</h3>
+                <div class="form-group">
+                  <h5 class="form-control"><%= @asset.user.first_name %> <%= @asset.user.last_name %></h5>
                 </div>
                 <div class="form-group">
                   <p class="form-control"><%= @asset.title %></p>
@@ -71,35 +71,11 @@
                   <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject" required>
                 </div>
                           <div class="form-group">
-                          <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
-                              <span class="help-block"><p id="characterLeft" class="help-block ">You have reached the limit</p></span>
+                            <textarea class="form-control" type="textarea" id="message" placeholder="Message" maxlength="140" rows="7"></textarea>
+                            <span class="help-block"><p id="characterLeft" class="help-block "></p></span>
                           </div>
 
-  <div class="describox">
-    <p>Description</p>
-      <%= @asset.description %>
-  </div>
-
-
- <div id="map" style="width: 0%; height: 200px; margin-top: 20px; margin-right: auto; margin-left: auto;"></div>
-    <% content_for(:after_js) do %>
-      <%= javascript_tag do %>
-        $(document).ready(function() {
-          var handler = Gmaps.build('Google');
-          handler.buildMap({ internal: { id: 'map' } }, function() {
-          markers = handler.addMarkers(<%= raw @hash.to_json %>);
-          handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
-          if (markers.length == 0) {
-            handler.getMap().setZoom(2);
-          } else if (markers.length == 1) {
-            handler.getMap().setZoom(14);}
-          });
-        });
-      <% end %>
-    <% end %>
-
-              <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Submit Form</button>
+              <button type="button" id="submit" name="submit" class="btn btn-primary pull-right">Send</button>
               </form>
           </div>
       </div>

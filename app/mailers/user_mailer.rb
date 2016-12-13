@@ -1,4 +1,5 @@
 class UserMailer < ApplicationMailer
+  default from: 'findaroof01@gmail.com'
   def welcome(user)
     @user = user  # Instance variable => available in view
 

@@ -1,4 +1,6 @@
+<div class="container">
 <h1><%= @user.first_name %>'s profile</h1>
+<%= image_tag %>
 
 <% if @user.assets.size == 0 %>
   <h2> Sorry, <%= @user.first_name %> has no assets for sale! </h2>
@@ -6,3 +8,5 @@
   <h2> <%= @user.first_name %> has <%= @user.assets.size %> assets for sale.</h2>
   <h3> <%= link_to('Check them out!', user_assets_path(user_id: @user.id), class: "navbar-wagon-item navbar-findaroof-link")%>
 <% end %>
+
+</div>
