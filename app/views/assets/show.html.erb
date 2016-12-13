@@ -7,7 +7,14 @@
     <div class="col-xs-12 col-sm-4 showcard-body">
       <div class="container" style="padding-top: 10px;">
         <% if current_user %>
-          <h1 class="showcard-title"><%@asset.title %></h1>
+        <div class="popup-gallery">
+            <% @asset.asset_photos.each do |photo|%>
+              <%= link_to asset_path(photo.photo.url) do %>
+                <% cl_image_tag photo.photo, width: '300px', height: '250px'%>
+              <% end %>
+            <% end %>
+        </div>
+         <h1 class="showcard-title"><%@asset.title %></h1>
           <% if current_user.id == @asset.user.id %>
             <% else %>
               <h3 class="showcard-user">from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></h3>
@@ -16,6 +23,7 @@
           <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
           <p class="showcard-region"><%= @asset.region %></p>
           <% if current_user.id == @asset.user.id %>
+
             <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
             <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-primary", method: :delete %></p>
           <% else %>
@@ -23,6 +31,13 @@
             <p class="showcard-action2"><%= link_to "Book an appointment", new_user_asset_appointment_path(asset_id: @asset.id), {class: "btn btn-primary"} %></p>
           <% end %>
         <% else %>
+            <div class="popup-gallery">
+                <% @asset.asset_photos.each do |photo|%>
+                <%= link_to asset_path(photo.photo.url) do %>
+                <% cl_image_tag photo.photo, width: '300px', height: '250px'%>
+                <% end %>
+              <% end %>
+            </div>
           <h1><% @asset.title %></h1>
           <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
           <p class="showcard-description">US$<%= @asset.price %></p>
@@ -31,14 +46,6 @@
          <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="popup-gallery">
-    <% @asset.asset_photos.each do |photo|%>
-      <%= link_to asset_path(photo.photo.url) do %>
-        <% cl_image_tag photo.photo, width: '300px', height: '250px' %>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="describox">
