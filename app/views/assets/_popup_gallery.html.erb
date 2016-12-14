@@ -1,0 +1,11 @@
+<div class="popup-gallery">
+  <div class="row">
+    <% @asset.asset_photos.each do |photo|%>
+      <div class="col-xs-12 col-md-3">
+        <%= link_to asset_path(photo.photo.url), class: 'thumbnail' do %>
+          <% cl_image_tag photo.photo, :crop => :fill, :width => 300, :height => 300 %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

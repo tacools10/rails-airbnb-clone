@@ -8,8 +8,8 @@ var image = {
   anchor: new google.maps.Point(0,20)
 };
 var assets = gon.assets;
-
-
+var infoWindow = new google.maps.InfoWindow({map: map});
+var asset = gon.asset;
 
 
 function initMap(railsMarkers) {
@@ -17,9 +17,6 @@ function initMap(railsMarkers) {
           center: {lat: 0, lng: 0},
           zoom: 6
         });
-    var infoWindow = new google.maps.InfoWindow({map: map});
-
-      // console.log(assets);
 
 
       for (var i = 0; i < railsMarkers.length; i++) {
@@ -47,13 +44,10 @@ function initMap(railsMarkers) {
 };
 
 function removeMarkers() {
-  // console.log(markersArray);
   for (var i = 0; i < markersArray.length; i++) {
     markersArray[i].setMap(null);
   }
   markersArray.length = 0;
-  // console.log('Should be empty');
-  // console.log(markersArray);
 };
 
 
@@ -61,7 +55,7 @@ function removeMarkers() {
 function addMarkers(railsMarkers) {
 
   var bounds_ajax = new google.maps.LatLngBounds();
-  var infoWindow = new google.maps.InfoWindow({map: map});
+  // var infoWindow = new google.maps.InfoWindow({map: map});
 
 
       for (var i = 0; i < railsMarkers.length; i++) {
@@ -84,12 +78,10 @@ function addMarkers(railsMarkers) {
         if (markersArray.length == 1) {
           map.fitBounds(bounds_ajax);
           map.setZoom(14);
-          map.setCenter(markerArray[i].position);
+          map.setCenter(markersArray[i].position);
         } else {
         map.fitBounds(bounds_ajax);
       }
-
-
 
 };
 
@@ -101,12 +93,10 @@ function getMarkers() {
         var coordinate_pair = {};
         coordinate_pair["lat"]=($(this).data('latitude'));
         coordinate_pair["lng"]=($(this).data('longitude'));
-        // console.log(coordinate_pair);
+
         dynamicMarkers.push(coordinate_pair);
         });
 
-
-        // console.log(dynamicMarkers);
         return dynamicMarkers;
     };
 
@@ -116,17 +106,42 @@ function getOneMarker() {
         var coordinate_pair = {};
         coordinate_pair["lat"]=($(this).data('latitude'));
         coordinate_pair["lng"]=($(this).data('longitude'));
-        // console.log(coordinate_pair);
         oneMarker.push(coordinate_pair);
         });
 
-
-        // console.log(oneMarker);
         return oneMarker;
     };
 
+function initMapIndividual(railsMarkers) {
+ map = new google.maps.Map(document.getElementById('individual-map'), {
+          center: {lat: 0, lng: 0},
+          zoom: 14
+        });
 
 
+      for (var i = 0; i < railsMarkers.length; i++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(railsMarkers[i]["lat"], railsMarkers[i]["lng"]),
+          map: map,
+          icon: image,
+          title: (asset.price/1000).toString()
+        });
+        markersArray.push(marker);
+        bounds.extend(marker.position);
+
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+            infoWindow.setContent('<div><p>'+asset.title+'</p><p>'+'Price: '+asset.price+'<br>'+asset.address+' '+asset.city+' '+asset.post_code+' '+asset.country+'</p></div>');
+            infoWindow.open(map, marker);
+          }
+        })(marker, i));
+
+      };
+      map.setCenter(markersArray[0].position);
+      map.setZoom(14);
+
+}
 
 
 

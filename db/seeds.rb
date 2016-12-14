@@ -347,4 +347,3 @@ assets_attributes = [
 
 ]
 assets_attributes.each { |params| Asset.create!(params) }
-
