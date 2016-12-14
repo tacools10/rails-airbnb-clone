@@ -1,8 +1,9 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-    before_action :configure_permitted_parameters
-   protected
+  before_action :configure_permitted_parameters
 
-   def configure_permitted_parameters
-     devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :birthdate, :email, :photo, :password])
-   end
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:first_name, :last_name, :birthdate, :email, :photo, :password])
+  end
 end
