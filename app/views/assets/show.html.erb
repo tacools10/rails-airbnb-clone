@@ -26,7 +26,6 @@
       <ul class="list-unstyled">
         <% if !current_user %>
           <li><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-lg btn-pricing btn-info"} %></li>
-        <% else %>
           <% if current_user.id == @asset.user.id %>
             <li><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-lg btn-pricing btn-primary"} %></li>
             <li><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-lg btn-pricing btn-danger", method: :delete %></li>
@@ -34,7 +33,22 @@
             <li><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-lg btn-pricing btn-info"} %></li>
             <li><%= link_to "Book an appointment", new_user_asset_appointment_path(asset_id: @asset.id), {class: "btn btn-lg btn-pricing btn-primary"} %></li>
           <% end %>
+        <% else %>
+            <div class="popup-gallery">
+              <% @asset.asset_photos.each do |photo|%>
+                <%= link_to asset_path(photo.photo.url) do %>
+                <% cl_image_tag photo.photo, width: '300px', height: '250px'%>
+                <% end %>
+              <% end %>
+
+            </div>
+          <h1><% @asset.title %></h1>
+          <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
+          <p class="showcard-description">US$<%= @asset.price %></p>
+          <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
+          <p class="showcard-action">Want to make offers for houses like this?<%= link_to "Sign up today!", new_user_registration_path, {class: "btn btn-primary"} %></p>
         <% end %>
+      </div>
       </ul>
     </div>
   </div>
