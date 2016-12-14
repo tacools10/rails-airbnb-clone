@@ -3,7 +3,7 @@
 <div class="card" data-id="<%= asset.id %>" data-longitude="<%= asset.longitude %>" data-latitude="<%= asset.latitude %>">
   <%= link_to user_asset_path(asset.user_id, asset.id), class: "asset-link" do %>
       <% if asset.photos == nil %>
-        <div class="card-picture" style="background-image: url(<%= cloudinary_url(asset.asset_photos.last.photo.identifier, :crop => :fill, :height => 380) %>);"></div>
+        <div class="card-picture" style="background-image: url(<%= cloudinary_url(asset.asset_photos.first.photo.identifier, :crop => :fill, :height => 380) %>);"></div>
       <% else %>
         <div class="card-picture" style="background-image: url(<%= asset.photos %>);"></div>
       <% end %>
