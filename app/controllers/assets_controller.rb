@@ -1,19 +1,15 @@
 class AssetsController < ApplicationController
-  before_action :find_user
-  before_action :find_asset, only: [:edit, :update, :destroy, :show]
+  before_action :find_user, except: [:favorite]
+  before_action :find_asset, only: [:edit, :update, :destroy, :show, :favorite]
 
   def index
     @assets = @user.assets.order(:id)
+    @favorites = @user.favorites
   end
 
   def show
     @asset_coordinates = { lat: @asset.latitude, lng: @asset.longitude }
-    unless @asset.latitude.nil?
-      @hash = Gmaps4rails.build_markers(@asset) do |asset, marker|
-        marker.lat asset.latitude
-        marker.lng asset.longitude
-      end
-    end
+    gon.asset = @asset
   end
 
   def new
@@ -60,6 +56,22 @@ class AssetsController < ApplicationController
     redirect_to user_assets_path
   end
 
+  def favorite
+    type = params[:type]
+    if type == "favorite"
+      current_user.favorites << @asset
+      redirect_to :back, notice: 'You favorited #{@asset.title}'
+
+    elsif type == "unfavorite"
+      current_user.favorites.delete(@asset)
+      redirect_to :back, notice: 'Unfavorited #{@asset.title}'
+
+    else
+      # Type missing, nothing happens
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  end
+
   private
 
   def asset_params
@@ -68,7 +80,7 @@ class AssetsController < ApplicationController
   end
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def find_asset

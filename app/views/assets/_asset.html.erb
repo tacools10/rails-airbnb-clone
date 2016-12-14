@@ -1,32 +1,34 @@
 
 <div id="box">
-<div class="card">
+<div class="card" data-id="<%= asset.id %>" data-longitude="<%= asset.longitude %>" data-latitude="<%= asset.latitude %>">
   <%= link_to user_asset_path(asset.user_id, asset.id), class: "asset-link" do %>
-    <div class="card-body" >
-    <% if %>
-    <% asset.photos == nil %>
-    <%= cloudinary_url(asset.asset_photos.last.photo.identifier, :crop => :fill, :width => 320, :height => 380)   %>
-    <% else %>
-    <%= image_tag asset.photos, :crop => :fill, :width => 320, :height => 380 %>
-    <% end %>
-    </div>
+      <% if asset.photos == nil %>
+        <div class="card-picture" style="background-image: url(<%= cloudinary_url(asset.asset_photos.last.photo.identifier, :crop => :fill, :height => 380) %>);"></div>
+      <% else %>
+        <div class="card-picture" style="background-image: url(<%= asset.photos %>);"></div>
+      <% end %>
+
 
     <div class="descridiv">
       <div class="descridiv-title">
-        <h3 class = "card-description-title"><%= asset.title %></h3>
+        <h3 class="card-description-title"><%= asset.title %></h3>
       </div>
       <div class="descridiv-right-description">
-        <p class = "card-description-city-country"><%= asset.city %>, <%= asset.country %></p>
+        <p class="card-description-city-country"><%= asset.city %>, <%= asset.country %></p>
       </div>
       <div class="descridiv-left-price">
         <p class="card-description-price">€<%= asset.price %></p>
       </div>
     </div>
     <ul class="panelbody">
-          <li id="icon" class="fa fa-bed 2x" aria-hidden="true" > - <%= asset.bedrooms %></li>
-          <li id="icon" class="fa fa-bath 2x" aria-hidden="true"> - <%=asset.bathrooms%></li>
-          <li class="fa fa-car 2x" aria-hidden="true"> - <%=asset.garage%></li>
-          <li id="icon" class="fa fa-area-chart 2x" aria-hidden="true"> - <%=asset.lots_size%> m2 </li>
+          <li>
+            <i class="fa fa-bed 2x"></i> - <%= asset.bedrooms %></li>
+          <li>
+            <i class="fa fa-bath 2x"></i> - <%=asset.bathrooms%></li>
+          <li>
+            <i class="fa fa-car 2x"></i> - <%=asset.garage%></li>
+          <li>
+            <i class="fa fa-area-chart 2x"></i> - <%=asset.lots_size%> m2 </li>
     </ul>
     <% end %>
   </div>
