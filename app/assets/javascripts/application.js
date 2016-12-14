@@ -5,8 +5,10 @@
 //= require underscore
 //= require gmaps/google
 //= require bootstrap-slider
-//= require_tree
 //= require magnific-popup
+//= require readmore.js
+//= require_tree
+
 
 
 $('#ex1').slider({
@@ -14,3 +16,4 @@ $('#ex1').slider({
     return 'Current value: ' + value;
   }
 });
+

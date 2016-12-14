@@ -17,7 +17,14 @@
           <p><%= @asset.region %></p>
         </div>
         <div class="col-sm-6">
-          <p><%= @asset.description %></p>
+          <% if @asset.description.length > 100 %>
+            <p id="read-more-content-show-more"><%= truncate(@asset.description, length: 100) %> </p>
+            <%= link_to '...Read more', '#', id: "read-more-button-show-more", class: "read-more-#{@asset.id}" %>
+          <% else %>
+              <p id="read-more-content-show-less"><%= @asset.description %></p>
+              <%= link_to 'Show less', '#', id: "read-more-button-show-less", class: "read-more-#{@asset.id}" %>
+          <% end %>
+
         </div>
       </div>
     </div>
@@ -70,3 +77,11 @@
                           <% end %>
       </div>
 </div>
+<!-- <script>
+setTimeout(function() {
+  $('.read-more-<%= @asset.id %>').on('click', function(e) {
+    e.preventDefault()
+    $(this).parent().html('<%= escape_javascript @asset.description %>')
+  })
+}, 1000);
+</script> -->
