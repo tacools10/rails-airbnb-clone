@@ -12,12 +12,13 @@ require 'open-uri'
 # Offer.destroy_all
 Asset.destroy_all
 User.destroy_all
+Appointment.delete_all
 
 
 20.times do
   user = User.create(
           email: Faker::Internet.email,
-          password:Faker::Internet.password,
+          password:123456,
           first_name:Faker::Name.first_name,
           last_name: Faker::Name.last_name,
           birthdate: Date.new(2001,2,3)
@@ -46,7 +47,7 @@ User.destroy_all
 
   # offer = Offer.create(
   #           user_id: user.id,
-  #           asset_id: asset.id,
+  #           id: asset.id,
   #           offer_date: Faker::Date.between(30.days.ago, Date.today),
   #           status: "pending",
   #           offer_type: Faker::Number.decimal(3, 3)
@@ -77,7 +78,9 @@ assets_attributes = [
     lots_size: 90,
     previous_owners: "1 previous owner",
     status: "New",
+    photos: "http://www.hotel-r.net/im/hotel/au/beach-apartment-1.jpg",
     user_id: User.all.sample.id
+
   },
   {
     title: "Lovely Condo",
@@ -99,6 +102,7 @@ assets_attributes = [
     lots_size: 125,
     previous_owners: " First owner",
     status: "Reduced",
+    photos: "http://www.hotel-r.net/im/hotel/au/beach-apartment-10.jpg",
     user_id: User.all.sample.id
   },
   {
@@ -123,6 +127,7 @@ assets_attributes = [
     lots_size: 1250,
     previous_owners: " First owner",
     status: "New",
+    photos: "http://www.hotel-r.net/im/hotel/au/beach-apartment-11.jpg",
     user_id: User.all.sample.id
    },
    {
@@ -145,6 +150,7 @@ assets_attributes = [
     lots_size: 35,
     previous_owners: " 4 previous owner",
     status: "Sold",
+    photos: "http://imageprocessor.websimages.com/width/449/busterservicesgroup.webs.com/Sea-View-Apartments-for-sale-in-Alanya-7.jpg",
     user_id: User.all.sample.id
   },
   {
@@ -167,6 +173,7 @@ assets_attributes = [
     lots_size: 450,
     previous_owners: " 2 previous owner",
     status: "Sold",
+    photos: "http://www.seaviewresort.com.au/mooloolaba-accommodation/wp-content/uploads/2012/05/PRINT_DSC_1365.jpg",
     user_id: User.all.sample.id
   },
   {
@@ -189,6 +196,7 @@ assets_attributes = [
     lots_size: 70,
     previous_owners: " 1 previous owner",
     status: "Price Changed",
+    photos: "https://s3-eu-west-1.amazonaws.com/tt-test-hotels-data/HotelsData/0/21479/e0e66865-6e15-4ac4-9332-1a80b0b5a5dc.jpg",
     user_id: User.all.sample.id
   },
   {
@@ -211,6 +219,7 @@ assets_attributes = [
     lots_size: 60,
     previous_owners: " 1 previous owner",
     status: "Reduced",
+    photos: "http://www.seaviewresort.com.au/gallery/lge/mooloolaba_accommodation_18.jpg",
     user_id: User.all.sample.id
   },
     {
@@ -234,6 +243,7 @@ assets_attributes = [
     lots_size: 950,
     previous_owners: " first owner",
     status: "new",
+    photos: "http://www.hotel-r.net/im/hotel/au/beach-apartment-15.jpg",
     user_id: User.all.sample.id
   },
 
@@ -256,6 +266,7 @@ assets_attributes = [
     lots_size: 60,
     previous_owners: " first owner",
     status: "new",
+    photos: "http://www.hotel-r.net/im/hotel/au/beach-apartment-16.jpg",
     user_id: User.all.sample.id
   },
 
@@ -279,6 +290,7 @@ assets_attributes = [
     lots_size: 100,
     previous_owners: " 2 previous owners",
     status: "new",
+    photos: "http://interiordesignfiles.com/wp-content/uploads/2012/07/big-family-house-in-mountains-family-house-design-6.jpg",
     user_id: User.all.sample.id
   },
 
@@ -292,9 +304,9 @@ assets_attributes = [
     price: "225000",
     address: "Av. das Nações Unidas, 13301",
     country: "Brasil",
-    post_code: "04578-000",
+    post_code: "04795-100",
     city: "São Paulo",
-    region: "Vila Cordeiro",
+    region: "Itaim Bibi",
     condition: "good",
     year_built: 1997,
     year_reno: 2011,
@@ -304,9 +316,33 @@ assets_attributes = [
     lots_size: 50,
     previous_owners: " 3 previous owners",
     status: "sold",
+    photos: "http://interiordesignfiles.com/wp-content/uploads/2012/07/big-family-house-in-mountains-family-house-design-2.jpg",
+    user_id: User.all.sample.id
+  },
+
+  {
+     title: "Beach front Apartment",
+    description: "This a beachfront apartment in Guarapari's Hill Beach is a well spaced 2 bedroom unit with large lounge and dining room.
+                  Has an enclosed balcony with good sea views. Kitchen is tilled with BIC and granite. bedrooms have BIC.
+                  1 lock up garage and very conveniently located close to a school, hospital, shops, the beach and public transport. ",
+    price: "415000",
+    address: "Av. Oceânica, 160",
+    country: "Brasil",
+    post_code: "29216-610",
+    city: "Guarapari",
+    region: "Praia do Morro",
+    condition: "good",
+    year_built: 1997,
+    year_reno: 2011,
+    bedrooms: 2,
+    bathrooms: 1,
+    garage: 1,
+    lots_size: 60,
+    previous_owners: " 2 previous owners",
+    status: "reduced",
+    photos:  "http://www.hotel-r.net/im/hotel/au/beach-apartment-14.jpg",
     user_id: User.all.sample.id
   }
-
 
 ]
 assets_attributes.each { |params| Asset.create!(params) }

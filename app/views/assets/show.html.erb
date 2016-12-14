@@ -1,13 +1,20 @@
 
 <!-- <div class="container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))" > -->
 <div class="wrapper" style="background-color: #F4F4F4;">
-  <h1 class="showcard-title"><%= @asset.title %></h1>
-    <!-- <div class="container"> -->
+  <div class="show-container">
+  <h1 class="showcard-title" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>"> <%= @asset.title %></h1>
   <div class="container">
     <div class="col-xs-12 col-sm-4 showcard-body">
       <div class="container" style="padding-top: 10px;">
         <% if current_user %>
-          <h1 class="showcard-title"><%@asset.title %></h1>
+        <div class="popup-gallery">
+            <% @asset.asset_photos.each do |photo|%>
+              <%= link_to asset_path(photo.photo.url) do %>
+                <% cl_image_tag photo.photo, width: '300px', height: '250px'%>
+              <% end %>
+            <% end %>
+        </div>
+         <h1 class="showcard-title"><%@asset.title %></h1>
           <% if current_user.id == @asset.user.id %>
             <% else %>
               <h3 class="showcard-user">from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></h3>
@@ -16,6 +23,7 @@
           <p class="showcard-location"><%= @asset.address %> - <%= @asset.city %> - <%= @asset.country %></p>
           <p class="showcard-region"><%= @asset.region %></p>
           <% if current_user.id == @asset.user.id %>
+
             <p class="showcard-action2"><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-primary"} %></p>
             <p class="showcard-action"><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-primary", method: :delete %></p>
           <% else %>
@@ -25,6 +33,13 @@
             <p class="showcard-action4"><%= link_to "Unfavorite this asset", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post %>
           <% end %>
         <% else %>
+            <div class="popup-gallery">
+                <% @asset.asset_photos.each do |photo|%>
+                <%= link_to asset_path(photo.photo.url) do %>
+                <% cl_image_tag photo.photo, width: '300px', height: '250px'%>
+                <% end %>
+              <% end %>
+            </div>
           <h1><% @asset.title %></h1>
           <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
           <p class="showcard-description">US$<%= @asset.price %></p>
@@ -33,14 +48,6 @@
          <% end %>
       </div>
     </div>
-  </div>
-
-  <div class="popup-gallery">
-    <% @asset.asset_photos.each do |photo|%>
-      <%= link_to asset_path(photo.photo.url) do %>
-        <% cl_image_tag photo.photo, width: '300px', height: '250px' %>
-      <% end %>
-    <% end %>
   </div>
 
   <div class="describox">
@@ -80,4 +87,20 @@
     </div>
   </div>
 
+      <div class="individual-map">
+        <div id="map" style="width: 100%; height: 400px;"></div>
+                          <% content_for(:after_js) do %>
+                           <script>
+                           // console.log(markers);
+                            $(document).ready(function() {
+                              initMap(getOneMarker());
+                            });
+                            // console.log(markers);
 
+                            // });
+
+                            </script>
+                          <% end %>
+      </div>
+  </div>
+</div>

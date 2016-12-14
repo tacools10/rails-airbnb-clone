@@ -24,7 +24,7 @@ class Asset < ApplicationRecord
 
     searchkick merge_mappings: true, mappings: {asset: {properties: {locations: {type:"geo_point"}}}}, locations: ["location"]
 
-    mount_uploaders :photos, PhotoUploader
+    #mount_uploaders :photos, PhotoUploader
 
     def address_combined
       [address,city,post_code,country].compact.join(', ')
