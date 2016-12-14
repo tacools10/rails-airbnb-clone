@@ -18,6 +18,10 @@ class User < ApplicationRecord
   has_many :appointments
   # validates_associated :offers
 
+  # Favorite List
+  has_many :favorite_assets
+  has_many :favorites, through: :favorite_assets, source: :asset
+
   mount_uploader :photo, PhotoUploader
 
   def self.find_for_facebook_oauth(auth)
