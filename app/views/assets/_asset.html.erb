@@ -5,7 +5,7 @@
     <div class="card-body" >
     <% if %>
     <% asset.photos == nil %>
-    <%= cl_image_tag asset.asset_photos.last.photo.identifier, :crop => :fill, :width => 320, :height => 380   %>
+    <%= cloudinary_url(asset.asset_photos.last.photo.identifier, :crop => :fill, :width => 320, :height => 380)   %>
     <% else %>
     <%= image_tag asset.photos, :crop => :fill, :width => 320, :height => 380 %>
     <% end %>
