@@ -3,10 +3,10 @@
     <div class="col-sm-8" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>">
       <h1>
         <%= @asset.title %>
-        <% if current_user %>
-          <% if current_user.id == @asset.user.id %>
-            <small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small>
-          <% end %>
+        <% if current_user.id != @asset.user.id %>
+          <p><small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small></p>
+          <p><%= link_to "Favorite", favorite_asset_path(type: "favorite", id: @asset.id), method: :post  %>
+          <%= link_to "Unfavorite", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post %></p>
         <% end %>
       </h1>
       <h6>On Findaroof for <%= time_ago_in_words @asset.created_at %></h6>
@@ -37,6 +37,7 @@
           <% if current_user.id == @asset.user.id %>
             <li><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-lg btn-pricing btn-primary"} %></li>
             <li><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-lg btn-pricing btn-danger", method: :delete %></li>
+
           <% else %>
             <li><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-lg btn-pricing btn-info"} %></li>
             <li><%= link_to "Book an appointment", new_user_asset_appointment_path(asset_id: @asset.id), {class: "btn btn-lg btn-pricing btn-primary"} %></li>
