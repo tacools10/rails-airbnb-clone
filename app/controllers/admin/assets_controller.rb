@@ -40,16 +40,18 @@ class Admin::AssetsController < ApplicationController
     end
   end
 
+  def polygon_search(params)
+
+  end
+
   def index
     @disable_footer = true
-
-    p params[:ex1Slider]
 
     if params[:query_price_min] || params[:query_price_max] || params[:city] || params[:radius]
       @assets = filter_search(params)
       gon.assets = @assets
       @all_assets_hash = build_map(@assets)
-      p @all_assets_hash;
+
 
       respond_to do |format|
         format.html {render(:partial => 'assets', locals: {assets: @assets})}
@@ -61,6 +63,7 @@ class Admin::AssetsController < ApplicationController
       @assets = text_search(params)
       gon.assets = @assets
       @all_assets_hash = build_map(@assets)
+
 
     else
       @assets = Asset.all
