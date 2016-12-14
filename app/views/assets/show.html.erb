@@ -1,12 +1,8 @@
-
-
-<!-- <div class="container" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2))" > -->
-<div class="wrapper" style="background-color: #F4F4F4;">
-  <div class="show-container">
-  <h1 class="showcard-title" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>"> <%= @asset.title %></h1>
-  <div class="container">
-    <div class="col-xs-12 col-sm-4 showcard-body">
-      <div class="container" style="padding-top: 10px;">
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>">
+      <h1>
+        <%= @asset.title %>
         <% if current_user %>
           <% if current_user.id == @asset.user.id %>
             <small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small>
@@ -35,14 +31,8 @@
             <li><%= link_to "Edit Asset", edit_user_asset_path(user_id: @user.id), {class: "btn btn-lg btn-pricing btn-primary"} %></li>
             <li><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-lg btn-pricing btn-danger", method: :delete %></li>
           <% else %>
-
             <li><%= link_to "Make Offer", new_user_asset_offer_path(asset_id: @asset.id), {class: "btn btn-lg btn-pricing btn-info"} %></li>
             <li><%= link_to "Book an appointment", new_user_asset_appointment_path(asset_id: @asset.id), {class: "btn btn-lg btn-pricing btn-primary"} %></li>
-
-           //Update to include same styling //
-            <p class="showcard-action3"><%= link_to "Favorite this asset", favorite_asset_path(type: "favorite", id: @asset.id), method: :post %></p>
-            <p class="showcard-action4"><%= link_to "Unfavorite this asset", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post %></p>
-
           <% end %>
         <% end %>
       </ul>
@@ -66,9 +56,8 @@
     </div>
   </div>
 
-
-      <div class="individual-map">
-        <div id="map" style="width: 100%; height: 400px;"></div>
+   <div class="individual-map">
+        <div id="individual-map" style="min-width: 100%; height: 400px;"></div>
                           <% content_for(:after_js) do %>
                            <script>
                            // console.log(markers);
@@ -76,11 +65,8 @@
                               initMapIndividual(getOneMarker());
                             });
                             // console.log(markers);
-
                             // });
-
                             </script>
                           <% end %>
       </div>
-
 </div>

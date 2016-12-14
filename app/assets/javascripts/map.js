@@ -113,7 +113,7 @@ function getOneMarker() {
     };
 
 function initMapIndividual(railsMarkers) {
- map = new google.maps.Map(document.getElementById('map'), {
+ map = new google.maps.Map(document.getElementById('individual-map'), {
           center: {lat: 0, lng: 0},
           zoom: 14
         });
