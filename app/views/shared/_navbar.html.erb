@@ -57,11 +57,11 @@
 
       <div class="navbar-wagon-item">
         <div class="dropdown">
-        <img class="navbar-avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" src=
+
         <% if current_user.facebook_picture_url.nil? %>
-          <%= cl_image_tag current_user.photo, :crop => :fill, :width => 50, :height => 50 %>
+          <img class="navbar-avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" src=<%= cloudinary_url(current_user.photo, :crop => :fill, :width => 50, :height => 50) %>
         <% else %>
-          <%= current_user.facebook_picture_url %>
+          <img class="navbar-avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown" src=<%= current_user.facebook_picture_url%>>
         <% end %>>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><%= link_to('Profile', profile_user_path)%></li>
