@@ -8,7 +8,7 @@ var image = {
   anchor: new google.maps.Point(0,20)
 };
 var assets = gon.assets;
-
+var infoWindow = new google.maps.InfoWindow({map: map});
 
 
 
@@ -17,9 +17,6 @@ function initMap(railsMarkers) {
           center: {lat: 0, lng: 0},
           zoom: 6
         });
-    var infoWindow = new google.maps.InfoWindow({map: map});
-
-      // console.log(assets);
 
 
       for (var i = 0; i < railsMarkers.length; i++) {
@@ -47,13 +44,10 @@ function initMap(railsMarkers) {
 };
 
 function removeMarkers() {
-  // console.log(markersArray);
   for (var i = 0; i < markersArray.length; i++) {
     markersArray[i].setMap(null);
   }
   markersArray.length = 0;
-  // console.log('Should be empty');
-  // console.log(markersArray);
 };
 
 
@@ -61,7 +55,7 @@ function removeMarkers() {
 function addMarkers(railsMarkers) {
 
   var bounds_ajax = new google.maps.LatLngBounds();
-  var infoWindow = new google.maps.InfoWindow({map: map});
+  // var infoWindow = new google.maps.InfoWindow({map: map});
 
 
       for (var i = 0; i < railsMarkers.length; i++) {
@@ -89,8 +83,6 @@ function addMarkers(railsMarkers) {
         map.fitBounds(bounds_ajax);
       }
 
-
-
 };
 
 function getMarkers() {
@@ -101,12 +93,10 @@ function getMarkers() {
         var coordinate_pair = {};
         coordinate_pair["lat"]=($(this).data('latitude'));
         coordinate_pair["lng"]=($(this).data('longitude'));
-        // console.log(coordinate_pair);
+
         dynamicMarkers.push(coordinate_pair);
         });
 
-
-        // console.log(dynamicMarkers);
         return dynamicMarkers;
     };
 
@@ -116,12 +106,9 @@ function getOneMarker() {
         var coordinate_pair = {};
         coordinate_pair["lat"]=($(this).data('latitude'));
         coordinate_pair["lng"]=($(this).data('longitude'));
-        // console.log(coordinate_pair);
         oneMarker.push(coordinate_pair);
         });
 
-
-        // console.log(oneMarker);
         return oneMarker;
     };
 
