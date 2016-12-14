@@ -52,15 +52,13 @@
   padding: 0 20px;
 }
 
-/* Navbar wagon link */
-
 .navbar-findaroof-brand-link {
-  color: #616263;
-  font-size: 14px;
-  font-weight: bold;
-  &:hover {
-    color: $brand-color;
-    text-decoration: none;
+  svg {
+    fill: #333333;
+    width: 40px;
+    &:hover {
+      fill: $brand-info;
+    }
   }
 }
 
@@ -69,11 +67,12 @@
 /* Navbar standard link */
 .navbar-findaroof-link {
   color: #616263;
-  font-size: 14px;
-}
-.navbar-findaroof-link:hover {
-  color: $brand-color;
-  text-decoration: none;
+  font-size: 24px;
+  font-family: $header-font;
+  &:hover {
+    color: $brand-info;
+    text-decoration: none;
+  }
 }
 
 /* Navbar right button */

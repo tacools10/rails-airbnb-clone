@@ -3,8 +3,20 @@
   <!-- Left Navigation -->
   <div class="navbar-findaroof-left hidden-xs hidden-sm">
     <!-- Logo -->
-    <a href="/" class="navbar-wagon-brand">
-      <%= cl_image_tag("findarooflogo_usanwr.png", class: "findaroof-wagon-brand") %>
+    <a href="/" class="navbar-findaroof-brand-link">
+      <?xml version="1.0" encoding="UTF-8"?>
+      <svg width="82px" height="90px" viewBox="0 0 82 90" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
+          <title>noun_708246_cc</title>
+          <desc>Created with Sketch.</desc>
+          <defs></defs>
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="noun_708246_cc" fill="#333333">
+                  <polygon id="Shape" points="47.3 86.6 59.9 84.7 60.1 57.4 47.4 59.3"></polygon>
+                  <polygon id="Shape" points="53.9 13 28 0 0.4 33.4 0.7 74.7 25.6 90 30.7 89.2 30.7 49.1 53.9 20.9 76.5 42.5 76.2 82.2 81.2 81.4 81.6 39.6"></polygon>
+              </g>
+          </g>
+      </svg>
     </a>
 
     <!-- Text link -->
@@ -13,7 +25,6 @@
         <%= link_to('Buy', admin_assets_path, class: "navbar-wagon-item navbar-findaroof-link")%>
         <%= link_to('Sell', new_user_asset_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link")%>
         <%= link_to('My Assets', user_assets_path(user_id: current_user.id), class: "navbar-wagon-item navbar-findaroof-link") %>
-        <!-- <a href="" class="navbar-wagon-item navbar-findaroof-link">Offers</a> -->
     <% else %>
         <%= link_to('Buy', admin_assets_path, class: "navbar-wagon-item navbar-findaroof-link")%>
         <%= link_to('Sell', new_user_registration_path, class: "navbar-wagon-item navbar-findaroof-link")%>
@@ -84,5 +95,3 @@
     </div>
   </div>
 </div>
-
-

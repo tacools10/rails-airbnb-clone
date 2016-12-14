@@ -1,6 +1,6 @@
 .homepage-content {
   position: relative;
-  min-height: 500px;
+  min-height: 100vh;
   overflow: auto;
   text-align: center;
 }
@@ -9,18 +9,20 @@
   position: absolute;
   top: 180px;
   z-index: 200;
-  width: 500px;
+  width: 600px;
   left: 50%;
   transform: translateX(-50%);
+  background-color: white;
+  padding: 10px 0 30px;
+  box-shadow: 0px 0px 1px 15px rgba(255, 255, 255, 0.8);
+  border: 15px solid;
 }
 .homepage-search-input {
   width: 400px !important;
 }
 
-
 .homepage-video {
   position: absolute;
-
   top: 50%; left: 50%;
   z-index: 100;
   min-width: 100%;
