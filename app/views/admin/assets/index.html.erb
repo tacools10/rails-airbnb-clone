@@ -43,6 +43,8 @@
           <%= select_tag('city', options_for_select(@assets.map{ |a| a.city}.uniq), :prompt => "Please select city", class: 'findaroof-filter-dropdown')%>
           <%= label_tag('Country', nil, class: 'findaroof-form-label') %>
           <%= select_tag('country', options_for_select(@assets.map{ |a| a.country}.uniq), :prompt => "Please select country",  class: 'findaroof-filter-dropdown')%>
+          <%=label_tag('Enable polygon search', nil, class: 'findaroof-form-label') %>
+          <%=check_box_tag('polygon')%>
         </div>
       </div>
       <div class="col-lg-3">
