@@ -82,6 +82,7 @@ assets_attributes = [
     user_id: User.all.sample.id
 
   },
+
   {
     title: "Lovely Condo",
     description: "Tweet Bucktown studio condo - spacious 800 s/f loft with high ceilings, exposed brick walls and concrete floors. Unbeatable location.

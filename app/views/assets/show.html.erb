@@ -44,7 +44,7 @@
           <h3 class="showcard-user">from <%= @asset.user.first_name %></h3>
           <p class="showcard-description">US$<%= @asset.price %></p>
           <p class="showcard-region" ><%= @asset.address %> - - <%= @asset.city %></p>
-          <p class="showcard-action"><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-primary"} %></p>
+          <p class="showcard-action">Want to make offers for houses like this?<%= link_to "Sign up today!", new_user_registration_path, {class: "btn btn-primary"} %></p>
          <% end %>
       </div>
     </div>
