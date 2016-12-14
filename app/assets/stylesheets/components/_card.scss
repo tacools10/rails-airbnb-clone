@@ -1,7 +1,5 @@
 .card {
   height: 380px;
-  width: 320px;
-  // text-shadow: 0 1px 3px rgba(0,0,0,0.6);
   background-size: cover !important;
   background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
   color: white;
@@ -9,13 +7,12 @@
   margin-bottom: 25px;
 }
 
-.card-body {
+.card-picture {
   height: 380px;
-  width: 320px;
+  min-width: 320px;
   position: relative;
-  color: black;
-
-  border: 1px solid #DFDFDF;
+  background-position: center center;
+  background-size: cover;
 }
 
 
@@ -97,8 +94,6 @@
   height: auto;
   float: right;
   position: relative;
-  // padding-top: 2px;
-  // padding-bottom: 2px;
   color: #666768;
   padding-top: 5px;
   padding-bottom: 5px
@@ -115,11 +110,11 @@
   align-items: center;
   padding-left: 0px;
   color: #666768;
-  border: 1px solid #DFDFDF;
+  border-top: 1px solid #DFDFDF;
   background-color: white;
   height: 40px;
-  width: 320px;
   margin-bottom: 20px;
+  list-style-type: none;
 }
 
 
