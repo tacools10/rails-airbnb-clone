@@ -4,6 +4,7 @@
 
       <%= simple_form_for [current_user, @asset, @appointment], :url => user_asset_appointments_path do |f| %>
       <%= f.input :date %>
+      <%= f.input :time %>
       <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
     <% end %>
     <%# raise %>
