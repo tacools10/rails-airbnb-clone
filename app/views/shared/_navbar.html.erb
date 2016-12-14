@@ -61,7 +61,7 @@
         <% if current_user.facebook_picture_url.nil? %>
           <%= cl_image_tag current_user.photo, :crop => :fill, :width => 50, :height => 50 %>
         <% else %>
-          <%= current_user.facebook_picture_url %>
+          <%= current_user.facebook_picture_url  %>
         <% end %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li><%= link_to('Profile', profile_user_path)%></li>

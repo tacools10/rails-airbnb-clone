@@ -21,14 +21,14 @@ class Admin::AssetsController < ApplicationController
 
   def text_search_home(params)
     query = params[:query].presence || '*'
-      fields = [:address, :city, :post_code, :price, :title, :country]
+      fields = [:address, :city, :post_code, :title, :country]
       @assets_search = Asset.search query, fields: fields
       @assets = @assets_search.results
   end
 
   def text_search_search_page(params)
     query = params[:query_filter_page].presence || '*'
-      fields = [:address, :city, :post_code, :price, :title, :country]
+      fields = [:address, :city, :post_code, :title, :country]
       @assets_search = Asset.search query, fields: fields
       @assets = @assets_search.results
   end
