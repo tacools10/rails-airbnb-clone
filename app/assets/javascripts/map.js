@@ -9,7 +9,7 @@ var image = {
 };
 var assets = gon.assets;
 var infoWindow = new google.maps.InfoWindow({map: map});
-
+var asset = gon.asset;
 
 
 function initMap(railsMarkers) {
@@ -78,7 +78,7 @@ function addMarkers(railsMarkers) {
         if (markersArray.length == 1) {
           map.fitBounds(bounds_ajax);
           map.setZoom(14);
-          map.setCenter(markerArray[i].position);
+          map.setCenter(markersArray[i].position);
         } else {
         map.fitBounds(bounds_ajax);
       }
@@ -112,8 +112,36 @@ function getOneMarker() {
         return oneMarker;
     };
 
+function initMapIndividual(railsMarkers) {
+ map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 0, lng: 0},
+          zoom: 14
+        });
 
 
+      for (var i = 0; i < railsMarkers.length; i++) {
+        var marker = new google.maps.Marker({
+          position: new google.maps.LatLng(railsMarkers[i]["lat"], railsMarkers[i]["lng"]),
+          map: map,
+          icon: image,
+          title: (asset.price/1000).toString()
+        });
+        markersArray.push(marker);
+        bounds.extend(marker.position);
+
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+        return function() {
+            infoWindow.setContent('<div><p>'+asset.title+'</p><p>'+'Price: '+asset.price+'<br>'+asset.address+' '+asset.city+' '+asset.post_code+' '+asset.country+'</p></div>');
+            infoWindow.open(map, marker);
+          }
+        })(marker, i));
+
+      };
+      map.setCenter(markersArray[0].position);
+      map.setZoom(14);
+
+}
 
 
 
