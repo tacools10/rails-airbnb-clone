@@ -34,9 +34,12 @@ class AssetsController < ApplicationController
   def create
     @asset = current_user.assets.create(asset_params)
     # Need to update the below to work for Heroku in case someone does not add photo
+    @asset.save!
     params[:asset_photos]['photo'].each do |photo|
       @asset_photos = @asset.asset_photos.create(:photo => photo)
     end
+    @asset.save!
+
     redirect_to user_assets_path(current_user)
   end
 
@@ -46,6 +49,9 @@ class AssetsController < ApplicationController
 
   def update
     @asset.update!(asset_params)
+    params[:asset_photos]['photo'].each do |photo|
+      @asset_photos = @asset.asset_photos.create(:photo => photo)
+    end
     redirect_to user_assets_path
   end
 

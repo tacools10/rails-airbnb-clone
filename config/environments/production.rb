@@ -45,6 +45,7 @@ Rails.application.configure do
   #mailer
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "yourapp.herokuapp.com" }
+
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
   config.log_level = :debug
