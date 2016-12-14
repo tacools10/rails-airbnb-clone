@@ -3,8 +3,12 @@
     <div class="col-sm-8" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>">
       <h1>
         <%= @asset.title %>
-        <% if current_user.id != @asset.user.id %>
-          <p><small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small></p>
+        <% if current_user %>
+          <% if current_user.id != @asset.user.id %>
+            <p><small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small></p>
+          <% end %>
+        <% else %>
+            <p><small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small></p>
         <% end %>
       </h1>
       <h6>On Findaroof for <%= time_ago_in_words @asset.created_at %></h6>
