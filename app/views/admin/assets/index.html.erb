@@ -43,6 +43,8 @@
           <%= select_tag('city', options_for_select(@assets.map{ |a| a.city}.uniq), :prompt => "Please select city", class: 'findaroof-filter-dropdown')%>
           <%= label_tag('Country', nil, class: 'findaroof-form-label') %>
           <%= select_tag('country', options_for_select(@assets.map{ |a| a.country}.uniq), :prompt => "Please select country",  class: 'findaroof-filter-dropdown')%>
+          <%=label_tag('Enable polygon search', nil, class: 'findaroof-form-label') %>
+          <%=check_box_tag('polygon')%>
         </div>
       </div>
       <div class="col-lg-3">
@@ -58,20 +60,15 @@
 <div class="left-half-map">
     <div id="map" style="width: 100%; height: 100vh;"></div>
                   <% content_for(:after_js) do %>
-                   <script> var markers = <%= raw @all_assets_hash.to_json %>;
+                   <script>
                    // console.log(markers);
                     $(document).ready(function() {
-                      initMap(markers);
+                      initMap(getMarkers());
                     });
-                    var markers = <%= raw @all_assets_hash.to_json %>;
-                    console.log(markers);
-                    $('#findaroof-ajax-button').click(function(){
-                      console.log(markers);
-                      removeMarkers();
-                      addMarkers(markers);
-                    });
+                    // console.log(markers);
 
                     // });
+
                     </script>
                   <% end %>
 
