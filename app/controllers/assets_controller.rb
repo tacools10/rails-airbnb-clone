@@ -59,13 +59,16 @@ class AssetsController < ApplicationController
   def favorite
     type = params[:type]
     if type == "favorite"
-      current_user.favorites << @asset
-      redirect_to :back, notice: 'You favorited #{@asset.title}'
+      if current_user
+        current_user.favorites << @asset
+        redirect_to :back, notice: 'You favorited #{@asset.title}'
+      else
+        redirect_to new_user_registration_path, notice: 'Please sign up to add an asset to favorites.'
+      end
 
     elsif type == "unfavorite"
-      current_user.favorites.delete(@asset)
-      redirect_to :back, notice: 'Unfavorited #{@asset.title}'
-
+        current_user.favorites.delete(@asset)
+        redirect_to :back, notice: 'Unfavorited #{@asset.title}'
     else
       # Type missing, nothing happens
       redirect_to :back, notice: 'Nothing happened.'

@@ -2,13 +2,11 @@
 <div class="card" data-id="<%= fav.id %>" data-longitude="<%= fav.longitude %>" data-latitude="<%= fav.latitude %>">
   <%= link_to user_asset_path(fav.user_id, fav.id), class: "asset-link" do %>
       <% if fav.photos == nil %>
-        <div class="card-picture" style="background-image: url(<%= cloudinary_url(fav.asset_photos.first.photo.identifier, :crop => :fill, :height => 380) %>);">
-          <%= link_to fa_icon("minus-square"), favorite_asset_path(type: "unfavorite", id: fav.id), method: :post, class: "overlay" %>
-        </div>
+        <div class="card-picture" style="background-image: url(<%= cloudinary_url(fav.asset_photos.first.photo.identifier, :crop => :fill, :height => 380) %>);"> </div>
+          <%= link_to fa_icon("minus-square"), favorite_asset_path(type: "unfavorite", id: fav.id), method: :post, class: "overlay-right" %>
       <% else %>
-        <div class="card-picture" style="background-image: url(<%= fav.photos %>);">
-          <%= link_to fa_icon("minus-square", class: "overlay"), favorite_asset_path(type: "unfavorite", id: fav.id), method: :post, class: "overlay" %>
-        </div>
+        <div class="card-picture" style="background-image: url(<%= fav.photos %>);"> </div>
+          <%= link_to fa_icon("minus-square", class: "overlay"), favorite_asset_path(type: "unfavorite", id: fav.id), method: :post, class: "overlay-right" %>
       <% end %>
 
     <div class="descridiv">

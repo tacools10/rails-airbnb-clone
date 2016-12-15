@@ -1,5 +1,5 @@
-<div id="wrapper">
-  <div class="container">
+<div id="wrapper" style="background-color: #999999">
+  <div class="container" style="padding-top: 10px;">
 
     <div class="row">
 
@@ -30,7 +30,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-calendar fa-3x"></i>
+                <i class="fa fa-calendar fa-2x"></i>
               </div>
               <div class="col-xs-9 text-right">
                 <div class="huge"><%= @user.appointments.count %></div>
@@ -52,10 +52,10 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-envelope-o fa-3x"></i>
+                <i class="fa fa-envelope-o fa-2x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge"><%=%></div>
+                <div class="huge"><%= 0 %></div>
                 <div>Messages!</div>
               </div>
             </div>
@@ -74,7 +74,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-home fa-3x"></i>
+                <i class="fa fa-home fa-2x"></i>
               </div>
               <div class="col-xs-9 text-right">
                 <div class="huge"><%= @user.assets.count %></div>
@@ -92,9 +92,10 @@
         </div>
       </div>
     </div>
+    <%  %>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Offers Made
+        <i class="fa fa-bar-chart-o fa-fw"></i> Offers
         <div class="pull-right">
           <div class="btn-group">
             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -131,16 +132,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @user.offers.each do |offer| %>
-                  <tr>
-                    <td><%= offer.id  %></td>
-                    <td><%=  offer.offer_date %></td>
-                    <td><%=  offer.offer_type %></td>
-                    <td><%= offer.status %></td>
-                    <td><%= link_to offer.asset.id, user_asset_path(offer.asset.user.id, offer.asset.id) %></td>
-
-                  </tr>
-                  <% end %>
+                    <% @user.offers.each do |offer| %>
+                    <tr>
+                      <td><%= offer.id  %></td>
+                      <td><%=  offer.offer_date %></td>
+                      <td><%=  offer.offer_type %></td>
+                      <td><%= offer.status %></td>
+                      <td><%= link_to offer.asset.id, user_asset_path(offer.asset.user.id, offer.asset.id) %></td>
+                    </tr>
+                    <% end %>
                 </tbody>
               </table>
 
@@ -152,6 +152,7 @@
 
 
     </div>
+
 
      <div class="panel panel-default">
       <div class="panel-heading">
@@ -209,10 +210,11 @@
           </div>
         </div>
       </div>
+
     </div>
 
   </div>
-    <div class="container">
+    <div class="container" style="padding-bottom: 20px;">
     <a><%= link_to 'Add Asset', new_user_asset_path(user_id: current_user.id), {class: "btn btn-success"} %></a>
     <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), {class: "btn btn-primary"}) %></a>
 
