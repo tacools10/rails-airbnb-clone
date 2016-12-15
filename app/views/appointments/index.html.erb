@@ -11,7 +11,7 @@
 
                 <h6><%= appointment.asset.user.first_name %> for <%= appointment.asset.title %></h6>
                 <h6><%= appointment.time %></h6>
-                <%= link_to 'See more', edit_user_asset_appointment_path( appointment.user, appointment.asset, appointment) %>
+                <%= link_to 'See more', edit_user_asset_appointment_path( appointment.user, appointment.asset, appointment), class: "btn btn-primary btn-sm" %>
 
         <% end %>
       <% end %>
