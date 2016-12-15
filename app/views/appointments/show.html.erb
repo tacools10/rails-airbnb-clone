@@ -1,15 +1,29 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-  <%= @appointment.date %>
-  <%= @appointment.status %>
-    <div class="form">
-        <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
-          <%= f.input :date %>
-          <%= f.input :time %>
-          <%= f.submit "Update" %>
-        <% end %>
+    <div class="col-lg-10 col-lg-offset-1 post-form-title-grey">
+      <h1 class="findaroof-title">Appointment Information</h1>
+      <h5 class="findaroof-appointment-info">Date: <%= @appointment.date %> | Status: <%= @appointment.status %> </h2>
     </div>
-    <%= link_to 'Cancel this appointment', user_asset_appointment_path( appointment_id: @appointment.id, user_id: @appointment.user, asset_id: @appointment.asset), method: :delete %>
+  </div>
+
+  <div class="row">
+      <div class="col-lg-10 col-lg-offset-1 new-asset-grey">
+        <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
+          <div class="row asset-border">
+            <div class="col-lg-4">
+              <%= f.input :date, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"}  %>
+              <%= f.input :time, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"}  %>
+            </div>
+          </div>
+           <div class="row asset-border">
+            <div class="col-lg-4">
+            <%= f.submit "Update", class: "btn btn-primary new-asset-submit-btn" %>
+            <%= link_to 'Cancel this appointment', user_asset_appointment_path( appointment_id: @appointment.id, user_id: @appointment.user, asset_id: @appointment.asset), method: :delete, class: "btn btn-danger btn-md" %>
+            </div>
+          </div>
+          <% end %>
+    </div>
+
   </div>
 </div>
 
