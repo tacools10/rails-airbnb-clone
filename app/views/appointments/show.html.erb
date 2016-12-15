@@ -2,7 +2,7 @@
   <div class="row">
   <%= @appointment.date %>
   <%= @appointment.status %>
-    <div class="col-sm-6">
+    <div class="form">
         <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
           <%= f.input :date %>
           <%= f.input :time %>
