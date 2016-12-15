@@ -111,12 +111,13 @@
   padding-left: 0px;
   color: #666768;
   border-top: 1px solid #DFDFDF;
+  border-right: 1px solid #DFDFDF;
+  border-left: 1px solid #DFDFDF;
   background-color: white;
   height: 40px;
   margin-bottom: 20px;
   list-style-type: none;
 }
-
 
 .card-link {
   position: absolute;
@@ -165,3 +166,20 @@
 #box:hover::after {
   opacity: 1;
 }
+
+.overlay-right {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  color: #DFDFDF;
+}
+
+.overlay-left {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: #DFDFDF;
+}
+
+
+

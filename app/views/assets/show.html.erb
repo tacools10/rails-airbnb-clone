@@ -1,12 +1,14 @@
 <div class="container">
-  <div class="row">
+  <div class="row show-asset">
     <div class="col-sm-8" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>">
       <h1>
         <%= @asset.title %>
         <% if current_user %>
-          <% if current_user.id == @asset.user.id %>
-            <small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small>
+          <% if current_user.id != @asset.user.id %>
+            <p><small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small></p>
           <% end %>
+        <% else %>
+            <p><small>from <%= link_to @asset.user.first_name, user_path(id: @asset.user.id) %></small></p>
         <% end %>
       </h1>
       <h6>On Findaroof for <%= time_ago_in_words @asset.created_at %></h6>
@@ -18,7 +20,7 @@
 
         </div>
         <div class="col-sm-6">
-
+            <%=@asset.description%>
         </div>
       </div>
     </div>
@@ -29,6 +31,7 @@
           <li><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-lg btn-pricing btn-info"} %></li>
         <% else %>
           <% if current_user.id == @asset.user.id %>
+
             <li><button type="button" class="btn btn-lg btn-pricing btn-primary" data-toggle="modal" data-target="#myModal3">Edit your Asset</button></li>
             <li><%= link_to "Remove from listing", user_asset_path(user_id: @user.id), class: "btn btn-lg btn-pricing btn-danger", method: :delete %></li>
             <div class="modal fade" id="myModal3" role="dialog">
@@ -91,6 +94,12 @@
                 </div>
               </div>
 
+            
+            <li><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-md btn-pricing btn-danger", method: :delete %></li>
+
+          <% else %>
+            <li><%= link_to "Favorite", favorite_asset_path(type: "favorite", id: @asset.id), method: :post, class: "btn btn-md btn-pricing btn-success"  %></li>
+            <li><%= link_to "Unfavorite", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post, class: "btn btn-md btn-pricing btn-danger" %></li>
 
 
           <% end %>

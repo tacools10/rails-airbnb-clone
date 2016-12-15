@@ -25,26 +25,24 @@
     <div class="container user-assets-container">
       <div class="col-lg-12 user-assets-title">
         <h1 class="findaroof-title">All assets for sale</h1>
+      </div>
         <% @assets.each do |ass| %>
           <div class="col-lg-4 col-md-6 col-xs-12 user-assets-col">
           <%= render "asset", asset: ass %>
           </div>
-      </div>
         <% end %>
     </div>
 
   <div class="container user-assets-container">
     <div class="col-lg-12 user-assets-title">
       <h1 class="findaroof-title">All favorite assets</h1>
+    </div>
         <% @user.favorites.each do |fav| %>
-        <div class="col-xs-12 col-sm-4 smallercard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/400/400/sports');">
-        <h4><%= fav.title %> in <%= fav.city %></h4>
-        <h4><%= link_to "See this asset", user_asset_path(id: fav.user.id, asset_id: fav.id)  %></h4>
-        <h5><%= link_to "Unfavorite this asset", favorite_asset_path(type: "unfavorite", id: fav.id), method: :post %></h5>
+          <div class="col-lg-4 col-md-6 col-xs-12 user-assets-col">
+          <%= render "asset_fav", fav: fav %>
         </div>
       <% end %>
     </div>
-  </div>
 <% end %>
 
 

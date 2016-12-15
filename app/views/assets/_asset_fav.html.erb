@@ -1,0 +1,37 @@
+<div id="box">
+<div class="card" data-id="<%= fav.id %>" data-longitude="<%= fav.longitude %>" data-latitude="<%= fav.latitude %>">
+  <%= link_to user_asset_path(fav.user_id, fav.id), class: "asset-link" do %>
+      <% if fav.photos == nil %>
+        <div class="card-picture" style="background-image: url(<%= cloudinary_url(fav.asset_photos.first.photo.identifier, :crop => :fill, :height => 380) %>);"> </div>
+          <%= link_to fa_icon("minus-square"), favorite_asset_path(type: "unfavorite", id: fav.id), method: :post, class: "overlay-right" %>
+      <% else %>
+        <div class="card-picture" style="background-image: url(<%= fav.photos %>);"> </div>
+          <%= link_to fa_icon("minus-square", class: "overlay"), favorite_asset_path(type: "unfavorite", id: fav.id), method: :post, class: "overlay-right" %>
+      <% end %>
+
+    <div class="descridiv">
+      <div class="descridiv-title">
+        <h3 class="card-description-title"><%= fav.title %></h3>
+      </div>
+      <div class="descridiv-right-description">
+        <p class="card-description-city-country"><%= fav.city %>, <%= fav.country %></p>
+      </div>
+      <div class="descridiv-left-price">
+        <p class="card-description-price">€<%= fav.price %></p>
+      </div>
+    </div>
+    <ul class="panelbody">
+          <li>
+            <i class="fa fa-bed 2x"></i> - <%= fav.bedrooms %></li>
+          <li>
+            <i class="fa fa-bath 2x"></i> - <%=fav.bathrooms%></li>
+          <li>
+            <i class="fa fa-car 2x"></i> - <%=fav.garage%></li>
+          <li>
+            <i class="fa fa-area-chart 2x"></i> - <%=fav.lots_size%> m2
+          </li>
+    </ul>
+    <% end %>
+  </div>
+</div>
+

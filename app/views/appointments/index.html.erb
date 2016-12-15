@@ -2,7 +2,7 @@
 <h1 class="text-center"> All My Appointments</h1>
   <div class="container">
     <div class="row">
-    <%= week_calendar events: @appointments do |date, appointments| %>
+    <%= month_calendar events: @appointments do |date, appointments| %>
       <% appointments.each do |appointment| %>
       <div class="container">
         <div class="row">
