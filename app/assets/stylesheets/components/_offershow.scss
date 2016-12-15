@@ -1,0 +1,83 @@
+.offerbox{
+  margin-bottom: 10px;
+  background-color: white;
+  border-radius: 10px;
+}
+
+.offercard {
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+
+  margin-bottom: 0px;
+  height: 130px;
+  position: relative;
+  border-radius: 2px;
+
+}
+
+.offcardtop {
+  border-top: 1px #999999 solid;
+  border-right: 1px #999999 solid;
+  border-left: 1px #999999 solid;
+  height: 30px;
+
+
+}
+.offercardinfo {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.cardtop-info {
+  margin-bottom: 0px;
+}
+
+.offcardbot {
+  border-bottom: 1px #999999 solid;
+  border-right: 1px #999999 solid;
+  border-left: 1px #999999 solid;
+  height: 40px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+
+}
+.offuser-image {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.offinfor {
+  position: absolute;
+  bottom: 10px;
+}
+.offcardpic {
+   height: 130px;
+  min-width: 292px;
+  position: relative;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
+  color: black;
+  opacity: 0.8;
+  font-weight: bold;
+  border-right: 1px #999999 solid;
+  border-left: 1px #999999 solid;
+}
+
+.offercheck {
+  color: green
+}
+
+.offercheck2 {
+  color: red;
+}
+
+
+
+
+
+
+
+
+
