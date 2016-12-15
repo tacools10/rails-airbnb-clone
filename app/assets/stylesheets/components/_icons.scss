@@ -1,8 +1,8 @@
 .fa-heart,
 .fa-minus-square {
   display: block;
-  font-size: 30px;
-  padding: 20px;
+  font-size: 18px;
+  padding: 5px;
   transition: transform 300ms ease-in-out;
   &:hover {
     text-decoration: none;
@@ -11,8 +11,9 @@
 }
 
 .fa-heart {
-  color: #F5498A;
+  color: #616263;
 }
+
 .fa-minus-square {
   color: #616263;
 }
