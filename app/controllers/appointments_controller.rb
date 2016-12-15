@@ -33,7 +33,7 @@ class AppointmentsController < ApplicationController
     redirect_to user_appointments_path(current_user, @appointments)
   end
 
-  def delete
+  def destroy
     @appointment.destroy!
     redirect_to user_appointments_path(current_user, @appointments)
   end

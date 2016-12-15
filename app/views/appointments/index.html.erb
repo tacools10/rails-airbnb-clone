@@ -11,8 +11,8 @@
 
                 <h6><%= appointment.asset.user.first_name %> for <%= appointment.asset.title %></h6>
                 <h6><%= appointment.time %></h6>
-                <%= link_to 'See more', edit_user_asset_appointment_path( appointment.user, appointment.asset, appointment), class: "btn btn-primary btn-sm" %>
 
+                <%= link_to 'See more', user_asset_appointment_path( appointment.user, appointment.asset, appointment), class: "btn btn-primary btn-sm" %>
         <% end %>
       <% end %>
       </div>
@@ -28,7 +28,7 @@
           <div class="col-xs-12 col-sm-4 smallercard wells" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/500/500/sports');">
               <h3>Request from <%= app.user.first_name %> for <%= app.asset.title %></h3>
               <p>Date: <%= app.date %></p>
-              <p><%= link_to 'Accept this request', edit_user_asset_appointment_path( app.user, app.asset, app) %>
+              <p><%= link_to 'Accept this request', edit_user_asset_appointment_path( app.user, app.asset, app) %></p>
               </div>
             <% elsif app.status == "Accept" %>
 
