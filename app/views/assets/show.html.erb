@@ -94,31 +94,29 @@
         </ul>
     </div>
   </div>
+</div>
 
-
+<div class="container">
   <%= render "popup_gallery" %>
 
-  <div class="row factboxwhite" >
-    <div class="col-sm-6">
-        <ul class="list-unstyled factlist">
-          <div class="col-sm-6">
-
-              <p>Description</p>
-              <%=@asset.description%>
-          </div>
-        </ul>
+  <div class="row show-asset" >
+    <div class="col-sm-6 left-half-factbox">
+        <h4>Description</h4>
+        <p class="description-box"><%=@asset.description%></p>
     </div>
     <div class="col-sm-6">
-      <ul class="list-unstyled factlist">
-        <div class="col-sm-6">
-          <p>Facts</p>
-          <li><i class="fa fa-area-chart 2x"> Area <%= @asset.lots_size %> m2  </i></li>
-          <li><i class="fa fa-bed 2x"> Bedrooms </i> <%= @asset.bedrooms %></li>
-          <li><i class="fa fa-bath 2x"> Bathrooms  </i> <%= @asset.bathrooms %></li>
-          <li><i class="fa fa-car 2x"> Garage for  </i> <%= @asset.garage %> <i></i></li>
-          <li><i class="fa fa-home 2x"> Year Built</i> <%= @asset.year_built %> </li>
-        </div>
-      </ul>
+
+        <div class="col-sm-6 right-half-factbox">
+            <h4>Facts</h4>
+              <ul style="list-style: none; list-style-position: inherit;">
+              <li class="description-facts"><i class="fa fa-area-chart 2x"></i> Area: <%= @asset.lots_size %> m2  </li>
+              <li class="description-facts"><i class="fa fa-bed 2x"></i> Bedrooms: <%= @asset.bedrooms %></li>
+              <li class="description-facts"><i class="fa fa-bath 2x"></i> Bathrooms: <%= @asset.bathrooms %></li>
+              <li class="description-facts"><i class="fa fa-car 2x"></i> Garage spots:  <%= @asset.garage %> <i></i></li>
+              <li class="description-facts"><i class="fa fa-home 2x"></i> Year Built: <%= @asset.year_built %> </li>
+
+          </div>
+        </ul>
     </div>
   </div>
 
