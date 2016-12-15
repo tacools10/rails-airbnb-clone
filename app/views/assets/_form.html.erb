@@ -1,47 +1,79 @@
-<div class="container-fluid", style="margin-bottom: 15px;">
-      # <%= simple_form_for [@user, @asset] do |f| %>
-      <div class="findaroof-asset-form-group">
-        <%= f.input :title, placeholder: 'Enter the name of your listing' %>
-        <%= f.input :description, placeholder: 'Provide a description' %>
+  <%= simple_form_for [@user, @asset], input_html: {class: "new-asset-form"} do |f| %>
+      <div class="row asset-border">
+         <!--  <div class="findaroof-asset-form-group"> -->
+            <div class="col-lg-4">
+              <%= f.input :title, placeholder: 'Enter the name of your listing', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+            </div>
+            <div class="col-lg-8">
+              <%= f.input :description, as: :text, placeholder: 'Provide a description', label_html: {class: "new-asset-form-label"}, wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field-description"} %>
+            </div>
       </div>
-      <div class="findaroof-asset-form-group">
-        <%= f.input :price %>
-        <%= f.input :address %>
-        <%= f.input :city %>
-        <%= f.input :post_code %>
-        <%= f.input :country %>
-      </div>
-      <div class="findaroof-asset-form-group">
-        <%= f.input :condition %>
-        <%= f.input :year_built %>
-        <%= f.input :year_reno %>
-      </div>
-      <div class="findaroof-asset-form-group">
-        <%= f.input :bedrooms %>
-        <%= f.input :bathrooms %>
-        <%= f.input :garage %>
-        <%= f.input :lots_size %>
-      </div>
-      <div class="findaroof-asset-form-group">
-      <%= f.input :previous_owners %>
-      <%= f.input :status %>
-      <%= f.input :region %>
-      </div>
-      <div class="findaroof-asset-form-group">
-      <%= f.simple_fields_for :asset_photo do |p| %>
-        <div class="field">
-          <%= p.file_field :photo, :multiple => true, name: "asset_photos[photo][]" %>
+      <div class="row asset-border">
+          <div class="col-lg-6">
+              <%= f.input :address, placeholder: 'Enter the street address', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
           </div>
-      <% end %>
+          <div class="col-lg-2">
+              <%= f.input :city, placeholder: 'City', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+          </div>
+          <div class="col-lg-2">
+              <%= f.input :post_code, placeholder: 'Post code', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+          </div>
+          <div class="col-lg-2">
+              <%= f.input :country, placeholder: 'Country', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+          </div>
+        </div>
+      <div class="row asset-border">
+        <div class="col-lg-3">
+            <%= f.input :price, placeholder: 'Asking price', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
+        <div class="col-lg-3">
+            <%= f.input :condition, placeholder: 'Condition', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
+        <div class="col-lg-3">
+            <%= f.input :year_built, placeholder: 'Year built', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
+        <div class="col-lg-3">
+            <%= f.input :year_reno, placeholder: 'Year renovated', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
       </div>
-      <a class="text-center" "><%= f.submit "Add an asset", class: "btn btn-primary new-asset-submit-btn" %></a>
-
+      <div class="row asset-border">
+        <div class="col-lg-3">
+          <%= f.input :bedrooms, placeholder: 'Bedrooms', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"}%>
+        </div>
+        <div class="col-lg-3">
+          <%= f.input :bathrooms, placeholder: 'Bathrooms', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
+        <div class="col-lg-3">
+          <%= f.input :garage, placeholder: 'Garage spots', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
+        <div class="col-lg-3">
+          <%= f.input :lots_size, placeholder: 'Home size sq m', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+        </div>
+      </div>
+      <div class="row asset-border">
+          <div class="col-lg-6">
+            <%= f.input :previous_owners, placeholder: 'Details on prior owners', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+          </div>
+          <div class="col-lg-3">
+            <%= f.input :status, placeholder: 'Ex. new listing', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+          </div>
+          <div class="col-lg-3">
+            <%= f.input :region, placeholder: 'Region info', label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+          </div>
+      </div>
+      <div class="row asset-border-last">
+        <div class="col-lg-3">
+          <%= f.simple_fields_for :asset_photo do |p| %>
+            <div class="field">
+              <%= p.file_field :photo, :multiple => true, name: "asset_photos[photo][]"  %>
+              </div>
+          <% end %>
+        </div>
+        <div class="col-lg-4">
+          <%= f.submit "Add an asset", class: "btn btn-primary new-asset-submit-btn" %>
+        </div>
+      </div>
     <% end %>
-    <%# raise %>
-    </div>
-
-</div>
-
 
 <%= content_for(:after_js) do %>
   <script src="https://maps.googleapis.com/maps/api/js?libraries=places&amp;key=AIzaSyDa1_F9P03aqg6R_dvBjy1q_DYfotr93UY"></script>
