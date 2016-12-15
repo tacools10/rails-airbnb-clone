@@ -29,6 +29,7 @@ class AppointmentsController < ApplicationController
 
   def update
     @appointment.update!(appointment_params)
+    @user.appointments << @appointment if @appointment.status == "Accept"
     redirect_to user_appointments_path(current_user, @appointments)
   end
 
@@ -54,4 +55,5 @@ class AppointmentsController < ApplicationController
   def find_asset
     @asset = Asset.find(params[:asset_id])
   end
+
 end
