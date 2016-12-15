@@ -1,0 +1,86 @@
+.simple-calendar {
+
+  box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
+
+  .day {
+    background-color: #ffffff;
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {}
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month > h4 {
+    font-size: 12px;
+    color: #616263;
+  }
+
+  .prev-month {
+    background: #ffffff;
+  }
+
+  .next-month > h4 {
+    font-size: 12px;
+    color: #616263;
+  }
+
+  .next-month {
+    background-color: #ffffff;
+  }
+
+  .current-month > h4  {
+    font-size: 12px;
+    color: #616263;
+  }
+
+  .has-events {
+   color: #616263;
+  }
+}
+
+
+.calender-title-findaroof-font {
+  font-family: 'Roboto Slab', serif;
+  font-size: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+  vertical-align: middle;
+  color: #616263;
+}
+
+.findaroof-calendar-heading {
+  background-color: #ffffff;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid #dfdfdf;
+  color: #616263;
+}
+
+.calendar-heading-day {
+  font-family: 'Roboto Slab', serif;
+  font-size: 16px;
+  color: #616263;
+}
+
+.findaroof-calendar-rows {
+  height: 250px;
+}
+
+.calendar-page-heading {
+  margin-bottom: 25px;
+}
+
+.calendar-title-page {
+  padding: 0px;
+}
