@@ -165,11 +165,18 @@
   opacity: 1;
 }
 
-.overlay {
+.overlay-right {
   position: absolute;
   top: 2px;
   right: 2px;
-  color: #DFDFDF
+  color: #DFDFDF;
+}
+
+.overlay-left {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: #DFDFDF;
 }
 
 
