@@ -306,6 +306,8 @@ function getOneMarker() {
 
 function initMapIndividual(railsMarkers) {
 
+
+
   var styledMapType = new google.maps.StyledMapType(
           [
             {

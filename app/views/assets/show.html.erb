@@ -140,12 +140,9 @@
         <div id="individual-map" style="min-width: 100%; height: 400px;"></div>
                           <% content_for(:after_js) do %>
                            <script>
-                           // console.log(markers);
                             $(document).ready(function() {
                               initMapIndividual(getOneMarker());
                             });
-                            // console.log(markers);
-                            // });
                             </script>
                           <% end %>
     </div>
