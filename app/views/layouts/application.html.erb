@@ -13,11 +13,8 @@
 
   </head>
   <body>
-    <div class="wrapper" style="margin-bottom: 200px;">
-      <%= render "shared/navbar" %>
-      <%= yield %>
-
-    </div>
+    <%= render "shared/navbar" %>
+    <%= yield %>
     <%= javascript_include_tag "https://maps.google.com/maps/api/js?key=AIzaSyDl2LWb81Vt78GoL2MSNGtXQCbcNqyA7UI&libraries=places,drawing,geometry" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/markerclusterer/src/markerclusterer_compiled.js" %>
     <%= javascript_include_tag "https://cdn.rawgit.com/printercu/google-maps-utility-library-v3-read-only/master/infobox/src/infobox_packed.js" %>
