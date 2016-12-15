@@ -1,5 +1,5 @@
-<div id="wrapper">
-  <div class="container">
+<div id="wrapper" style="background-color: #999999">
+  <div class="container" style="padding-top: 10px;">
 
     <div class="row">
 
@@ -30,7 +30,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-calendar fa-3x"></i>
+                <i class="fa fa-calendar fa-2x"></i>
               </div>
               <div class="col-xs-9 text-right">
                 <div class="huge"><%= @user.appointments.count %></div>
@@ -52,10 +52,10 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-envelope-o fa-3x"></i>
+                <i class="fa fa-envelope-o fa-2x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge"><%=%></div>
+                <div class="huge"><%= 0 %></div>
                 <div>Messages!</div>
               </div>
             </div>
@@ -74,7 +74,7 @@
           <div class="panel-heading">
             <div class="row">
               <div class="col-xs-3">
-                <i class="fa fa-home fa-3x"></i>
+                <i class="fa fa-home fa-2x"></i>
               </div>
               <div class="col-xs-9 text-right">
                 <div class="huge"><%= @user.assets.count %></div>
@@ -215,7 +215,7 @@
     </div>
 
   </div>
-    <div class="container">
+    <div class="container" style="padding-bottom: 20px;">
     <a><%= link_to 'Add Asset', new_user_asset_path(user_id: current_user.id), {class: "btn btn-success"} %></a>
     <a><%= link_to('My Offers', user_offers_path(user_id: current_user.id), {class: "btn btn-primary"}) %></a>
 
