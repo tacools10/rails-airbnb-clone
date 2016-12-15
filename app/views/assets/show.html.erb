@@ -16,8 +16,6 @@
         <div class="col-sm-6">
           <p><%= @asset.address %></p>
           <p><%= @asset.city %> - <%= @asset.region %> - <%= @asset.country %></p>
-          <%=  @asset.description%>
-
         </div>
       </div>
     </div>
@@ -25,115 +23,106 @@
       <h1>US$<%= @asset.price%></h1>
       <ul class="list-unstyled">
         <% if !current_user %>
-          <li><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-lg btn-pricing btn-info"} %></li>
+          <li><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-md btn-pricing btn-info"} %></li>
         <% else %>
           <% if current_user.id == @asset.user.id %>
-
-            <li><button type="button" class="btn btn-lg btn-pricing btn-primary" data-toggle="modal" data-target="#myModal3">Edit your Asset</button></li>
-            <li><%= link_to "Remove from listing", user_asset_path(user_id: @user.id), class: "btn btn-lg btn-pricing btn-danger", method: :delete %></li>
-            <div class="modal fade" id="myModal3" role="dialog">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Edit your Listing</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= render "form" %>
-                    </div>
-                    <div class="modal-footer">
+              <li><button type="button" class="btn btn-md btn-pricing btn-primary" data-toggle="modal" data-target="#myModal3">Edit your Asset</button></li>
+              <li><%= link_to "Remove from listing", user_asset_path(user_id: @user.id), class: "btn btn-md btn-pricing btn-danger", method: :delete %></li>
+              <div class="modal fade" id="myModal3" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit your Listing</h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= render "form" %>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
           <% else %>
-          <li><button type="button" class="btn btn-lg btn-pricing btn-primary" data-toggle="modal" data-target="#myModal1">Book an Appointment</button></li>
-            <li><button type="button" class="btn btn-lg btn-pricing btn-info" data-toggle="modal" data-target="#myModal2">Make an Offer</button></li>
-              <div class="modal fade" id="myModal1" role="dialog">
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
-                      <h4 class="modal-title">Book Appointment</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for [current_user, @asset, Appointment.new], :url => user_asset_appointments_path(current_user, @asset) do |f| %>
-                      <%= f.input :date %>
-                      <%= f.input :time %>
-                      <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
-                      <% end %>
+            <li><button type="button" class="btn btn-md btn-pricing btn-primary" data-toggle="modal" data-target="#myModal1">Book an Appointment</button></li>
+              <li><button type="button" class="btn btn-md btn-pricing btn-info" data-toggle="modal" data-target="#myModal2">Make an Offer</button></li>
+                <div class="modal fade" id="myModal1" role="dialog">
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Book Appointment</h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for [current_user, @asset, Appointment.new], :url => user_asset_appointments_path(current_user, @asset) do |f| %>
+                        <%= f.input :date %>
+                        <%= f.input :time %>
+                        <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
+                        <% end %>
 
-                    </div>
-                    <div class="modal-footer">
+                      </div>
+                      <div class="modal-footer">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
                 <div class="modal fade" id="myModal2" role="dialog">
-                <div class="modal-dialog modal-sm">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                      <h4 class="modal-title">Make an Offer</h4>
-                    </div>
-                    <div class="modal-body">
-                      <%= simple_form_for [current_user, @asset, Offer.new] do |f| %>
-                      <%= f.input :offer_date %>
-                      <%= f.input :offer_type %>
-                      <%= f.submit "Make Offer" %>
-                      <% end %>
-                    </div>
-                    <div class="modal-footer">
+                        <h4 class="modal-title">Make an Offer</h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for [current_user, @asset, Offer.new] do |f| %>
+                        <%= f.input :offer_date %>
+                        <%= f.input :offer_type %>
+                        <%= f.submit "Make Offer" %>
+                        <% end %>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+                <li><%= link_to "Favorite", favorite_asset_path(type: "favorite", id: @asset.id), method: :post, class: "btn btn-md btn-pricing btn-success"  %></li>
+                <li><%= link_to "Unfavorite", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post, class: "btn btn-md btn-pricing btn-danger" %></li>
 
-            
-            <li><%= link_to "Delete Asset", user_asset_path(user_id: @user.id), class: "btn btn-md btn-pricing btn-danger", method: :delete %></li>
-
-          <% else %>
-            <li><%= link_to "Favorite", favorite_asset_path(type: "favorite", id: @asset.id), method: :post, class: "btn btn-md btn-pricing btn-success"  %></li>
-            <li><%= link_to "Unfavorite", favorite_asset_path(type: "unfavorite", id: @asset.id), method: :post, class: "btn btn-md btn-pricing btn-danger" %></li>
-
-
-          <% end %>
         <% end %>
-      </ul>
+        <% end %>
+        </ul>
     </div>
   </div>
+
+
   <%= render "popup_gallery" %>
 
   <div class="row factboxwhite" >
     <div class="col-sm-6">
-
-      <ul class="list-unstyled factlist">
-         <div class="col-sm-6">
-          <p>Description</p>
-
-            <%=@asset.description%>
-        </div>
-      </ul>
-      </div>
-
-      <div class="col-sm-6">
-
         <ul class="list-unstyled factlist">
+          <div class="col-sm-6">
+
+              <p>Description</p>
+              <%=@asset.description%>
+          </div>
+        </ul>
+    </div>
+    <div class="col-sm-6">
+      <ul class="list-unstyled factlist">
         <div class="col-sm-6">
-        <p>Facts</p>
-          <li></i><i class="fa fa-area-chart 2x"> Area <%= @asset.lots_size %> m2  </i></li>
+          <p>Facts</p>
+          <li><i class="fa fa-area-chart 2x"> Area <%= @asset.lots_size %> m2  </i></li>
           <li><i class="fa fa-bed 2x"> Bedrooms </i> <%= @asset.bedrooms %></li>
           <li><i class="fa fa-bath 2x"> Bathrooms  </i> <%= @asset.bathrooms %></li>
           <li><i class="fa fa-car 2x"> Garage for  </i> <%= @asset.garage %> <i></i></li>
           <li><i class="fa fa-home 2x"> Year Built</i> <%= @asset.year_built %> </li>
-          <li></li>
-        </ul>
         </div>
-      </div>
+      </ul>
+    </div>
   </div>
-  <div class="row" style="">
+
+  <div class="row">
     <div class="col-sm-12">
       <form role="form">
         <h3>Contact the owner of <%= @asset.title %></h3>
@@ -161,6 +150,6 @@
                             // });
                             </script>
                           <% end %>
-      </div>
+    </div>
 </div>
 
