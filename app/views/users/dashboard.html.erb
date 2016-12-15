@@ -92,9 +92,10 @@
         </div>
       </div>
     </div>
+    <%  %>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Offers Made
+        <i class="fa fa-bar-chart-o fa-fw"></i> Offers
         <div class="pull-right">
           <div class="btn-group">
             <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -131,16 +132,15 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <% @user.offers.each do |offer| %>
-                  <tr>
-                    <td><%= offer.id  %></td>
-                    <td><%=  offer.offer_date %></td>
-                    <td><%=  offer.offer_type %></td>
-                    <td><%= offer.status %></td>
-                    <td><%= link_to offer.asset.id, user_asset_path(offer.asset.user.id, offer.asset.id) %></td>
-
-                  </tr>
-                  <% end %>
+                    <% @user.offers.each do |offer| %>
+                    <tr>
+                      <td><%= offer.id  %></td>
+                      <td><%=  offer.offer_date %></td>
+                      <td><%=  offer.offer_type %></td>
+                      <td><%= offer.status %></td>
+                      <td><%= link_to offer.asset.id, user_asset_path(offer.asset.user.id, offer.asset.id) %></td>
+                    </tr>
+                    <% end %>
                 </tbody>
               </table>
 
@@ -153,62 +153,7 @@
 
     </div>
 
-     <div class="panel panel-default">
-      <div class="panel-heading">
-        <i class="fa fa-bar-chart-o fa-fw"></i> Offers Received
-        <div class="pull-right">
-          <div class="btn-group">
-            <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-              Actions
-              <span class="caret"></span>
-            </button>
-            <ul class="dropdown-menu pull-right" role="menu">
-              <li><a href="#"><%= link_to 'My Assets', user_assets_path(user_id: @user)%></a>
-              </li>
-              <li><a href="#"><%= link_to "Offers Recived"%></a>
-              </li>
-              <li><a href="#">Something else here</a>
-              </li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="table-responsive">
-              <table class="table table-bordered table-hover table-striped">
-                <thead>
-                  <tr>
-                    <th>Offer</th>
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>Status</th>
-                    <th>See Asset</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% @user.offers.each do |offer| %>
-                  <tr>
-                    <td><%= offer.id  %></td>
-                    <td><%=  offer.offer_date %></td>
-                    <td><%=  offer.offer_type %></td>
-                    <td><%= offer.status %></td>
-                    <td><%= link_to offer.asset.id, user_asset_path(offer.asset.user.id, offer.asset.id) %></td>
-
-                  </tr>
-                  <% end %>
-                </tbody>
-              </table>
-
-            </div>
-          </div>
-        </div>
-      </div>
+     <!--  -->
 
 
 
