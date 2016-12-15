@@ -23,11 +23,13 @@
       <h1 class="text-right">US$<%= @asset.price%></h1>
       <ul class="list-unstyled">
         <% if !current_user %>
-          <li><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-md btn-pricing btn-info"} %></li>
+        <li><%= link_to "Make Offer", new_user_registration_path, {class: "btn btn-md btn-pricing btn-info"} %></li>
         <% else %>
-          <% if current_user.id == @asset.user.id %>
-              <li><button type="button" class="btn btn-md btn-pricing btn-primary" data-toggle="modal" data-target="#myModal3">Edit your Asset</button></li>
-              <li><%= link_to "Remove from listing", user_asset_path(user_id: @user.id), class: "btn btn-md btn-pricing btn-danger", method: :delete %></li>
+        <% if current_user.id == @asset.user.id %>
+        <li><button type="button" class="btn btn-md btn-pricing btn-primary" data-toggle="modal" data-target="#myModal3">Edit your Asset</button></li>
+        <li><%= link_to "Remove from listing", user_asset_path(user_id: @user.id), class: "btn btn-md btn-pricing btn-danger", method: :delete %></li>
+      </ul>
+    </div>
               <div class="modal fade" id="myModal3" role="dialog">
                   <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -93,12 +95,11 @@
         <% end %>
         </ul>
     </div>
+     <%= render "popup_gallery" %>
   </div>
 </div>
 
 <div class="container">
-  <%= render "popup_gallery" %>
-
   <div class="row show-asset" >
     <div class="col-sm-6 left-half-factbox">
         <h4>Description</h4>
