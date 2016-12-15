@@ -9,10 +9,11 @@ require 'faker'
 require 'nokogiri'
 require 'open-uri'
 
-# Offer.destroy_all
+Offer.destroy_all
+Appointment.delete_all
 Asset.destroy_all
 User.destroy_all
-Appointment.delete_all
+
 
 
 20.times do
