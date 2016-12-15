@@ -19,9 +19,6 @@
           <%=  @asset.description%>
 
         </div>
-        <div class="col-sm-6">
-            <%=@asset.description%>
-        </div>
       </div>
     </div>
     <div class="col-sm-4">
@@ -109,7 +106,34 @@
   </div>
   <%= render "popup_gallery" %>
 
-  <div class="row">
+  <div class="row factboxwhite" >
+    <div class="col-sm-6">
+
+      <ul class="list-unstyled factlist">
+         <div class="col-sm-6">
+          <p>Description</p>
+
+            <%=@asset.description%>
+        </div>
+      </ul>
+      </div>
+
+      <div class="col-sm-6">
+
+        <ul class="list-unstyled factlist">
+        <div class="col-sm-6">
+        <p>Facts</p>
+          <li></i><i class="fa fa-area-chart 2x"> Area <%= @asset.lots_size %> m2  </i></li>
+          <li><i class="fa fa-bed 2x"> Bedrooms </i> <%= @asset.bedrooms %></li>
+          <li><i class="fa fa-bath 2x"> Bathrooms  </i> <%= @asset.bathrooms %></li>
+          <li><i class="fa fa-car 2x"> Garage for  </i> <%= @asset.garage %> <i></i></li>
+          <li><i class="fa fa-home 2x"> Year Built</i> <%= @asset.year_built %> </li>
+          <li></li>
+        </ul>
+        </div>
+      </div>
+  </div>
+  <div class="row" style="">
     <div class="col-sm-12">
       <form role="form">
         <h3>Contact the owner of <%= @asset.title %></h3>
