@@ -1,4 +1,15 @@
 <div class="container">
-  <h3><%= @appointment.date %></h3>
+  <div class="row">
+  <%= @appointment.date %>
+  <%= @appointment.status %>
+    <div class="col-sm-6">
+        <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
+          <%= f.input :date %>
+          <%= f.input :time %>
+          <%= f.submit "Update" %>
+        <% end %>
+    </div>
+    <%= link_to 'Cancel this appointment', user_asset_appointment_path( appointment_id: @appointment.id, user_id: @appointment.user, asset_id: @appointment.asset), method: :delete %>
+  </div>
 </div>
 
