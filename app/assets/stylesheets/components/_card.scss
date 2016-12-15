@@ -142,6 +142,7 @@
   background-color: #fff;
   transition: all 0.3s ease-in-out;
   margin: 0 auto;
+  border: 5px solid white;
 }
 
 /* Create the hidden pseudo-element */
@@ -159,7 +160,7 @@
 }
 
 #box:hover {
-  transform: scale(0.9, 0.9);
+  border: 5px solid $brand-info;
 }
 
 /* Fade in the pseudo-element with the bigger shadow */
@@ -171,15 +172,17 @@
   position: absolute;
   top: 2px;
   right: 2px;
-  color: #DFDFDF;
 }
 
 .overlay-left {
   position: absolute;
   top: 2px;
   left: 2px;
-  color: #DFDFDF;
 }
 
+.overlay-right:hover,
+.overlay-left:hover {
+  text-decoration: none;
+}
 
 

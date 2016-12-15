@@ -9,8 +9,10 @@
 @import "form";
 @import "user_myassets";
 @import "show_asset";
-@import "offershow";
-
+@import "offershow"
+@import "calendar";
+@import "new_user_form";
+@import "icons";
 
 .left-half-map {
   float: left;
@@ -175,8 +177,9 @@
 }
 
 .btn-pricing {
-  width: 100%;
+  min-width: 100%;
   margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .index-search {
