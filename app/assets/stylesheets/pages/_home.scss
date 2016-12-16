@@ -21,8 +21,9 @@
   width: 400px !important;
 }
 
-.homepage-video {
+.homepage-photo {
   position: absolute;
+  background-size: cover !important;
   top: 50%; left: 50%;
   z-index: 100;
   min-width: 100%;
