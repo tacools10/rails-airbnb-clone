@@ -60,8 +60,8 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for [current_user, @asset, Appointment.new], :url => user_asset_appointments_path(current_user, @asset) do |f| %>
-            <%= f.input :date %>
-            <%= f.input :time %>
+            <%= f.input :date, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"}%>
+            <%= f.input :time, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"}%>
             <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
             <% end %>
           </div>
@@ -79,9 +79,9 @@
           </div>
           <div class="modal-body">
             <%= simple_form_for [current_user, @asset, Offer.new] do |f| %>
-            <%= f.input :offer_date %>
-            <%= f.input :offer_type %>
-            <%= f.submit "Make Offer" %>
+            <%= f.input :offer_date, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+            <%= f.input :offer_type, label: "Offer Amount", label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+            <%= f.submit "Make Offer", class: "btn btn-primary new-asset-submit-btn" %>
             <% end %>
           </div>
           <div class="modal-footer">
@@ -124,7 +124,7 @@
         <div class="form-group">
           <textarea class="form-control" type="textarea" id="message" placeholder="Hello <%= @asset.user.first_name %> <%= @asset.user.last_name %>" maxlength="140" rows="7"></textarea>
         </div>
-        <button type="button" id="submit" name="submit" class="btn btn-lg btn-primary pull-right">Send a message</button>
+        <button type="button" id="submit" name="submit" class="btn btn-md btn-primary pull-right">Send a message</button>
       </form>
     </div>
   </div>
