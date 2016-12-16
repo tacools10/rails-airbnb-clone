@@ -1,3 +1,4 @@
+
 <div class="container show-asset">
   <div class="row">
     <div class="col-sm-8" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>">
@@ -35,47 +36,6 @@
       <% end %>
       </ul>
     </div>
-    <div class="modal fade" id="myModal3" role="dialog">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Edit your Listing</h4>
-          </div>
-          <div class="modal-body">
-            <%= render "form" %>
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-    </div>
-    <% if  user_signed_in? %>
-    <div class="modal fade" id="myModal1" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Book Appointment</h4>
-          </div>
-          <div class="modal-body">
-            <%= simple_form_for [current_user, @asset, Appointment.new], :url => user_asset_appointments_path(current_user, @asset) do |f| %>
-            <%= f.input :date %>
-            <%= f.input :time %>
-            <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
-            <% end %>
-
-          </div>
-          <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="modal fade" id="myModal2" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
 
             <h4 class="modal-title">Make an Offer</h4>
           </div>
@@ -87,27 +47,18 @@
             <% end %>
           </div>
           <div class="modal-footer">
-          </div>
-        </div>
-      </div>
-    </div>
-    <% end %>
-  </div>
-  <div class="row" style="margin-bottom: -15px;padding: 15px;">
-    <%= render "popup_gallery" %>
-  </div>
-</div>
+
 
 
 <div class="container">
-  <div class="row show-asset" >
-    <div class="col-sm-6 left-half-factbox">
+  <div class="row show-asset padded-asset" >
+    <div class="col-sm-8 left-half-factbox">
         <h4>Description</h4>
         <p class="description-box"><%=@asset.description%></p>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
 
-        <div class="col-sm-6 right-half-factbox">
+        <div class="col-sm-12 right-half-factbox">
             <h4>Facts</h4>
               <ul style="list-style: none; list-style-position: inherit; margin: 0px; padding: 0px;">
               <li class="description-facts"><i class="fa fa-area-chart 2x"></i> Area: <%= @asset.lots_size %> m2  </li>
@@ -116,10 +67,7 @@
               <li class="description-facts"><i class="fa fa-car 2x"></i> Garage spots:  <%= @asset.garage %> <i></i></li>
               <li class="description-facts"><i class="fa fa-home 2x"></i> Year Built: <%= @asset.year_built %> </li>
 
-          </div>
-        </ul>
-    </div>
-  </div>
+
 
   <div class="row">
     <div class="col-sm-12">
