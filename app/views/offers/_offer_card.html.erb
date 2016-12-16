@@ -1,0 +1,104 @@
+
+    <div class="offercard">
+        <% if offer.asset.photos == nil %>
+          <div class="offcardpic" style="background-image: url(<%= cloudinary_url(offer.asset.asset_photos.first.photo.identifier, :crop => :fill, :height => 320) %>);"></div>
+          <% if offer.user != current_user %>
+             <% if offer.user.facebook_picture_url.nil? %>
+                <img class="offer-avatar overlay-right" src=<%= cloudinary_url(offer.user.photo, :crop => :fill, :height => 50, :width => 50)%>>
+              <% else %>
+                 <img class="offer-avatar overlay-right" src=<%= offer.user.facebook_picture_url%>>
+              <% end %>
+              <p class="overlay-left-offer-from"> From:  <%=offer.user.first_name%> </p>
+          <% end %>
+            <div class="descridiv">
+            <% if offer.status == "pending" %>
+              <div class="offer-title">
+                <h3 class="card-description-offer-title">Asset: <%= offer.asset.title %></h3>
+              </div>
+              <div class="offer-right">
+                <p class="card-description-offer-price">Price: <%= offer.asset.price %></p>
+              </div>
+              <div class="offer-left">
+                <% if offer.user != current_user %>
+                    <p class="card-description-offer-date">Date Received: <%= offer.offer_date%> </p>
+                <% else %>
+                  <p class="card-description-offer-date">Date Submit: <%= offer.offer_date%> </p>
+                <% end %>
+              </div>
+              <div class="offer-button">
+                <% if offer.user != current_user %>
+                  <%= link_to 'Respond', user_asset_offer_path(offer.user, offer.asset, offer), class: "btn btn-primary btn-sm" %>
+                <% else %>
+                  <%= link_to 'Edit this offer', edit_user_asset_offer_path(offer.user, offer.asset, offer), class: "btn btn-primary btn-sm" %>
+                <% end %>
+              </div>
+            <% elsif offer.status == "Accept" %>
+                <div class="offer-title">
+                  <% if offer.user != current_user %>
+                    <p class="offercardinfo">You accepted this offer! :)</p>
+                  <% else %>
+                    <p class="offercardinfo">Your offer was accepted! :)</p>
+                  <% end %>
+              <% else %>
+                 <% if offer.user != current_user %>
+                    <p class="offercardinfo">You declined this offer. :(</p>
+                  <% else %>
+                     <p class="offercardinfo">Your offer was accepted! :)</p>
+                  <% end %>
+              </div>
+            <% end %>
+            </div>
+      <% else %>
+          <div class="offcardpic" style="background-image: url(<%= offer.asset.photos %>);"></div>
+          <% if offer.user != current_user %>
+             <% if offer.user.facebook_picture_url.nil? %>
+                <img class="offer-avatar overlay-right" src=<%= cloudinary_url(offer.user.photo, :crop => :fill, :height => 50, :width => 50)%>>
+              <% else %>
+                 <img class="offer-avatar overlay-right" src=<%= offer.user.facebook_picture_url%>>
+              <% end %>
+              <p class="overlay-left-offer-from"> From:  <%=offer.user.first_name%> </p>
+          <% end %>
+            <div class="descridiv">
+            <% if offer.status == "pending" %>
+              <div class="offer-title">
+                <h3 class="card-description-offer-title">Asset: <%= offer.asset.title %></h3>
+              </div>
+              <div class="offer-right">
+                <p class="card-description-offer-price">Price: <%= offer.asset.price %></p>
+              </div>
+              <div class="offer-left">
+                <% if offer.user != current_user %>
+                    <p class="card-description-offer-date">Date Received: <%= offer.offer_date%> </p>
+                <% else %>
+                  <p class="card-description-offer-date">Date Submit: <%= offer.offer_date%> </p>
+                <% end %>
+              </div>
+              <div class="offer-button">
+                <% if offer.user != current_user %>
+                  <%= link_to 'Respond', user_asset_offer_path(offer.user, offer.asset, offer), class: "btn btn-primary btn-sm" %>
+                <% else %>
+                  <%= link_to 'Edit this offer', edit_user_asset_offer_path(offer.user, offer.asset, offer), class: "btn btn-primary btn-sm" %>
+                <% end %>
+              </div>
+            <% elsif offer.status == "Accept" %>
+                <div class="offer-title">
+                  <% if offer.user != current_user %>
+                    <p class="offercardinfo">You accepted this offer! :)</p>
+                  <% else %>
+                    <p class="offercardinfo">Your offer was accepted! :)</p>
+                  <% end %>
+              <% else %>
+                 <% if offer.user != current_user %>
+                    <p class="offercardinfo">You declined this offer. :(</p>
+                  <% else %>
+                     <p class="offercardinfo">Your offer was accepted! :)</p>
+                  <% end %>
+              </div>
+            <% end %>
+            </div>
+        <% end %>
+    </div>
+
+
+
+

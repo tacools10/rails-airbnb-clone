@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row show-asset">
+  <div class="row show-asset padded-asset", style="padding-top: 20px;">
     <div class="col-sm-8" data-id="<%=@asset.id%>" data-longitude="<%= @asset.longitude %>" data-latitude="<%= @asset.latitude %>">
       <h1>
         <%= @asset.title %>
@@ -57,8 +57,8 @@
                       </div>
                       <div class="modal-body">
                         <%= simple_form_for [current_user, @asset, Appointment.new], :url => user_asset_appointments_path(current_user, @asset) do |f| %>
-                        <%= f.input :date %>
-                        <%= f.input :time %>
+                        <%= f.input :date, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+                        <%= f.input :time, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
                         <a class="text-center" "><%= f.submit "Arrange an appointment", class: "btn btn-primary" %></a>
                         <% end %>
 
@@ -78,9 +78,9 @@
                       </div>
                       <div class="modal-body">
                         <%= simple_form_for [current_user, @asset, Offer.new] do |f| %>
-                        <%= f.input :offer_date %>
-                        <%= f.input :offer_type %>
-                        <%= f.submit "Make Offer" %>
+                        <%= f.input :offer_date, label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+                        <%= f.input :offer_type, label: "Offer Amount", label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+                        <%= f.submit "Make Offer", class: "btn btn-primary new-asset-submit-btn" %>
                         <% end %>
                       </div>
                       <div class="modal-footer">
@@ -100,14 +100,14 @@
 </div>
 
 <div class="container">
-  <div class="row show-asset" >
-    <div class="col-sm-6 left-half-factbox">
+  <div class="row show-asset padded-asset" >
+    <div class="col-sm-8 left-half-factbox">
         <h4>Description</h4>
         <p class="description-box"><%=@asset.description%></p>
     </div>
-    <div class="col-sm-6">
+    <div class="col-sm-4">
 
-        <div class="col-sm-6 right-half-factbox">
+        <div class="col-sm-12 right-half-factbox">
             <h4>Facts</h4>
               <ul style="list-style: none; list-style-position: inherit; margin: 0px; padding: 0px;">
               <li class="description-facts"><i class="fa fa-area-chart 2x"></i> Area: <%= @asset.lots_size %> m2  </li>

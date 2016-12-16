@@ -6,12 +6,11 @@
 
 .offercard {
   box-shadow: 0 1px 5px 0 rgba(0,0,0,0.07),0 1px 0 0 rgba(0,0,0,0.03);
-
   margin-bottom: 0px;
-  height: 130px;
+  height: 380px;
   position: relative;
   border-radius: 2px;
-
+  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
 }
 
 .offcardtop {
@@ -51,18 +50,13 @@
   bottom: 10px;
 }
 .offcardpic {
-   height: 130px;
-  min-width: 292px;
+  height: 380px;
+  min-width: 320px;
   position: relative;
   background-position: center center;
   background-size: cover;
-  position: relative;
-  background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2));
   color: black;
-  opacity: 0.8;
   font-weight: bold;
-  border-right: 1px #999999 solid;
-  border-left: 1px #999999 solid;
 }
 
 .offercheck {
@@ -74,10 +68,84 @@
 }
 
 
+.card-description-offer-price {
+  position: relative;
+  margin: 0 0 auto;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  width: auto;
+  color:  #666768;
+}
 
+.card-description-offer-date {
+  position: relative;
+  margin: 0 0 auto;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: left;
+  width: auto;
+  color:  #666768;
+}
 
+.card-description-offer-title {
+  position: relative;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 400;
+  text-align: center;
+  color:  #666768;
+}
 
+.offer-title {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #DFDFDF;
+}
 
+.offer-right {
+  width: 50%;
+  height: auto;
+  float: left;
+  position: relative;
+  // padding-top: 2px;
+  // padding-bottom: 2px;
+  color: #666768;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #DFDFDF;
+}
 
+.offer-left {
+  width: 50%;
+  height: auto;
+  float: right;
+  position: relative;
+  color: #666768;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #DFDFDF;
+}
 
+.offer-avatar {
+   width: 50px;
+   border-radius: 50%;
+}
 
+.overlay-left-offer-from {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  color: #ffffff;
+}
+
+.offer-button {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+  border-bottom: 1px solid #DFDFDF;
+}
+
+.offer-button a {
+  margin-top: 5px;
+}

@@ -1,107 +1,35 @@
- <div class="container" style="padding-top: 10px;">
-   <div class="row offerbox">
-      <h1 class = "text-center">All Offers</h1>
-   </div>
- </div>
-    <div class="container" style="padding-top: 10px;">
-      <div class="row offerbox">
-          <h4 class="text-center">Offers Submitted</h4>
-          <% @offers.each do |offer| %>
-          <div class="col-sm-4">
-            <div class="offcardtop">
-              <div class="col-xs-6"><p class="cardtop-info">US$ <%= offer.asset.price %></p></div>
-              <div class="col-xs-6"><p class="cardtop-info">On <%= offer.offer_date %></p></div>
-            </div>
-            <div class="offercard">
-                <% if offer.asset.photos == nil %>
-              <div class="offcardpic" style="background-image: url(<%= cloudinary_url(offer.asset.asset_photos.first.photo.identifier, :crop => :fill) %>);">
-              <div class="offuser-image"><%= cl_image_tag offer.asset.user.photo, class: "avatar" %></div>
-              <div><%= offer.asset.title %></div>
-              <div><%= offer.asset.user.first_name %></div>
-              <% if offer.status == "pending" %>
-              <% elsif offer.status == "Accept" %>
-              <p class="offercardinfo">Your offer was accepted! :)</p>
-              <% else %>
-              <p class="offercardinfo">Your offer was declined. :(</p>
-              <%= link_to 'Edit this offer', edit_user_asset_offer_path( offer.user, offer.asset, offer) %>
-              <% end %>
+<% if current_user %>
+ <div class="container user-assets-container">
+    <div class="col-lg-12 user-assets-title">
+    <h1 class="findaroof-title"> Your offers</h1>
+    </div>
+  </div>
 
-              </div>
-              <% else %>
-              <div class="offcardpic" style="background-image: url(<%= offer.asset.photos %>);">
-                <div class="offuser-image"><%= cl_image_tag offer.asset.user.photo, class: "avatar" %></div>
-                <div><%= offer.asset.title %></div>
-                <div><%= offer.asset.user.first_name %></div>
-                <% if offer.status == "pending" %>
-              <% elsif offer.status == "Accept" %>
-              <p class="offercardinfo">Your offer was accepted! :)</p>
-              <% else %>
-              <p class="offercardinfo">Your offer was declined. :(</p>
-              <%= link_to 'Edit this offer', edit_user_asset_offer_path( offer.user, offer.asset, offer) %>
-              <% end %>
-              </div>
-              <% end %>
-            </div>
-            <div class="offcardbot">
-              <a class="offercheck"><i class="fa fa-check fa-2x"></i></a>
-              <a class="offercheck2"><i class="fa fa-times fa-2x"></i></a>
-            </div>
-          </div>
-          <% end %>
-        </div>
+   <div class="container user-assets-container">
+      <div class="col-lg-12 user-assets-title">
+        <h1 class="findaroof-title">Your submitted offers</h1>
       </div>
-
-    <div class="container" style="padding-top: 10px;">
-      <div class="row offerbox">
-        <h4 class="text-center">Offers Received</h4>
-          <% @assets_offers.each do |offers| %>
-          <% offers.each do |offer| %>
-        <div class="col-sm-4">
-          <div class="offcardtop">
-            <div class="col-xs-6"><p class="cardtop-info">US$ <%= offer.asset.price %></p></div>
-            <div class="col-xs-6"><p class="cardtop-info">On <%= offer.offer_date %></p></div>
-          </div>
-          <div class="offercard">
-              <% if offer.asset.photos == nil %>
-            <div class="offcardpic" style="background-image: url(<%= cloudinary_url(offer.asset.asset_photos.first.photo.identifier, :crop => :fill) %>);">
-            <div class="offuser-image"><%= cl_image_tag offer.user.photo, class: "avatar" %></div>
-            <div><%= offer.user.first_name %></div>
-            <div><%= offer.user.last_name %></div>
-            <% if offer.status == "pending" %>
-            <% elsif offer.status == "Accept" %>
-            <p class="offercardinfo">Your offer was accepted! :)</p>
-            <% else %>
-            <p class="offercardinfo">Your offer was declined. :(</p>
-            <%= link_to 'Edit this offer', edit_user_asset_offer_path( offer.user, offer.asset, offer) %>
-            <% end %>
-
+       <% @offers.each do |offer| %>
+            <div class="col-lg-4 col-md-6 col-xs-12 user-assets-col">
+            <%= render "offer_card", offer: offer  %>
             </div>
-            <% else %>
-            <div class="offcardpic" style="background-image: url(<%= offer.asset.photos %>);">
-              <div class="offuser-image"><%= cl_image_tag offer.asset.photo, class: "avatar" %></div>
-              <div><%= offer.user.first_name %></div>
-              <div><%= offer.asset.user.last_name %></div>
-              <% if offer.status == "pending" %>
-            <% elsif offer.status == "Accept" %>
-            <p class="offercardinfo">Your offer was accepted! :)</p>
-            <% else %>
-            <p class="offercardinfo">Your offer was declined. :(</p>
-            <%= link_to 'Edit this offer', edit_user_asset_offer_path( offer.user, offer.asset, offer) %>
-            <% end %>
-            </div>
-            <% end %>
-
-          </div>
-          <div class="offcardbot">
-             <a class="offercheck"><i class="fa fa-check fa-2x"></i></a>
-             <a class="offercheck2"><i class="fa fa-times fa-2x"></i></a>
-          </div>
-        </div>
         <% end %>
-      <% end %>
-      </div>
-     </div>
+    </div>
 
+    <div class="container user-assets-container">
+      <div class="col-lg-12 user-assets-title">
+        <h1 class="findaroof-title">Your received offers</h1>
+      </div>
+       <% @assets_offers.each do |offers| %>
+        <% offers.each do |offer| %>
+            <div class="col-lg-4 col-md-6 col-xs-12 user-assets-col">
+            <%= render "offer_card", offer: offer  %>
+            </div>
+        <% end %>
+        <% end %>
+    </div>
+
+<% end %>
 
 
 
