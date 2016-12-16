@@ -1,23 +1,22 @@
-<div class="container">
-  <div class="showcard" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('http://lorempixel.com/800/600');">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-4 card" >
+<div class="container-fluid">
+  <div class="text-center">
+    <h1 class="findaroof-title">Offer Details</h1>
+  </div>
+  <div class="row asset-border text-center">
           <ul>
             <h3>Offer submitted by <%= @offer.user.first_name %> <%= @offer.user.last_name %></h3>
             <p>Date: <%= @offer.offer_date %></p>
             <p>US$ <%= @offer.offer_type %></p>
             <h4>Accept or Decline</h4>
           </ul>
+  </div>
+  <div class="row asset-border text-center">
           <ul>
             <%= simple_form_for [@user, @asset, @offer] do |f| %>
             <%= f.input :status, collection: ["Accept", "Deny"]%>
             <%= f.submit "submit" %>
             <% end %>
           </ul>
-        </div>
-      </div>
-    </div>
   </div>
 </div>
 
