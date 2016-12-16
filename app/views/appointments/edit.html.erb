@@ -1,10 +1,16 @@
-<div class="container">
+<div class="container-fluid">
   <div class="row">
-    <div class="col-sm-6">
-        <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
-        <%= f.input :status, collection: [ "Accept", "Decline"] %>
-          <%= f.submit "Reply" %>
-        <% end %>
+    <div class="col-lg-10 col-lg-offset-1 post-form-title-grey">
+      <h2 class="findaroof-title">Respond to your appointment request</h2>
     </div>
   </div>
+
+
+    <div class="col-lg-6 col-lg-offset-3" style="background-color: #ffffff; margin-top: 10px;">
+        <%= simple_form_for [current_user, @asset, @appointment] do |f| %>
+          <%= f.input :status, collection: [ "Accept", "Decline"], label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"} %>
+            <%= f.submit "Reply", class: "btn btn-primary new-asset-submit-btn text-center" %>
+        <% end %>
+    </div>
 </div>
+

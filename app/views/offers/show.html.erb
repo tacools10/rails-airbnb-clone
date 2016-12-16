@@ -2,21 +2,21 @@
   <div class="text-center">
     <h1 class="findaroof-title">Offer Details</h1>
   </div>
-  <div class="row asset-border text-center">
-          <ul>
-            <h3>Offer submitted by <%= @offer.user.first_name %> <%= @offer.user.last_name %></h3>
-            <p>Date: <%= @offer.offer_date %></p>
-            <p>US$ <%= @offer.offer_type %></p>
-            <h4>Accept or Decline</h4>
-          </ul>
-  </div>
-  <div class="row asset-border text-center">
-          <ul>
-            <%= simple_form_for [@user, @asset, @offer] do |f| %>
-            <%= f.input :status, collection: ["Accept", "Deny"]%>
-            <%= f.submit "submit" %>
-            <% end %>
-          </ul>
+
+<div class="col-lg-6 col-lg-offset-3">
+  <div class="row asset-border">
+    <div class="col-lg-12 text-center">
+            <h4>Offer submitted by: <%= @offer.user.first_name %> <%= @offer.user.last_name %></h4>
+            <h5>Date: <%= @offer.offer_date %></h5>
+            <h5>Amount: US$ <%= @offer.offer_type %></h5>
+      </div>
+    </div>
+</div>
+  <div class="col-lg-6 col-lg-offset-3 new-asset-grey">
+      <%= simple_form_for [@user, @asset, @offer] do |f| %>
+      <%= f.input :status, collection: ["Accept", "Deny"], label_html: {class: "new-asset-form-label"},wrapper_html: {class: 'new-asset-form-group'}, input_html: {class: "new-asset-form-field"}%>
+      <%= f.submit "Submit Response", class: "btn btn-primary new-asset-submit-btn text-center" %>
+      <% end %>
   </div>
 </div>
 

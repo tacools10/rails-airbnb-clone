@@ -24,6 +24,10 @@
 .offercardinfo {
   margin-top: 0px;
   margin-bottom: 0px;
+  color: #000000;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .cardtop-info {
@@ -75,7 +79,7 @@
   font-weight: 400;
   text-align: left;
   width: auto;
-  color:  #666768;
+  color:  #000000;
 }
 
 .card-description-offer-date {
@@ -85,7 +89,7 @@
   font-weight: 400;
   text-align: left;
   width: auto;
-  color:  #666768;
+  color:  #000000;
 }
 
 .card-description-offer-title {
@@ -94,13 +98,14 @@
   font-size: 20px;
   font-weight: 400;
   text-align: center;
-  color:  #666768;
+  color:  #000000;
 }
 
 .offer-title {
   padding-top: 5px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #DFDFDF;
+  background-color: #dfdfdf;
+  color: #FFFFFF;
 }
 
 .offer-right {
@@ -110,10 +115,11 @@
   position: relative;
   // padding-top: 2px;
   // padding-bottom: 2px;
-  color: #666768;
+  color: #FFFFFF;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #DFDFDF;
+  // border-bottom: 1px solid #DFDFDF;
+  background-color: #dfdfdf;
 }
 
 .offer-left {
@@ -121,10 +127,11 @@
   height: auto;
   float: right;
   position: relative;
-  color: #666768;
+  color: #FFFFFF;
   padding-top: 5px;
   padding-bottom: 5px;
-  border-bottom: 1px solid #DFDFDF;
+  // border-bottom: 1px solid #DFDFDF;
+  background-color: #dfdfdf;
 }
 
 .offer-avatar {
@@ -144,6 +151,7 @@
   padding-bottom: 5px;
   text-align: center;
   border-bottom: 1px solid #DFDFDF;
+  background-color: #dfdfdf;
 }
 
 .offer-button a {
